@@ -2,19 +2,35 @@
 # yarn lockfile v1
 
 
-"@iamsamwen/strapi-query-helpers@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@iamsamwen/strapi-query-helpers/-/strapi-query-helpers-1.1.1.tgz#1f8a5ecc384b37ec5c379e801839c1c5a464d7d1"
-  integrity sha512-O8C/mcJqLLgkdrINR9rUbMT81qC8f50ZdUJ7FrSskCbi+V79e4Mzjv2Ufc78B5FalB8qPJrIHatgL8Lb867HIA==
-  dependencies:
-    change-case "^4.1.2"
-    debug "^4.3.4"
-    lodash "^4.17.21"
-
 "@ioredis/commands@^1.1.1":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@ioredis/commands/-/commands-1.2.0.tgz#6d61b3097470af1fdbbe622795b8921d42018e11"
   integrity sha512-Sx1pU8EM64o2BrqNpEO1CNLtKQwyhuXuqyfH7oGKCk+1a33d2r5saW8zNwm3j6BTExtjrv2BxTgzzkMwts6vGg==
+
+"@pfapi/core@^2.3.2":
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/@pfapi/core/-/core-2.3.2.tgz#7694464a2d88107dfc44ef6d49b4100b1afdc5df"
+  integrity sha512-/ZnB37J4Lcnfn2cHXrskxXEebOFqkH1yG966hv1TPuufzUF7eEjygaMDXPIu3fiUrMrtp+0Bi9SRIB8+BpbCpw==
+  dependencies:
+    base-x "4.0.0"
+    debug "^4.3.4"
+    fs-extra "^10.1.0"
+    ioredis "5.0.6"
+    ip-matching "2.1.2"
+    lodash "4.17.21"
+    netmask "^2.0.2"
+    parse-redis-url-simple "^1.0.2"
+    request-ip "^3.3.0"
+    uuid "8.3.2"
+
+"@pfapi/query-helpers@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@pfapi/query-helpers/-/query-helpers-1.1.1.tgz#841cfc94a77bfd07d71608f45e7fa14e08cb975b"
+  integrity sha512-0/5HqUouMZrckV3YK9lcyPEmmLbmQs1yBmF4pnbH0JD5v1auJUqUkWv8U2XPezzQJC1bfUFQO3xO56qpLBil2Q==
+  dependencies:
+    change-case "^4.1.2"
+    debug "^4.3.4"
+    lodash "^4.17.21"
 
 ansi-styles@^4.1.0:
   version "4.3.0"
@@ -353,22 +369,6 @@ standard-as-callback@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/standard-as-callback/-/standard-as-callback-2.1.0.tgz#8953fc05359868a77b5b9739a665c5977bb7df45"
   integrity sha512-qoRRSyROncaz1z0mvYqIE4lCd9p2R90i6GxW3uZv5ucSu8tU7B5HXUP1gG8pVZsYNVaXjk8ClXHPttLyxAL48A==
-
-strapi-pfapi@^2.3.2:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/strapi-pfapi/-/strapi-pfapi-2.3.2.tgz#35378b21e9a6f15a43c8f25bc1ff70b7a3cf6259"
-  integrity sha512-7BRm8SlRu230NcNEt2l/1krZWdM+YoMzrtCD/KUFuL6Bib7VONU0Jk8hpnh5ZVJvv4Y7KILKsPIdN55QHMtOeA==
-  dependencies:
-    base-x "4.0.0"
-    debug "^4.3.4"
-    fs-extra "^10.1.0"
-    ioredis "5.0.6"
-    ip-matching "2.1.2"
-    lodash "4.17.21"
-    netmask "^2.0.2"
-    parse-redis-url-simple "^1.0.2"
-    request-ip "^3.3.0"
-    uuid "8.3.2"
 
 supports-color@^7.1.0:
   version "7.2.0"
