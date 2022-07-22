@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pfapi_handles",
+  "info": {
+    "singularName": "pfapi-handle",
+    "pluralName": "pfapi-handles",
+    "displayName": "PfapiHandle"
+  },
+  "options": {
+    "draftAndPublish": true,
+    "comment": ""
+  },
+  "attributes": {
+    "handle": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 128
+    },
+    "uid": {
+      "type": "string"
+    },
+    "id_field": {
+      "type": "string"
+    },
+    "attributes": {
+      "type": "dynamiczone",
+      "components": [
+        "pfapi-types.text",
+        "pfapi-types.richtext",
+        "pfapi-types.media",
+        "pfapi-types.multimedia",
+        "pfapi-types.json",
+        "pfapi-types.bool",
+        "pfapi-types.decimal",
+        "pfapi-types.integer"
+      ]
+    },
+    "params": {
+      "type": "json"
+    },
+    "comment": {
+      "type": "string"
+    }
+  }
+}

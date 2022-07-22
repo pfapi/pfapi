@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pfapi_states",
+  "info": {
+    "singularName": "pfapi-state",
+    "pluralName": "pfapi-states",
+    "displayName": "PfapiStates"
+  },
+  "options": {
+    "draftAndPublish": false,
+    "comment": ""
+  },
+  "pluginOptions": {
+    "content-manager": {
+      "visible": false
+    }
+  },
+  "attributes": {
+    "key": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 128
+    },
+    "value": {
+      "type": "json"
+    }
+  }
+}

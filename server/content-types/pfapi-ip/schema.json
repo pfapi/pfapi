@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pfapi_ips",
+  "info": {
+    "singularName": "pfapi-ip",
+    "pluralName": "pfapi-ips",
+    "displayName": "PfapiIp",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false,
+    "comment": ""
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "maxLength": 128
+    },
+    "ip_prefix_list": {
+      "type": "dynamiczone",
+      "components": [
+        "pfapi-types.ip-prefix"
+      ],
+      "required": true
+    }
+  }
+}
