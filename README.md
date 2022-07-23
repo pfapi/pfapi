@@ -636,7 +636,7 @@ API activities are logged with some (default 60 seconds) delay and are kept for 
 
 ## EJS template for text and richtext component fields
 
-We can use the EJS template to customize text fields in attributes of Pfapi handles.
+We can use the EJS template to customize string fields in attributes of Pfapi handles.
 
 For example:
 
