@@ -8,13 +8,9 @@ Pfapi plugin provides fast, secure, configurable, and scalable API services for 
 * Configurable filters enable user-friendly UX for users to find what they are looking for.
 * Production environment that runs multiple Strapi servers and Redis cluster is tested and supported.
 
-<br>
-<img alt="admin panel screenshot" src="https://github.com/pfapi/pfapi/blob/main/images/screen-shot1.png" />
-
 ## Requirements
 
 Pfapi plugin requires the in-memory data store Redis. Please refer to <a href="https://redis.io/docs/getting-started/">Redis getting started</a> to install redis server for your environment.
-
 
 ## How to install
 
@@ -54,7 +50,9 @@ For Redis cluster config, here is an example:
 REDIS_URI=redis://172.31.23.70:6379,172.31.30.210:6379,172.31.22.214:6379/0
 ```
 
-## API Routes
+## API Handles and Routes
+
+<img alt="admin panel screenshot" src="https://github.com/pfapi/pfapi/blob/main/images/screen-shot1.png" />
 
 ### List View: /pfapi/:handle
 
