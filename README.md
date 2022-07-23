@@ -418,7 +418,7 @@ Both list view and detail view APIs are aggregated from one or multiple individu
 
 </details>
 
-### EJS template for component of attributes
+### EJS template
 
 The EJS template is used to customize string type of components in attributes of Pfapi handles.
 
