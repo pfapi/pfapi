@@ -323,7 +323,7 @@ http://localhost:1337/pfapi/northern-cities?api_key=Pfapi-Demo
 
 ### Detail View: /pfapi/:handle/:id
 
-Path variable id can be id of an entry in the collection, id_field of the handle if defined.
+Path variable id can be id of an entry in the collection or id_field of the handle if defined.
 
 For example:
 
@@ -403,11 +403,11 @@ http://localhost:1337/pfapi/northern-city/Anchorage?api_key=Pfapi-Demo
 </details>
 
 
-Both list view and detail view APIs are aggregated from and composed of refreshable and cacheable methods. 
+Both list view and detail view APIs are aggregated from one or multiple refreshable and cacheable methods. 
 
 <details>
 
-<summary>Click to See Routes by Method Name</summary>
+<summary>Click to see routes by method name</summary>
 
 * /pfapi/get-filters/:handle
 
