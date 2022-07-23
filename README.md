@@ -601,9 +601,13 @@ it is configurable through PfapiHandle with filters_config property under params
 
 ### 1) IP unlimited list and blocked list
 
+<img alt="PfapiIp screen shot" src="https://github.com/pfapi/pfapi/blob/main/images/screen-shot3.png" />
+
 **PfapiIp** conveniently provides access to IP unlimited list and blocked list mechanism. IPs in unlimited list will not check rate limits. IPs in blocked list will not have access to the prefix.
 
 ### 2) Rate limits for API calls
+
+<img alt="PfapiRateLimit screen shot" src="https://github.com/pfapi/pfapi/blob/main/images/screen-shot4.png" />
 
 **PfapiRateLimit** provides access to the rate limits mechanism. rate limits can set with IP Mask and prefix.
 
