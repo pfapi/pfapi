@@ -13,7 +13,7 @@ Pfapi plugin provides fast, secure, configurable, and scalable API services for 
 
 ## Requirements
 
-Pfapi plugin requires the in-memory data store Redis. Please refer to: <a href="https://redis.io/docs/getting-started/">install redis server</a> for your environment.
+Pfapi plugin requires the in-memory data store Redis. Please refer to <a href="https://redis.io/docs/getting-started/">Redis getting started</a> install redis server for your environment.
 
 
 ## How to install
@@ -650,7 +650,7 @@ With the world cities test data set provided by plugin strapi-plugin-pfapi-data,
 
 ### step 1 install Redis server
 
-Please refer <a href="https://redis.io/docs/getting-started/">to install redis server</a> on your local computer.
+Please refer to <a href="https://redis.io/docs/getting-started/">Redis getting started</a> to install redis server on your local computer.
 
 ### step 2 create strapi app
 
