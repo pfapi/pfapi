@@ -1,6 +1,6 @@
 # Strapi plugin pfapi
 
-Pfapi plugin provides fast, secure, configurable, and distributed API services for e-commerce.
+Pfapi plugin provides fast, secure, configurable, and scalable API services for e-commerce.
 
 * Pfapi uses local and Redis caches to achieve single-digit milliseconds on average API response time. 
 * IP unlimited / blocked lists, Rate limits and activities log are accessible through the admin panel. 
@@ -638,11 +638,11 @@ API activities are logged with some (default 60 seconds) delay and are kept for 
 
 ## EJS template for text and richtext component fields
 
-We can use the EJS template to customize String fields in the api response JSON object.
+We can use the EJS template to customize text fields in attributes of Pfapi handles.
 
 For example:
 
-In the northern-city handle,  Northern City - **<%= item.name %>** is the title
+In the northern-city handle, we can set title field as Northern City - **<%= item.name %>**.
 
 ## How to use
 
