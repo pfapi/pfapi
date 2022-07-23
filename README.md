@@ -599,13 +599,19 @@ it is configurable through PfapiHandle with filters_config property under params
 
 ## Security and Defense
 
-### 1) IP unlimited list and blocked list
+### 1) API Keys
+
+<img alt="PfapiKey screen shot" src="https://github.com/pfapi/pfapi/blob/main/images/screen-shot8.png" />
+
+PfapiKey provides supporting for preview permission and avoids preflight request round-trips when we are in CORS situations. PfapiKey has an associated role. The role defines access permissions for the key.
+
+### 2) IP unlimited list and blocked list
 
 <img alt="PfapiIp screen shot" src="https://github.com/pfapi/pfapi/blob/main/images/screen-shot4.png" />
 
 **PfapiIp** conveniently provides access to IP unlimited list and blocked list mechanism. IPs in unlimited list will not check rate limits. IPs in blocked list will not have access to the prefix.
 
-### 2) Rate limits for API calls
+### 3) Rate limits for API calls
 
 <img alt="PfapiRateLimit screen shot" src="https://github.com/pfapi/pfapi/blob/main/images/screen-shot5.png" />
 
@@ -628,7 +634,7 @@ module.exports = [
 ];
 ```
 
-### 3) API activities log
+### 4) API activities log
 
 <img alt="PfapiActivity screen shot" src="https://github.com/pfapi/pfapi/blob/main/images/screen-shot6.png" />
 
