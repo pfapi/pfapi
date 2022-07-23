@@ -435,6 +435,7 @@ http://localhost:1337/pfapi/northern-cities?groupBy=iso3&sort[population]=desc&a
 <details>
 
 <summary>Click to see response</summary>
+
 ```javascript
 {
   title: 'Northern Cities - Total 11',
@@ -581,6 +582,7 @@ http://localhost:1337/pfapi/northern-cities?groupBy=iso3&sort[population]=desc&a
   sort: { population: 'desc' }
 }
 ```
+
 </details>
 
 ## Configurable Filters
