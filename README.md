@@ -589,7 +589,6 @@ http://localhost:1337/pfapi/northern-cities?groupBy=iso3&sort[population]=desc&a
 
 filters provide an overview of the searched data, the filters data is used to build the user-friendly interface. It helps users to refine their searches. In above examples, we have seen filters data in responses.
 
-<br>
 <img alt="filters config in admin panel" src="https://github.com/pfapi/pfapi/blob/main/images/screen-shot2.png" />
 
 it is configurable through PfapiHandle with filters_config property under params.
