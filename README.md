@@ -717,6 +717,7 @@ npm run develop
 
 ### step 4 setup api_key and permissions
 
+
 get your api_key from:
 
 http://localhost:1337/admin/content-manager/collectionType/plugin::pfapi.pfapi-key?page=1&pageSize=10&sort=key:ASC
