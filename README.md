@@ -426,6 +426,10 @@ Both list view and detail view APIs are aggregated from one or multiple individu
 
 The same <a href="https://docs.strapi.io/developer-docs/latest/developer-resources/database-apis-reference/rest/api-parameters.html">Strapi API parameters</a>: sort, filters, populate, fields, pagination and publicationState works for Pfapi.
 
+By appending preview=1 to query string allows to preview un-published API handle. With publicationState=preview, we can preview un-published collection data. The preview permission is defined in Pfapi Key.
+
+<img alt="preview permission" src="https://github.com/pfapi/pfapi/blob/main/images/screen-shot3.png" />
+
 In additional, groupBy is supported.
 
 For example:
@@ -593,7 +597,7 @@ filters provide an overview of the searched data, the filters data is used to bu
 
 it is configurable through PfapiHandle with filters_config property under params.
 
-## Security Defense
+## Security and Defense
 
 ### 1) IP unlimited list and blocked list
 
@@ -619,6 +623,9 @@ module.exports = [
   'plugin::pfapi.defense',
 ];
 ```
+
+### 3) API activities log
+
 
 ## EJS template for text and richtext component fields
 
