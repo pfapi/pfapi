@@ -418,6 +418,13 @@ Both list view and detail view APIs are aggregated from one or multiple individu
 
 </details>
 
+### EJS template for text and richtext component fields
+
+We can use the EJS template to customize string fields in attributes of Pfapi handles.
+
+For example:
+
+In the northern-city handle, we can set title field as Northern City - **<%= item.name %>**.
 
 
 ## API parameters
@@ -639,14 +646,6 @@ module.exports = [
 <img alt="PfapiActivity screen shot" src="https://github.com/pfapi/pfapi/blob/main/images/screen-shot6.png" />
 
 API activities are logged with some (default 60 seconds) delay and are kept for few (default 7) days. It makes all API calls observable with detail information. We can use it to make decisions on security, and understand performance related issues.
-
-## EJS template for text and richtext component fields
-
-We can use the EJS template to customize string fields in attributes of Pfapi handles.
-
-For example:
-
-In the northern-city handle, we can set title field as Northern City - **<%= item.name %>**.
 
 ## Setup Demonstration
 
