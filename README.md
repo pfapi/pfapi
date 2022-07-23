@@ -401,6 +401,26 @@ http://localhost:1337/pfapi/northern-city/Anchorage?api_key=Pfapi-Demo
 
 </details>
 
+
+Both list view and detail view APIs are aggregated from and composed of refreshable and cacheable methods. 
+
+<details>
+
+<summary>Click to See Routes by Method Name</summary>
+
+* /pfapi/get-filters/:handle
+
+* /pfapi/find-many/:handle
+
+* /pfapi/find-one/:handle/:id
+
+* /pfapi/get-count/:handle
+
+
+</details>
+
+
+
 ## API parameters
 
 The same <a href="https://docs.strapi.io/developer-docs/latest/developer-resources/database-apis-reference/rest/api-parameters.html">Strapi API parameters</a>: sort, filters, populate, fields, pagination and publicationState works for Pfapi.
