@@ -1,10 +1,10 @@
 {
   "name": "strapi-plugin-pfapi",
   "version": "2.3.2",
-  "description": "Pfapi plugin provides configurable, secure and fast API services for e-commerce web applications",
+  "description": "Pfapi plugin provides fast, secure, configurable, and distributed API services for e-commerce.",
   "strapi": {
     "name": "pfapi",
-    "description": "Pfapi plugin provides configurable, secure and fast API services for e-commerce web applications.",
+    "description": "Pfapi plugin provides fast, secure, configurable, and distributed API services for e-commerce.",
     "kind": "plugin",
     "displayName": "Pfapi"
   },

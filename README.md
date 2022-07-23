@@ -12,27 +12,293 @@ Pfapi plugin provides fast, secure, configurable, and distributed API services f
 
 ## Requirements
 
-Pfapi plugin requires the in-memory data store Redis. Please refer to: <a href="https://redis.io/docs/getting-started/">install redis server</a> on your environment.
+Pfapi plugin requires the in-memory data store Redis. Please refer to: <a href="https://redis.io/docs/getting-started/">install redis server</a> for your environment.
 
 
-## how to install
+## How to install
 
 ```bash
 yarn add strapi-plugin-pfapi
-```
-## config Redis URI
 
-By default, if it is not set, Pfapi uses redis://localhost/0.
+OR
 
-You can set it to a different host and database number by providing **REDIS_URI** in the plugins config file.
-
-For Redis cluster config, here is an example:
-
-```bash
-REDIS_URI=redis://172.31.23.70:6379,172.31.30.210:6379,172.31.22.214:6379/0
+npm install strapi-plugin-pfapi
 ```
 
-the plugins config file is located at:
+## API Routes
+
+### List View: /pfapi/:handle
+
+Path variable handle can be a content type plural name or handle defined in PfapiHandle table.
+
+For example: 
+
+http://localhost:1337/pfapi/northern-cities?api_key=Pfapi-Demo
+
+<details>
+  <summary>Click to see response data</summary>
+```javascript
+{
+  title: 'Northern Cities - Total 595',
+  map: {
+    id: 3,
+    name: 'northern-map',
+    alternativeText: 'Northern Map',
+    caption: 'Northern Map',
+    width: 820,
+    height: 820,
+    formats: { small: [Object], medium: [Object], thumbnail: [Object] },
+    ext: '.jpeg',
+    mime: 'image/jpeg',
+    size: 110.88,
+    url: '/uploads/pfapi/northern_8e902a468b.jpeg'
+  },
+  filters: [
+    {
+      key: 'lat',
+      type: 'range',
+      title: 'Latitude',
+      min: 60.016,
+      max: 81.7166,
+      count: 595,
+      full_set: true
+    },
+    {
+      key: 'lng',
+      type: 'range',
+      title: 'Longitude',
+      min: -179.59,
+      max: 179.3067,
+      count: 595,
+      full_set: true
+    },
+    {
+      key: 'population',
+      type: 'range',
+      title: 'Population',
+      min: 0,
+      max: 642045,
+      count: 595,
+      full_set: true
+    },
+    {
+      key: 'country',
+      type: 'list',
+      title: 'Country',
+      items: [
+        { value: 'Canada', count: 3, label: 'Canada' },
+        { value: 'Faroe Islands', count: 29, label: 'Faroe Islands' },
+        { value: 'Finland', count: 209, label: 'Finland' },
+        { value: 'Greenland', count: 22, label: 'Greenland' },
+        { value: 'Iceland', count: 13, label: 'Iceland' },
+        { value: 'Norway', count: 78, label: 'Norway' },
+        { value: 'Russia', count: 206, label: 'Russia' },
+        { value: 'Svalbard', count: 1, label: 'Svalbard' },
+        { value: 'Sweden', count: 14, label: 'Sweden' },
+        { value: 'United Kingdom', count: 1, label: 'United Kingdom' },
+        { value: 'United States', count: 19, label: 'United States' }
+      ],
+      full_set: true
+    }
+  ],
+  items: [
+    {
+      id: 723,
+      name: 'Helsinki',
+      lat: 60.1756,
+      lng: 24.9342,
+      population: 642045,
+      country: 'Finland',
+      iso3: 'FIN'
+    },
+    {
+      id: 778,
+      name: 'Reykjavík',
+      lat: 64.1475,
+      lng: -21.935,
+      population: 128793,
+      country: 'Iceland',
+      iso3: 'ISL'
+    },
+    {
+      id: 813,
+      name: 'Nuuk',
+      lat: 64.175,
+      lng: -51.7333,
+      population: 18326,
+      country: 'Greenland',
+      iso3: 'GRL'
+    },
+    {
+      id: 817,
+      name: 'Tórshavn',
+      lat: 62,
+      lng: -6.7833,
+      population: 13326,
+      country: 'Faroe Islands',
+      iso3: 'FRO'
+    },
+    {
+      id: 849,
+      name: 'Longyearbyen',
+      lat: 78.2167,
+      lng: 15.6333,
+      population: 0,
+      country: 'Svalbard',
+      iso3: 'XSV'
+    },
+    {
+      id: 1782,
+      name: 'Surgut',
+      lat: 61.25,
+      lng: 73.4333,
+      population: 360590,
+      country: 'Russia',
+      iso3: 'RUS'
+    },
+    {
+      id: 1816,
+      name: 'Arkhangelsk',
+      lat: 64.55,
+      lng: 40.5333,
+      population: 351488,
+      country: 'Russia',
+      iso3: 'RUS'
+    },
+    {
+      id: 2023,
+      name: 'Yakutsk',
+      lat: 62.0272,
+      lng: 129.7319,
+      population: 311760,
+      country: 'Russia',
+      iso3: 'RUS'
+    },
+    {
+      id: 2077,
+      name: 'Murmansk',
+      lat: 68.9667,
+      lng: 33.0833,
+      population: 298096,
+      country: 'Russia',
+      iso3: 'RUS'
+    },
+    {
+      id: 2148,
+      name: 'Anchorage',
+      lat: 61.1508,
+      lng: -149.1091,
+      population: 288000,
+      country: 'United States',
+      iso3: 'USA'
+    },
+    {
+      id: 2189,
+      name: 'Petrozavodsk',
+      lat: 61.7833,
+      lng: 34.35,
+      population: 278551,
+      country: 'Russia',
+      iso3: 'RUS'
+    },
+    {
+      id: 2210,
+      name: 'Nizhnevartovsk',
+      lat: 60.9389,
+      lng: 76.595,
+      population: 277668,
+      country: 'Russia',
+      iso3: 'RUS'
+    },
+    {
+      id: 2253,
+      name: 'Espoo',
+      lat: 60.21,
+      lng: 24.66,
+      population: 269802,
+      country: 'Finland',
+      iso3: 'FIN'
+    },
+    {
+      id: 2335,
+      name: 'Bergen',
+      lat: 60.3925,
+      lng: 5.3233,
+      population: 257087,
+      country: 'Norway',
+      iso3: 'NOR'
+    },
+    {
+      id: 2419,
+      name: 'Syktyvkar',
+      lat: 61.6667,
+      lng: 50.8167,
+      population: 245313,
+      country: 'Russia',
+      iso3: 'RUS'
+    },
+    {
+      id: 2559,
+      name: 'Noginsk',
+      lat: 64.4833,
+      lng: 91.2333,
+      population: 229731,
+      country: 'Russia',
+      iso3: 'RUS'
+    },
+    {
+      id: 2596,
+      name: 'Tampere',
+      lat: 61.4981,
+      lng: 23.76,
+      population: 225118,
+      country: 'Finland',
+      iso3: 'FIN'
+    },
+    {
+      id: 2683,
+      name: 'Vantaa',
+      lat: 60.3,
+      lng: 25.0333,
+      population: 214605,
+      country: 'Finland',
+      iso3: 'FIN'
+    },
+    {
+      id: 2843,
+      name: 'Oulu',
+      lat: 65.0142,
+      lng: 25.4719,
+      population: 200526,
+      country: 'Finland',
+      iso3: 'FIN'
+    },
+    {
+      id: 2997,
+      name: 'Turku',
+      lat: 60.4517,
+      lng: 22.27,
+      population: 187604,
+      country: 'Finland',
+      iso3: 'FIN'
+    }
+  ],
+  pagination: { page: 1, pageSize: 20, pageCount: 30, total: 595 }
+}
+```
+</details>
+
+### Detail View: /pfapi/:handle/:id
+
+Path variable id can be id of an entry in the collection, id_field of the handle if defined.
+
+
+## Config Redis URI
+
+
+By default, if it is not set, Pfapi uses redis://localhost/0. You can customize it by providing **REDIS_URI** in the plugins config file.
+
+The plugins config file is located at:
 
 config/plugins.js
 
@@ -47,6 +313,12 @@ module.exports = ({ env }) => ({
   }
   //...
 })
+```
+
+For Redis cluster config, here is an example:
+
+```bash
+REDIS_URI=redis://172.31.23.70:6379,172.31.30.210:6379,172.31.22.214:6379/0
 ```
 
 ## API parameters
