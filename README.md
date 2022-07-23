@@ -426,13 +426,13 @@ Both list view and detail view APIs are aggregated from one or multiple individu
 
 The same <a href="https://docs.strapi.io/developer-docs/latest/developer-resources/database-apis-reference/rest/api-parameters.html">Strapi API parameters</a>: sort, filters, populate, fields, pagination and publicationState works for Pfapi.
 
-By appending **preview**=1 to query string allows to preview un-published API handle. With publicationState=preview, we can preview un-published collection data. The preview permission is defined in Pfapi Key.
+By appending **preview=1** to query string allows to preview un-published API handle. With publicationState=preview, we can preview un-published collection data. The preview permission is defined in Pfapi Key.
 
 <img alt="preview permission" src="https://github.com/pfapi/pfapi/blob/main/images/screen-shot3.png" />
 
-By appending **ss_rand**=1 to query string, it disables caching for data retrieving methods.
+By appending **ss_rand=1** to query string, it disables caching for data retrieving methods.
 
-In additional, groupBy is supported.
+In additional, **groupBy** is supported.
 
 For example:
 
