@@ -34,9 +34,13 @@ Path variable handle can be a content type plural name or handle defined in Pfap
 For example: 
 
 http://localhost:1337/pfapi/northern-cities?api_key=Pfapi-Demo
+
 {::options parse_block_html="true" /}
+
 <details>
+
   <summary>Click to see response</summary>
+
 ```javascript
 {
   title: 'Northern Cities - Total 595',
@@ -286,7 +290,9 @@ http://localhost:1337/pfapi/northern-cities?api_key=Pfapi-Demo
   pagination: { page: 1, pageSize: 20, pageCount: 30, total: 595 }
 }
 ```
+
 </details>
+
 {::options parse_block_html="false" /}
 
 ### Detail View: /pfapi/:handle/:id
