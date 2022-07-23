@@ -403,7 +403,7 @@ http://localhost:1337/pfapi/northern-city/Anchorage?api_key=Pfapi-Demo
 </details>
 
 
-Both list view and detail view APIs are aggregated from one or multiple refreshable and cacheable methods. 
+Both list view and detail view APIs are aggregated from one or multiple individually cacheable data retrieving methods. 
 
 <details>
 
@@ -427,6 +427,161 @@ Both list view and detail view APIs are aggregated from one or multiple refresha
 The same <a href="https://docs.strapi.io/developer-docs/latest/developer-resources/database-apis-reference/rest/api-parameters.html">Strapi API parameters</a>: sort, filters, populate, fields, pagination and publicationState works for Pfapi.
 
 In additional, groupBy is supported.
+
+For example:
+
+http://localhost:1337/pfapi/northern-cities?groupBy=iso3&sort[population]=desc&api_key=Pfapi-Demo
+
+<details>
+
+<summary>Click to see response</summary>
+```javascript
+{
+  title: 'Northern Cities - Total 11',
+  map: {
+    id: 3,
+    name: 'northern-map',
+    alternativeText: 'Northern Map',
+    caption: 'Northern Map',
+    width: 820,
+    height: 820,
+    formats: { small: [Object], medium: [Object], thumbnail: [Object] },
+    ext: '.jpeg',
+    mime: 'image/jpeg',
+    size: 110.88,
+    url: '/uploads/pfapi/northern_8e902a468b.jpeg'
+  },
+  filters: [
+    {
+      key: 'lat',
+      type: 'range',
+      title: 'Latitude',
+      min: 60.016,
+      max: 81.7166,
+      count: 595,
+      full_set: true
+    },
+    {
+      key: 'lng',
+      type: 'range',
+      title: 'Longitude',
+      min: -179.59,
+      max: 179.3067,
+      count: 595,
+      full_set: true
+    },
+    {
+      key: 'population',
+      type: 'range',
+      title: 'Population',
+      min: 0,
+      max: 642045,
+      count: 595,
+      full_set: true
+    },
+    {
+      key: 'country',
+      type: 'list',
+      title: 'Country',
+      items: [Array],
+      full_set: true
+    }
+  ],
+  items: [
+    {
+      name: 'Helsinki',
+      lat: 60.1756,
+      lng: 24.9342,
+      population: 642045,
+      country: 'Finland',
+      iso3: 'FIN'
+    },
+    {
+      name: 'Surgut',
+      lat: 61.25,
+      lng: 73.4333,
+      population: 360590,
+      country: 'Russia',
+      iso3: 'RUS'
+    },
+    {
+      name: 'Anchorage',
+      lat: 61.1508,
+      lng: -149.1091,
+      population: 288000,
+      country: 'United States',
+      iso3: 'USA'
+    },
+    {
+      name: 'Bergen',
+      lat: 60.3925,
+      lng: 5.3233,
+      population: 257087,
+      country: 'Norway',
+      iso3: 'NOR'
+    },
+    {
+      name: 'Reykjavík',
+      lat: 64.1475,
+      lng: -21.935,
+      population: 128793,
+      country: 'Iceland',
+      iso3: 'ISL'
+    },
+    {
+      name: 'Umeå',
+      lat: 63.8285,
+      lng: 20.2706,
+      population: 90412,
+      country: 'Sweden',
+      iso3: 'SWE'
+    },
+    {
+      name: 'Whitehorse',
+      lat: 60.7029,
+      lng: -135.0691,
+      population: 25085,
+      country: 'Canada',
+      iso3: 'CAN'
+    },
+    {
+      name: 'Nuuk',
+      lat: 64.175,
+      lng: -51.7333,
+      population: 18326,
+      country: 'Greenland',
+      iso3: 'GRL'
+    },
+    {
+      name: 'Tórshavn',
+      lat: 62,
+      lng: -6.7833,
+      population: 13326,
+      country: 'Faroe Islands',
+      iso3: 'FRO'
+    },
+    {
+      name: 'Lerwick',
+      lat: 60.155,
+      lng: -1.145,
+      population: 6880,
+      country: 'United Kingdom',
+      iso3: 'GBR'
+    },
+    {
+      name: 'Longyearbyen',
+      lat: 78.2167,
+      lng: 15.6333,
+      population: 0,
+      country: 'Svalbard',
+      iso3: 'XSV'
+    }
+  ],
+  pagination: { page: 1, pageSize: 20, pageCount: 1, total: 11 },
+  sort: { population: 'desc' }
+}
+```
+</details>
 
 ## Configurable Filters
 
