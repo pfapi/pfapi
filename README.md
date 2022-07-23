@@ -291,7 +291,6 @@ http://localhost:1337/pfapi/northern-cities?api_key=Pfapi-Demo
 
 </details>
 
-<br><br>
 
 ### Detail View: /pfapi/:handle/:id
 
@@ -366,7 +365,6 @@ http://localhost:1337/pfapi/northern-cities/2148?api_key=Pfapi-Demo
 
 </details>
 
-<br><br>
 
 ## Config Redis URI
 
