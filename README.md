@@ -610,7 +610,7 @@ it is configurable through PfapiHandle with filters_config property under params
 
 <img alt="PfapiKey screen shot" src="https://github.com/pfapi/pfapi/blob/main/images/screen-shot8.png" />
 
-PfapiKey provides supporting for preview permission and avoids preflight request round-trips when we are in CORS situations. PfapiKey has an associated role. The role defines access permissions for the key.
+PfapiKey provides supporting for preview permission and avoids preflight request round-trips when we are in CORS situations. PfapiKey has an associated role. The role defines access permissions of the key.
 
 ### 2) IP unlimited list and blocked list
 
