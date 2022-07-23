@@ -8,6 +8,7 @@ Pfapi plugin provides fast, secure, configurable, and distributed API services f
 * Configurable filters enable user-friendly UX for users to find what they are looking for.
 * Production environment that runs multiple Strapi servers and Redis cluster is tested and supported.
 
+<br>
 
 ![Admin Panel](https://github.com/pfapi/pfapi/blob/main/images/screen-shot1.png)
 
