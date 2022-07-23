@@ -630,6 +630,9 @@ module.exports = [
 
 ### 3) API activities log
 
+<img alt="PfapiActivity screen shot" src="https://github.com/pfapi/pfapi/blob/main/images/screen-shot6.png" />
+
+API activities are logged with some (default 60 seconds) delay and are kept for few (default 7) days. It makes all API calls observable with very detail information. We can use it to make decisions on security, and understand performance related issues.
 
 ## EJS template for text and richtext component fields
 
