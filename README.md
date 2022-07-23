@@ -9,7 +9,7 @@ Pfapi plugin provides fast, secure, configurable, and distributed API services f
 * Production environment that runs multiple Strapi servers and Redis cluster is tested and supported.
 
 <br>
-<img src="https://github.com/pfapi/pfapi/blob/main/images/screen-shot1.png" />
+<img alt="admin panel screenshot" src="https://github.com/pfapi/pfapi/blob/main/images/screen-shot1.png" />
 
 ## Requirements
 
@@ -587,36 +587,10 @@ http://localhost:1337/pfapi/northern-cities?groupBy=iso3&sort[population]=desc&a
 
 ## Configurable Filters
 
-filters provide an overview of the searched data, the filters data is used to build the user-friendly interface. It helps users to refine their searches.
+filters provide an overview of the searched data, the filters data is used to build the user-friendly interface. It helps users to refine their searches. In above examples, we have seen filters data in responses.
 
-Here is an example:
-
-http://localhost:1337/pfapi/pf/northern-cities?groupBy=iso3&sort[population]=desc&api_key=Pfapi-Demo-XXXXXXX
-
-
-```javascript
-{
-  title: 'Northern Cities - Total 11',
-...
-  filters: [
-    {
-      key: 'lat', type: 'range', title: 'Latitude', min: 60.02, max: 81.72, count: 595, full_set: true
-    },
-  ...
-    {
-      key: 'population', type: 'range', min: 0, max: 642045, count: 595, full_set: true
-    },
-    { 
-      key: 'country', type: 'list', full_set: true,
-      items: [
-        { value: 'Sweden', count: 14, label: 'Sweden' },
-        { value: 'Finland', count: 209, label: 'Finland' },
-        ....
-    }
-  ],
-  ...
-}
-```
+<br>
+<img alt="filters config in admin panel" src="https://github.com/pfapi/pfapi/blob/main/images/screen-shot2.png" />
 
 it is configurable through PfapiHandle with filters_config property under params.
 
