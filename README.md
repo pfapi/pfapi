@@ -626,11 +626,11 @@ PfapiKey provides supporting for preview permission and avoids preflight request
 
 *(it is not the same as the rate limits that come with strapi)*
 
-Changes made to the two collections are effective immediately without restarting strapi servers.
+Changes made to the two collections are effective immediately without restarting strapi server.
 
 Without enabling the defense middleware of pfapi plugin, the above mechanisms work only for Pfapi APIs.
 
-To enable the defense middleware and cover all routes:
+To enable the defense middleware and cover all routes that Strapi server provides:
 
 config/middlewares.js
 
