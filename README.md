@@ -694,6 +694,8 @@ get your api_key from:
 
 http://localhost:1337/admin/content-manager/collectionType/plugin::pfapi.pfapi-key?page=1&pageSize=10&sort=key:ASC
 
+Please replace Pfapi-Demo-XXXXXXXX with Pfapi-Demo for the convenience of using links posted below.
+
 A role with name PfapiDemo is installed in the above steps.
 
 Go to Settings > USERS & PERMISSIONS PLUGIN > Roles:
@@ -708,7 +710,7 @@ Under Permissions > World-city
 
 assign **find** and **findOne** permissions to PfapiDemo and click save.
 
-OK, we are ready to run tests, please replace Pfapi-Demo-XXXXXXXX with Pfapi-Demo.
+OK, we are ready to run demos.
 
 ### step 5 demos
 
