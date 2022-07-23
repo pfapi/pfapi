@@ -698,8 +698,6 @@ A role with name PfapiDemo is installed in the above steps.
 
 Go to Settings > USERS & PERMISSIONS PLUGIN > Roles:
 
-![PfapiDemo](https://github.com/pfapi/pfapi/tree/main/images/screen-shot3.png)
-
 <img alt="Setup PfapiDemo role" src="https://github.com/pfapi/pfapi/blob/main/images/screen-shot7.png" />
 
 http://localhost:1337/admin/settings/users-permissions/roles
