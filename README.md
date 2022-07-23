@@ -6,7 +6,7 @@ Pfapi plugin uses <a href="https://github.com/pfapi/pfapi-core">pfapi-core libra
 * IP unlimited / blocked lists, Rate limits and activities log are accessible through the admin panel. 
 * API handles for detail and list views are powered by highly configurable components dynamic zone.
 * Configurable filters enable user-friendly UX for users to find what they are looking for.
-* Production environment that runs multiple Strapi servers and Redis cluster is tested and supported.
+* Production environment that runs multiple Strapi servers and Redis cluster is supported and tested.
 
 ## Requirements
 
