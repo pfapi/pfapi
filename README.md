@@ -35,8 +35,6 @@ For example:
 
 http://localhost:1337/pfapi/northern-cities?api_key=Pfapi-Demo
 
-{::options parse_block_html="true" /}
-
 <details>
 
   <summary>Click to see response</summary>
@@ -292,8 +290,6 @@ http://localhost:1337/pfapi/northern-cities?api_key=Pfapi-Demo
 ```
 
 </details>
-
-{::options parse_block_html="false" /}
 
 ### Detail View: /pfapi/:handle/:id
 
