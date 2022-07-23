@@ -668,7 +668,7 @@ After creating and logging into your Strapi account from the browser, stop the s
 
 You don't have to install strapi-plugin-pfapi-data for your production.
 
-strapi-plugin-pfapi-data provides a test data test for demo and test
+strapi-plugin-pfapi-data provides a test data set for demo and test
 
 
 ```bash
