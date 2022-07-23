@@ -422,7 +422,7 @@ Both list view and detail view APIs are aggregated from one or multiple individu
 
 ## API parameters
 
-The same <a href="https://docs.strapi.io/developer-docs/latest/developer-resources/database-apis-reference/rest/api-parameters.html">Strapi API parameters</a>: sort, filters, populate, fields, pagination, publicationState and locale works for Pfapi.
+The same <a href="https://docs.strapi.io/developer-docs/latest/developer-resources/database-apis-reference/rest/api-parameters.html">Strapi API parameters</a>: sort, filters, populate, fields, pagination, publicationState and locale work for Pfapi.
 
 By appending **preview=1** to query string allows to preview un-published API handle. With publicationState=preview, we can preview un-published collection data. The preview permission is defined in Pfapi Key.
 
