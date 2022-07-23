@@ -25,6 +25,34 @@ OR
 npm install strapi-plugin-pfapi
 ```
 
+## Config Redis URI
+
+
+By default, if it is not set, Pfapi uses redis://localhost/0. You can customize it by providing **REDIS_URI** in the plugins config file.
+
+The plugins config file is located at:
+
+config/plugins.js
+
+```javascript
+module.exports = ({ env }) => ({
+  //...
+  pfapi: {
+    enabled: true,
+    config: {
+      redis_uri: env('REDIS_URI'),
+    }
+  }
+  //...
+})
+```
+
+For Redis cluster config, here is an example:
+
+```bash
+REDIS_URI=redis://172.31.23.70:6379,172.31.30.210:6379,172.31.22.214:6379/0
+```
+
 ## API Routes
 
 ### List View: /pfapi/:handle
@@ -298,7 +326,7 @@ Path variable id can be id of an entry in the collection, id_field of the handle
 
 For example:
 
-http://localhost:1337/pfapi/northern-cities/2148?api_key=Pfapi-Demo
+http://localhost:1337/pfapi/northern-city/Anchorage?api_key=Pfapi-Demo
 
 <details>
 
@@ -306,93 +334,72 @@ http://localhost:1337/pfapi/northern-cities/2148?api_key=Pfapi-Demo
 
 ```javascript
 {
-  title: 'Northern Cities',
-  map: {
-    id: 3,
-    name: 'northern-map',
-    alternativeText: 'Northern Map',
-    caption: 'Northern Map',
-    width: 820,
-    height: 820,
-    formats: { 
+  title: 'Northern City - Anchorage',
+  snow: {
+    id: 4,
+    name: 'snow-town',
+    alternativeText: 'Snow Town',
+    caption: 'Snow Town',
+    width: 1100,
+    height: 695,
+    formats: {
+      large: {
+        ext: '.webp',
+        url: '/uploads/pfapi/large_shutterstock_416265475_9c7b4a1b9f.webp',
+        hash: 'large_shutterstock_416265475_9c7b4a1b9f',
+        mime: 'image/webp',
+        name: 'large_shutterstock-416265475.webp',
+        size: 49.94,
+        width: 1000,
+        height: 632
+      },
       small: {
-        ext: '.jpeg',
-        url: '/uploads/pfapi/small_northern_8e902a468b.jpeg',
-        hash: 'small_northern_8e902a468b',
-        mime: 'image/jpeg',
-        name: 'small_northern.jpeg',
-        size: 52.02,
+        ext: '.webp',
+        url: '/uploads/pfapi/small_shutterstock_416265475_9c7b4a1b9f.webp',
+        hash: 'small_shutterstock_416265475_9c7b4a1b9f',
+        mime: 'image/webp',
+        name: 'small_shutterstock-416265475.webp',
+        size: 19.35,
         width: 500,
-        height: 500
+        height: 316
       },
       medium: {
-        ext: '.jpeg',
-        url: '/uploads/pfapi/medium_northern_8e902a468b.jpeg',
-        hash: 'medium_northern_8e902a468b',
-        mime: 'image/jpeg',
-        name: 'medium_northern.jpeg',
-        size: 98.1,
+        ext: '.webp',
+        url: '/uploads/pfapi/medium_shutterstock_416265475_9c7b4a1b9f.webp',
+        hash: 'medium_shutterstock_416265475_9c7b4a1b9f',
+        mime: 'image/webp',
+        name: 'medium_shutterstock-416265475.webp',
+        size: 34.59,
         width: 750,
-        height: 750
+        height: 474
       },
       thumbnail: {
-        ext: '.jpeg',
-        url: '/uploads/pfapi/thumbnail_northern_8e902a468b.jpeg',
-        hash: 'thumbnail_northern_8e902a468b',
-        mime: 'image/jpeg',
-        name: 'thumbnail_northern.jpeg',
-        size: 6.61,
-        width: 156,
-        height: 156
+        ext: '.webp',
+        url: '/uploads/pfapi/thumbnail_shutterstock_416265475_9c7b4a1b9f.webp',
+        hash: 'thumbnail_shutterstock_416265475_9c7b4a1b9f',
+        mime: 'image/webp',
+        name: 'thumbnail_shutterstock-416265475.webp',
+        size: 6.36,
+        width: 245,
+        height: 155
       }
     },
-    ext: '.jpeg',
-    mime: 'image/jpeg',
-    size: 110.88,
-    url: '/uploads/pfapi/northern_8e902a468b.jpeg'
+    ext: '.webp',
+    mime: 'image/webp',
+    size: 68.54,
+    url: '/uploads/pfapi/shutterstock_416265475_9c7b4a1b9f.webp'
   },
   item: {
     id: 2148,
     name: 'Anchorage',
     lat: 61.1508,
     lng: -149.1091,
-    population: 288000,
-    country: 'United States',
-    iso3: 'USA'
+    population: 288000
   }
 }
 ```
 
 </details>
-
-
-## Config Redis URI
-
-
-By default, if it is not set, Pfapi uses redis://localhost/0. You can customize it by providing **REDIS_URI** in the plugins config file.
-
-The plugins config file is located at:
-
-config/plugins.js
-
-```javascript
-module.exports = ({ env }) => ({
-  //...
-  pfapi: {
-    enabled: true,
-    config: {
-      redis_uri: env('REDIS_URI'),
-    }
-  }
-  //...
-})
-```
-
-For Redis cluster config, here is an example:
-
-```bash
-REDIS_URI=redis://172.31.23.70:6379,172.31.30.210:6379,172.31.22.214:6379/0
-```
 
 ## API parameters
 
