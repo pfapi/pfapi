@@ -634,7 +634,7 @@ module.exports = [
 
 <img alt="PfapiActivity screen shot" src="https://github.com/pfapi/pfapi/blob/main/images/screen-shot6.png" />
 
-API activities are logged with some (default 60 seconds) delay and are kept for few (default 7) days. It makes all API calls observable with very detail information. We can use it to make decisions on security, and understand performance related issues.
+API activities are logged with some (default 60 seconds) delay and are kept for few (default 7) days. It makes all API calls observable with detail information. We can use it to make decisions on security, and understand performance related issues.
 
 ## EJS template for text and richtext component fields
 
@@ -644,25 +644,27 @@ For example:
 
 In the northern-city handle, we can set title field as Northern City - **<%= item.name %>**.
 
-## How to use
+## Setup Demonstration
 
-![components and dynamic zone](https://github.com/pfapi/pfapi/tree/main/images/screen-shot2.png)
-
-The plugin uses the <a href="https://github.com/pfapi/pfapi-core">pfapi-core library</a>. With the world cities test data set provided by plugin strapi-plugin-pfapi-data, we can run a few API calls to demonstrate the idea.
+With the world cities test data set provided by plugin strapi-plugin-pfapi-data, we can run a few API calls to demonstrate the idea.
 
 ### step 1 install Redis server
 
-Refer to: <a href="https://redis.io/docs/getting-started/">install redis server</a> on your local computer.
+Please refer <a href="https://redis.io/docs/getting-started/">to install redis server</a> on your local computer.
 
 ### step 2 create strapi app
 
 ```bash
-yarn create strapi-app strapi-pfapi-app --quickstart 
+yarn create strapi-app strapi-pfapi-app --quickstart
+
+OR
+
+npx create-strapi-app strapi-pfapi-app --quickstart
 ```
 
 After creating and logging into your Strapi account from the browser, stop the strapi server.
 
-### step 3 install strapi-plugin-pfapi and strapi-plugin-pfapi-data
+### step 3 install plugins
 
 You don't have to install strapi-plugin-pfapi-data for your production.
 
@@ -676,11 +678,15 @@ yarn add strapi-plugin-pfapi strapi-plugin-pfapi-data
 
 yarn develop
 
+OR
+
+npm install add strapi-plugin-pfapi strapi-plugin-pfapi-data
+
+npm run develop
+
 #after finishing installing data, restart the strapi server
 
 ```
-
-![Admin Panel](https://github.com/pfapi/pfapi/tree/main/images/screen-shot1.png)
 
 ### step 4 setup api_key and permissions
 
@@ -694,6 +700,8 @@ Go to Settings > USERS & PERMISSIONS PLUGIN > Roles:
 
 ![PfapiDemo](https://github.com/pfapi/pfapi/tree/main/images/screen-shot3.png)
 
+<img alt="Setup PfapiDemo role" src="https://github.com/pfapi/pfapi/blob/main/images/screen-shot7.png" />
+
 http://localhost:1337/admin/settings/users-permissions/roles
 
 click on PfapiDemo,
@@ -702,15 +710,15 @@ Under Permissions > World-city
 
 assign **find** and **findOne** permissions to PfapiDemo and click save.
 
-OK, we are ready to run tests, please replace Pfapi-Demo-XXXXXXXX with your specific key or set your api_key to Pfapi-Demo-XXXXXXXX.
+OK, we are ready to run tests, please replace Pfapi-Demo-XXXXXXXX with Pfapi-Demo.
 
 ### step 5 demos
 
 ### a) tests content-type name **world-cities** as path variable
 
-http://localhost:1337/pfapi/world-cities?api_key=Pfapi-Demo-XXXXXXXX
+http://localhost:1337/pfapi/world-cities?api_key=Pfapi-Demo
 
-http://localhost:1337/pfapi/world-cities/2148?api_key=Pfapi-Demo-XXXXXXXX
+http://localhost:1337/pfapi/world-cities/2148?api_key=Pfapi-Demo
 
 ### b) tests config handle **northern-cities** as path variable
 
@@ -718,25 +726,19 @@ handle configs are defined in PfapiHandle.
 
 ***/pfapi***
 
-http://localhost:1337/pfapi/northern-cities?api_key=Pfapi-Demo-XXXXXXXX
+http://localhost:1337/pfapi/northern-cities?api_key=Pfapi-Demo
 
-http://localhost:1337/pfapi/northern-cities/2148?api_key=Pfapi-Demo-XXXXXXXX
-
-***/pfapi/pf***
-
-http://localhost:1337/pfapi/pf/northern-cities?api_key=Pfapi-Demo-XXXXXXXX
-
-http://localhost:1337/pfapi/pf/northern-cities/2148?api_key=Pfapi-Demo-XXXXXXXX
+http://localhost:1337/pfapi/northern-cities/2148?api_key=Pfapi-Demo
 
 ***strapi api parameters***
 
-http://localhost:1337/pfapi/northern-cities?filters[iso3]=USA&api_key=Pfapi-Demo-XXXXXXXX
+http://localhost:1337/pfapi/northern-cities?filters[iso3]=USA&api_key=Pfapi-Demo
 
 ### c) tests with config handle northern-city with id_field is name
 
 config data defined in PfapiHandles for handle **northern-city**:
 
-http://localhost:1337/pfapi/pf/northern-city/Anchorage?api_key=Pfapi-Demo-XXXXXXXX
+http://localhost:1337/pfapi/pf/northern-city/Anchorage?api_key=Pfapi-Demo
 
 ### d) test data update
 
@@ -746,11 +748,9 @@ make some change, for example: change the population from 288000 to 288001
 
 check APIs:
 
-http://localhost:1337/pfapi/northern-cities/2148?api_key=Pfapi-Demo-XXXXXXXX
+http://localhost:1337/pfapi/northern-cities/2148?api_key=Pfapi-Demo
 
-http://localhost:1337/pfapi/pf/northern-cities/2148?api_key=Pfapi-Demo-XXXXXXXX
-
-http://localhost:1337/pfapi/pf/northern-city/Anchorage?api_key=Pfapi-Demo-XXXXXXXX
+http://localhost:1337/pfapi/pf/northern-city/Anchorage?api_key=Pfapi-Demo
 
 to see if the cached data was evicted and updated
 
@@ -762,122 +762,31 @@ make some changes, for example: add or remove country to the fields array
 
 check APIs:
 
-http://localhost:1337/pfapi/northern-cities/2148?api_key=Pfapi-Demo-XXXXXXXX
+http://localhost:1337/pfapi/northern-cities/2148?api_key=Pfapi-Demo
 
-http://localhost:1337/pfapi/pf/northern-cities/2148?api_key=Pfapi-Demo-XXXXXXXX
+http://localhost:1337/pfapi/pf/northern-cities/2148?api_key=Pfapi-Demo
 
 
 ## pfapi-tester
 
-pfapi-tester is the stress tester for pfapi plugin. please refer to <a href="https://github.com/iamsamwen/pfapi-tester">pfapi-tester readme</a> for detail.
+pfapi-tester is the stress tester for pfapi plugin. please refer to <a href="https://github.com/pfapi/tester">pfapi-tester readme</a> to install and setup koa-response-time for x-response-time.
 
 We can use it to get api capacity metrics of APIs that use pfapi plugin.
 
-Here are the raw data collected for the cached vs no cache comparison:
+```bash
+pfapi-tester 
++++
+{
+  base_url: 'http://localhost:1337',
+  path: '/pfapi/northern-cities',
+  times: 3
+}
+total: 3 ok: 3 not_ok: 0
+------------------------------
+   	pfapi	http	total
+------------------------------
+ave	1.89	2.58	10.59
+min	1.63	2.19	6.38
+max	2.20	2.95	18.10
+------------------------------
 ```
-# 3 tests for cached data
-
-> pfapi-tester -t 10 
-++++++++++
-{
-  base_url: '...',
-  path: '/pfapi/pf/northern-cities',
-  times: 10
-}
-total: 10 ok: 10 not_ok: 0
-------------------------------
-   	pfapi	http	total
-------------------------------
-ave	3.13	4.24	134.44
-min	0.88	1.78	94.34
-max	21.14	22.36	229.76
-------------------------------
-
-> pfapi-tester -t 10 
-++++++++++
-{
-  base_url: '...',
-  path: '/pfapi/pf/northern-cities',
-  times: 10
-}
-total: 10 ok: 10 not_ok: 0
-------------------------------
-   	pfapi	http	total
-------------------------------
-ave	0.97	2.05	125.62
-min	0.89	1.82	101.23
-max	1.05	3.24	178.90
-------------------------------
-
-> pfapi-tester -t 10 
-++++++++++
-{
-  base_url: '...',
-  path: '/pfapi/pf/northern-cities',
-  times: 10
-}
-total: 10 ok: 10 not_ok: 0
-------------------------------
-   	pfapi	http	total
-------------------------------
-ave	1.07	2.09	132.43
-min	0.91	1.79	99.12
-max	1.96	2.97	182.29
-------------------------------
-
-# 3 tests for no cache data
-
-> pfapi-tester -t 10 -r
-++++++++++
-{
-  base_url: '...',
-  path: '/pfapi/pf/northern-cities',
-  times: 10,
-  ss_rand: true
-}
-total: 10 ok: 10 not_ok: 0
-------------------------------
-   	pfapi	http	total
-------------------------------
-ave	16.93	17.90	142.81
-min	16.33	17.27	109.83
-max	18.07	18.94	192.21
-------------------------------
-
-> pfapi-tester -t 10 -r
-++++++++++
-{
-  base_url: '...',
-  path: '/pfapi/pf/northern-cities',
-  times: 10,
-  ss_rand: true
-}
-total: 10 ok: 10 not_ok: 0
-------------------------------
-   	pfapi	http	total
-------------------------------
-ave	16.74	17.79	147.02
-min	16.19	17.13	112.83
-max	17.99	19.07	187.56
-------------------------------
-
-> pfapi-tester -t 10 -r
-++++++++++
-{
-  base_url: '...',
-  path: '/pfapi/pf/northern-cities',
-  times: 10,
-  ss_rand: true
-}
-total: 10 ok: 10 not_ok: 0
-------------------------------
-   	pfapi	http	total
-------------------------------
-ave	16.72	17.70	135.34
-min	16.22	17.15	109.03
-max	17.44	18.31	189.94
-------------------------------
-
-```
-
-
