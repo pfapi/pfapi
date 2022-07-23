@@ -1,17 +1,19 @@
 # Strapi plugin pfapi
 
-Pfapi plugin provides configurable, secure and fast API services. API handles are configurable through the admin. Pfapi uses local and Redis caches to achieve single-digit milliseconds on average API response time. IP unlimited list, blocked list and Rate limits mechanisms are included and conveniently accessible. It also includes API activities log, groupBy support and configurable filters features.
+Pfapi plugin provides fast, secure, configurable, and distributed API services for e-commerce.
 
-Here are some test results for cached vs no cache comparison:
+* Pfapi uses local and Redis caches to achieve single-digit milliseconds on average API response time. 
+* IP unlimited / blocked lists, Rate limits and activities log are accessible through the admin panel. 
+* API handles for detail and list views are powered by highly configurable components dynamic zone.
+* Configurable filters enable user-friendly UX for users to find what they are looking for.
+* Production environment that runs multiple Strapi servers and Redis cluster is tested and supported.
 
-|	 |test 1	|test 2	|test 3
-|--|-------|-------|-------
-|**cached** api response time	|3.13	|0.97	|1.07
-|no cache api response time	|16.93	|16.74	|16.72
+![Admin Panel](https://github.com/pfapi/pfapi/tree/main/images/screen-shot1.png)
 
-![test results](https://github.com/iamsamwen/strapi-plugin-pfapi/blob/main/images/screen-shot4.png)
+## Requirements
 
-We can see pfapi plugin improves the api response time to single digit milliseconds range. For detail, please read <a href="https://github.com/iamsamwen/pfapi-tester">pfapi-tester</a> and the section at bottom. 
+Pfapi plugin requires the in-memory data store Redis. Please refer to: <a href="https://redis.io/docs/getting-started/">install redis server</a> on your environment.
+
 
 ## how to install
 
@@ -125,9 +127,9 @@ In the northern-city handle,  Northern City - **<%= item.name %>** is the title
 
 ## How to use
 
-![components and dynamic zone](https://github.com/iamsamwen/strapi-plugin-pfapi/blob/main/images/screen-shot2.png)
+![components and dynamic zone](https://github.com/pfapi/pfapi/tree/main/images/screen-shot2.png)
 
-The plugin uses the <a href="https://github.com/iamsamwen/strapi-pfapi">strapi-pfapi library</a>. With the world cities test data set provided by plugin strapi-plugin-pfapi-data, we can run a few API calls to demonstrate the idea.
+The plugin uses the <a href="https://github.com/pfapi/pfapi-core">pfapi-core library</a>. With the world cities test data set provided by plugin strapi-plugin-pfapi-data, we can run a few API calls to demonstrate the idea.
 
 ### step 1 install Redis server
 
@@ -159,7 +161,7 @@ yarn develop
 
 ```
 
-![Admin Panel](https://github.com/iamsamwen/strapi-plugin-pfapi/blob/main/images/screen-shot1.png)
+![Admin Panel](https://github.com/pfapi/pfapi/tree/main/images/screen-shot1.png)
 
 ### step 4 setup api_key and permissions
 
@@ -171,7 +173,7 @@ A role with name PfapiDemo is installed in the above steps.
 
 Go to Settings > USERS & PERMISSIONS PLUGIN > Roles:
 
-![PfapiDemo](https://github.com/iamsamwen/strapi-plugin-pfapi/blob/main/images/screen-shot3.png)
+![PfapiDemo](https://github.com/pfapi/pfapi/tree/main/images/screen-shot3.png)
 
 http://localhost:1337/admin/settings/users-permissions/roles
 
