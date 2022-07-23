@@ -13,7 +13,7 @@ Pfapi plugin provides fast, secure, configurable, and scalable API services for 
 
 ## Requirements
 
-Pfapi plugin requires the in-memory data store Redis. Please refer to <a href="https://redis.io/docs/getting-started/">Redis getting started</a> install redis server for your environment.
+Pfapi plugin requires the in-memory data store Redis. Please refer to <a href="https://redis.io/docs/getting-started/">Redis getting started</a> to install redis server for your environment.
 
 
 ## How to install
