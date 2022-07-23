@@ -291,10 +291,82 @@ http://localhost:1337/pfapi/northern-cities?api_key=Pfapi-Demo
 
 </details>
 
+<br><br>
+
 ### Detail View: /pfapi/:handle/:id
 
 Path variable id can be id of an entry in the collection, id_field of the handle if defined.
 
+For example:
+
+http://localhost:1337/pfapi/northern-cities/2148?api_key=Pfapi-Demo
+
+<details>
+
+  <summary>Click to see response</summary>
+
+```javascript
+{
+  title: 'Northern Cities',
+  map: {
+    id: 3,
+    name: 'northern-map',
+    alternativeText: 'Northern Map',
+    caption: 'Northern Map',
+    width: 820,
+    height: 820,
+    formats: { 
+      small: {
+        ext: '.jpeg',
+        url: '/uploads/pfapi/small_northern_8e902a468b.jpeg',
+        hash: 'small_northern_8e902a468b',
+        mime: 'image/jpeg',
+        name: 'small_northern.jpeg',
+        size: 52.02,
+        width: 500,
+        height: 500
+      },
+      medium: {
+        ext: '.jpeg',
+        url: '/uploads/pfapi/medium_northern_8e902a468b.jpeg',
+        hash: 'medium_northern_8e902a468b',
+        mime: 'image/jpeg',
+        name: 'medium_northern.jpeg',
+        size: 98.1,
+        width: 750,
+        height: 750
+      },
+      thumbnail: {
+        ext: '.jpeg',
+        url: '/uploads/pfapi/thumbnail_northern_8e902a468b.jpeg',
+        hash: 'thumbnail_northern_8e902a468b',
+        mime: 'image/jpeg',
+        name: 'thumbnail_northern.jpeg',
+        size: 6.61,
+        width: 156,
+        height: 156
+      }
+    },
+    ext: '.jpeg',
+    mime: 'image/jpeg',
+    size: 110.88,
+    url: '/uploads/pfapi/northern_8e902a468b.jpeg'
+  },
+  item: {
+    id: 2148,
+    name: 'Anchorage',
+    lat: 61.1508,
+    lng: -149.1091,
+    population: 288000,
+    country: 'United States',
+    iso3: 'USA'
+  }
+}
+```
+
+</details>
+
+<br><br>
 
 ## Config Redis URI
 
