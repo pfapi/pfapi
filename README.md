@@ -430,7 +430,7 @@ By appending **preview=1** to query string allows to preview un-published API ha
 
 <img alt="preview permission" src="https://github.com/pfapi/pfapi/blob/main/images/screen-shot3.png" />
 
-By appending **ss_rand=1** to query string, it disables caching for data retrieving methods.
+**ss_rand=1** disables caching for data retrieving.
 
 In additional, **groupBy** is supported.
 
