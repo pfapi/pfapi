@@ -418,9 +418,9 @@ Both list view and detail view APIs are aggregated from one or multiple individu
 
 </details>
 
-### EJS template for text and richtext component fields
+### EJS template for component of attributes
 
-We can use the EJS template to customize string fields in attributes of Pfapi handles.
+The EJS template is used to customize string type of components in attributes of Pfapi handles.
 
 For example:
 
