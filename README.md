@@ -647,9 +647,33 @@ module.exports = [
 
 API activities are logged with some (default 60 seconds) delay and are kept for few (default 7) days. It makes all API calls observable with detail information. We can use it to make decisions on security, and understand performance related issues.
 
+## pfapi-tester
+
+pfapi-tester is the stress tester for pfapi plugin. please refer to <a href="https://github.com/pfapi/tester">pfapi-tester readme</a> to install and setup koa-response-time for x-response-time.
+
+We can use it to get api capacity metrics of APIs that use pfapi plugin.
+
+```bash
+pfapi-tester 
++++
+{
+  base_url: 'http://localhost:1337',
+  path: '/pfapi/northern-cities',
+  times: 3
+}
+total: 3 ok: 3 not_ok: 0
+------------------------------
+   	pfapi	http	total
+------------------------------
+ave	1.89	2.58	10.59
+min	1.63	2.19	6.38
+max	2.20	2.95	18.10
+------------------------------
+```
+
 ## Setup Demonstration
 
-With the world cities test data set provided by plugin strapi-plugin-pfapi-data, we can run a few API calls to demonstrate the idea.
+With the world cities test data set provided by plugin strapi-plugin-pfapi-data, we can run API calls to demonstrate the idea.
 
 ### step 1 install Redis server
 
@@ -768,28 +792,3 @@ check APIs:
 http://localhost:1337/pfapi/northern-cities/2148?api_key=Pfapi-Demo
 
 http://localhost:1337/pfapi/pf/northern-cities/2148?api_key=Pfapi-Demo
-
-
-## pfapi-tester
-
-pfapi-tester is the stress tester for pfapi plugin. please refer to <a href="https://github.com/pfapi/tester">pfapi-tester readme</a> to install and setup koa-response-time for x-response-time.
-
-We can use it to get api capacity metrics of APIs that use pfapi plugin.
-
-```bash
-pfapi-tester 
-+++
-{
-  base_url: 'http://localhost:1337',
-  path: '/pfapi/northern-cities',
-  times: 3
-}
-total: 3 ok: 3 not_ok: 0
-------------------------------
-   	pfapi	http	total
-------------------------------
-ave	1.89	2.58	10.59
-min	1.63	2.19	6.38
-max	2.20	2.95	18.10
-------------------------------
-```
