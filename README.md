@@ -439,11 +439,11 @@ In the northern-city handle, we can set title field as Northern City - **<%= ite
 
 4) **groupBy** is supported.
 
-For example:
+  For example:
 
-http://localhost:1337/pfapi/northern-cities?groupBy=iso3&sort[population]=desc&api_key=Pfapi-Demo
+  http://localhost:1337/pfapi/northern-cities?groupBy=iso3&sort[population]=desc&api_key=Pfapi-Demo
 
-<details>
+  <details>
 
 <summary>Click to see response</summary>
 
@@ -598,11 +598,11 @@ http://localhost:1337/pfapi/northern-cities?groupBy=iso3&sort[population]=desc&a
 
 5) **merge_filters=1** forces Pfapi to use the merged filters (handle params.filters and query.filters) to generate filters data in list view. By default, filters data of list view is generated from handle params.filters only.
 
-For example:
+  For example:
 
-http://localhost:1337/pfapi/northern-cities?filters[iso3]=USA&merge_filters=1&api_key=Pfapi-Demo
+  http://localhost:1337/pfapi/northern-cities?filters[iso3]=USA&merge_filters=1&api_key=Pfapi-Demo
 
-<details>
+  <details>
 
 <summary>Click to see merged filters filters data</summary>
 
