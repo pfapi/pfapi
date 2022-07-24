@@ -435,7 +435,7 @@ In the northern-city handle, we can set title field as Northern City - **<%= ite
 
 <img alt="preview permission" src="https://github.com/pfapi/pfapi/blob/main/images/screen-shot3.png" />
 
-3) **ss_rand=1** make pfapi not to use cache for data. It gets data directly from data source and not save the result to cache.
+3) **ss_rand=1** makes pfapi not to use cache for data. It gets data directly from data source and not save the result to cache.
 
 4) **groupBy** is supported. For example:
 
@@ -448,19 +448,7 @@ http://localhost:1337/pfapi/northern-cities?groupBy=iso3&sort[population]=desc&a
 ```javascript
 {
   title: 'Northern Cities - Total 11',
-  map: {
-    id: 3,
-    name: 'northern-map',
-    alternativeText: 'Northern Map',
-    caption: 'Northern Map',
-    width: 820,
-    height: 820,
-    formats: { small: [Object], medium: [Object], thumbnail: [Object] },
-    ext: '.jpeg',
-    mime: 'image/jpeg',
-    size: 110.88,
-    url: '/uploads/pfapi/northern_8e902a468b.jpeg'
-  },
+  map: [Object],
   filters: [
     {
       key: 'lat',
