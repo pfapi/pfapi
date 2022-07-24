@@ -429,15 +429,15 @@ In the northern-city handle, we can set title field as Northern City - **<%= ite
 
 ## API parameters
 
-The same <a href="https://docs.strapi.io/developer-docs/latest/developer-resources/database-apis-reference/rest/api-parameters.html">Strapi API parameters</a>: sort, filters, populate, fields, pagination, publicationState and locale work for Pfapi.
+1) The same <a href="https://docs.strapi.io/developer-docs/latest/developer-resources/database-apis-reference/rest/api-parameters.html">Strapi API parameters</a>: sort, filters, populate, fields, pagination, publicationState and locale work for Pfapi.
 
-By appending **preview=1** to the query string allows to preview un-published API handle. With publicationState=preview, we can preview un-published collection data. The preview permission is defined in Pfapi Key.
+2) Preview requires permission. **preview=1** enables preview un-published API handle. With **publicationState=preview**, it enables preview un-published collection data. The preview permission is defined in Pfapi Key.
 
 <img alt="preview permission" src="https://github.com/pfapi/pfapi/blob/main/images/screen-shot3.png" />
 
-**ss_rand=1** disables caching for data retrieving.
+3) **ss_rand=1** make pfapi not to use cache for data. It gets data directly from data source and not save the result to cache.
 
-In additional, **groupBy** is supported.
+4) **groupBy** is supported.
 
 For example:
 
@@ -596,6 +596,63 @@ http://localhost:1337/pfapi/northern-cities?groupBy=iso3&sort[population]=desc&a
 
 </details>
 
+5) **merge_filters=1** forces Pfapi to use the merged filters (handle params.filters and query.filters) to generate filters data in list view. By default, filters data of list view is generated from handle params.filters only.
+
+For example:
+
+http://localhost:1337/pfapi/northern-cities?filters[iso3]=USA&merge_filters=1&api_key=Pfapi-Demo
+
+<details>
+
+<summary>Click to see merged filters filters data</summary>
+
+```javascript
+{
+  title: 'Northern Cities - Total 19',
+  map: [Object],
+  filters: [
+    {
+      key: 'lat',
+      type: 'range',
+      title: 'Latitude',
+      min: 60.4417,
+      max: 64.9295,
+      count: 19,
+      full_set: true
+    },
+    {
+      key: 'lng',
+      type: 'range',
+      title: 'Longitude',
+      min: -161.7917,
+      max: -147.3877,
+      count: 19,
+      full_set: true
+    },
+    {
+      key: 'population',
+      type: 'range',
+      title: 'Population',
+      min: 5169,
+      max: 288000,
+      count: 19,
+      full_set: true
+    },
+    {
+      key: 'country',
+      type: 'list',
+      title: 'Country',
+      items: [ { value: 'United States', count: 19, label: 'United States' } ],
+      full_set: true
+    }
+  ],
+  items: [Array],
+  pagination: { page: 1, pageSize: 20, pageCount: 1, total: 19 }
+}
+```
+
+</details>
+
 ## Configurable Filters
 
 filters provide an overview of the searched data, the filters data is used to build the user-friendly interface. It helps users to refine their searches. In above examples, we have seen filters data in responses.
@@ -707,7 +764,7 @@ yarn develop
 
 OR
 
-npm install add strapi-plugin-pfapi strapi-plugin-pfapi-data
+npm install strapi-plugin-pfapi strapi-plugin-pfapi-data
 
 npm run develop
 
