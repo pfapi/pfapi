@@ -437,13 +437,11 @@ In the northern-city handle, we can set title field as Northern City - **<%= ite
 
 3) **ss_rand=1** make pfapi not to use cache for data. It gets data directly from data source and not save the result to cache.
 
-4) **groupBy** is supported.
+4) **groupBy** is supported. For example:
 
-&nbsp;&nbsp;For example:
+http://localhost:1337/pfapi/northern-cities?groupBy=iso3&sort[population]=desc&api_key=Pfapi-Demo
 
-&nbsp;&nbsp;http://localhost:1337/pfapi/northern-cities?groupBy=iso3&sort[population]=desc&api_key=Pfapi-Demo
-
-&nbsp;&nbsp;<details>
+<details>
 
 <summary>Click to see response</summary>
 
@@ -596,13 +594,11 @@ In the northern-city handle, we can set title field as Northern City - **<%= ite
 
 </details>
 
-5) **merge_filters=1** forces Pfapi to use the merged filters (handle params.filters and query.filters) to generate filters data in list view. By default, filters data of list view is generated from handle params.filters only.
+5) **merge_filters=1** forces Pfapi to use the merged filters (handle.params.filters and ctx.query.filters) to generate filters data in list view. By default, filters data of list view is generated from handle params filters only. For example:
 
-&nbsp;&nbsp;For example:
+http://localhost:1337/pfapi/northern-cities?filters[iso3]=USA&merge_filters=1&api_key=Pfapi-Demo
 
-&nbsp;&nbsp;http://localhost:1337/pfapi/northern-cities?filters[iso3]=USA&merge_filters=1&api_key=Pfapi-Demo
-
-&nbsp;&nbsp;<details>
+<details>
 
 <summary>Click to see merged filters filters data</summary>
 
