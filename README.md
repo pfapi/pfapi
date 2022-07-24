@@ -1,6 +1,6 @@
 # Strapi plugin pfapi
 
-Pfapi plugin uses <a href="https://github.com/pfapi/pfapi-core">pfapi-core library<a/> to provide fast, secure, configurable, and scalable API services for e-commerce web apps.
+Pfapi plugin uses <a href="https://github.com/pfapi/pfapi-core">pfapi-core library</a> to provide fast, secure, configurable, and scalable API services for e-commerce web apps.
 
 * Pfapi uses local and Redis caches to achieve single-digit milliseconds on average API response time. 
 * IP unlimited / blocked lists, Rate limits and activities log are accessible through the admin panel. 
@@ -10,7 +10,7 @@ Pfapi plugin uses <a href="https://github.com/pfapi/pfapi-core">pfapi-core libra
 
 ## Requirements
 
-Pfapi plugin requires the in-memory data store Redis. Please refer to <a href="https://redis.io/docs/getting-started/">Redis getting started</a> to install redis server for your environment.
+Pfapi plugin is a Strapi version 4 plugin. It requires the in-memory data store Redis. Please refer to <a href="https://redis.io/docs/getting-started/">Redis getting started</a> to install redis server for your environment.
 
 ## How to install
 
@@ -766,7 +766,7 @@ http://localhost:1337/pfapi/northern-cities?filters[iso3]=USA&api_key=Pfapi-Demo
 
 config data defined in PfapiHandles for handle **northern-city**:
 
-http://localhost:1337/pfapi/pf/northern-city/Anchorage?api_key=Pfapi-Demo
+http://localhost:1337/pfapi/northern-city/Anchorage?api_key=Pfapi-Demo
 
 ### d) test data update
 
@@ -778,7 +778,7 @@ check APIs:
 
 http://localhost:1337/pfapi/northern-cities/2148?api_key=Pfapi-Demo
 
-http://localhost:1337/pfapi/pf/northern-city/Anchorage?api_key=Pfapi-Demo
+http://localhost:1337/pfapi/northern-city/Anchorage?api_key=Pfapi-Demo
 
 to see if the cached data was evicted and updated
 
@@ -792,4 +792,157 @@ check APIs:
 
 http://localhost:1337/pfapi/northern-cities/2148?api_key=Pfapi-Demo
 
-http://localhost:1337/pfapi/pf/northern-cities/2148?api_key=Pfapi-Demo
+http://localhost:1337/pfapi/northern-cities/2148?api_key=Pfapi-Demo
+
+## Pfapi Core Configuration
+
+Pfapi plugin uses <a href="https://github.com/pfapi/pfapi-core">pfapi-core library</a>. Components of pfapi-core are configurable through Strapi config mechanism. If just need to change a few values, updating by json path is supported: 
+
+For example:
+
+To change time to live for cached data - ttl of Cacheable to 30 minutes, we can set json path to the ttl 'Cacheable.ttl' to 1800000.
+
+pfapi config in config/plugins.js: 
+
+```javascript
+module.exports = ({ env }) => ({
+  //...
+  pfapi: {
+    
+    enabled: true,
+    
+    config: {
+      
+      redis_uri: env('REDIS_URI'),
+
+      'Cacheable.ttl': 1800000,
+    
+    }
+  }
+  //...
+})
+```
+
+<details>
+
+<summary>Click to see full config object of all pfapi-core components</summary>
+
+```javascript
+
+{
+
+    Cacheable: {
+    
+        // all numbers are in milliseconds
+    
+        // time to live for data 
+        ttl: 900000,
+    
+        // time to live for info
+        info_ttl: 3600000 * 24,
+    
+        // when it starts to consider as slow
+        slow_duration: 500,
+
+        // data ttl in ms since last update to start refresh
+        early_refresh_start: 60000,
+    
+        // if duration is more than early_refresh_duration, start
+        early_refresh_duration: 1000,
+
+        // when to enable refresh
+        refresh_duration: 200,
+    
+        // when it is slow, an extra ttl adds to regular data ttl
+        extra_ttl: 60000,
+    
+    },
+
+    LocalCache: {
+
+        // max size of local cache
+        max_size: 4096 * 16,
+    
+        // default ttl of local cache
+        default_ttl: 180000,
+    
+        // run maintenance interval
+        timer_interval: 60000,
+
+        // on expire batch_size
+        batch_size: 32
+    },
+
+    RefreshQueue: {
+
+        batch_size: 64,
+
+        refresh_interval: 180000,
+
+        // refresh the top proportion of queue size
+        size_ratio: 0.33,
+
+        // refresh use the proportion of refresh_interval
+        time_ratio: 0.33,
+
+        // remove the bottom the proportion of queue size
+        remove_ratio: 0.33,
+
+        max_queue_size: 8192 * 2
+    },
+
+    RedisPubsub: {
+        
+        channel_name: 'PUBSUB::CHANNEL',
+
+        exclude_self: false
+    },
+
+    HttpResponse: {
+
+        server_name: '',
+
+        stale_secs: 60,
+
+        allow_methods: 'GET, HEAD, OPTIONS',
+
+        content_type: 'application/json; charset=utf-8',
+
+        cors_exposed_headers: 'Authorization, Content-Type, Accept, Accept-Language',
+        cors_allow_headers: 'Content-Type, Accept, Accept-Language',
+        cors_allow_credentials: true,
+        cors_allowed_methods: 'GET, HEAD, OPTIONS',
+        cors_max_age: 2592000,
+
+    },
+
+    AppBase: {
+
+        maintenance_interval: 10000,
+        
+        sync_interval: 3600000,
+    
+        send_response_time: true,
+
+        enable_log: true,
+
+        keep_log_days: 7,
+    },
+
+    RateLimit: [
+        {ip_mask: '255.255.255.255', prefix: '', window_secs: 10, max_count: 1000, block_secs: 3600, comment: 'average 100 calls per seconds, 1000 calls within 10 seconds'},
+        {ip_mask: '255.255.255.255', prefix: '', window_secs: 300, max_count: 10000, block_secs: 3600, comment: 'average 33 calls per seconds 10000 calls with 5 minutes'}
+    ],
+
+    Ip: [
+        {localhost: [{ip_cidr: '127.0.0.0/24', prefix: null, status: 'unlimited', comment: 'local loops'}]}
+    ],
+
+    DemoRole: {name: 'PfapiDemo', description: 'Pfapi demo role', type: 'pfapidemo'},
+
+    DemoKey: {key: 'Pfapi-Demo', name: 'pfapi', allow_preview: true, blocked: false, comment: 'demo and test key', role: 'PfapiDemo' },
+
+}
+
+```
+</details>

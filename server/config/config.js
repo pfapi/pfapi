@@ -102,7 +102,7 @@ module.exports = {
 
     RateLimit: [
         {ip_mask: '255.255.255.255', prefix: '', window_secs: 10, max_count: 1000, block_secs: 3600, comment: 'average 100 calls per seconds, 1000 calls within 10 seconds'},
-        {ip_mask: '255.255.255.255', prefix: '', window_secs: 300, max_count: 10000, block_secs: 3600, comment: 'average 33 calls per seconds  10000 calls with 5 minutes'}
+        {ip_mask: '255.255.255.255', prefix: '', window_secs: 300, max_count: 10000, block_secs: 3600, comment: 'average 33 calls per seconds 10000 calls with 5 minutes'}
     ],
 
     Ip: [
@@ -111,6 +111,6 @@ module.exports = {
 
     DemoRole: {name: 'PfapiDemo', description: 'Pfapi demo role', type: 'pfapidemo'},
 
-    DemoKey: {key: 'Pfapi-Demo', name: 'pfapi', blocked: false, comment: 'demo and test key', role: 'PfapiDemo' },
+    DemoKey: {key: 'Pfapi-Demo', name: 'pfapi', allow_preview: true, blocked: false, comment: 'demo and test key', role: 'PfapiDemo' },
 
 };

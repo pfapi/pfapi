@@ -1,6 +1,6 @@
 {
   "name": "strapi-plugin-pfapi",
-  "version": "2.3.5",
+  "version": "2.3.6",
   "description": "Pfapi plugin provides fast, secure, configurable, and scalable API services for e-commerce web apps.",
   "bugs": {
     "url": "https://github.com/pfapi/pfapi/issues"
@@ -58,7 +58,7 @@
     }
   ],
   "dependencies": {
-    "@pfapi/core": "^2.3.3",
+    "@pfapi/core": "^2.3.6",
     "@pfapi/query-helpers": "^1.1.1",
     "ejs": "^3.1.8",
     "fs-extra": "^10.1.0",

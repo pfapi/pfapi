@@ -10,6 +10,11 @@
     "draftAndPublish": true,
     "comment": ""
   },
+  "pluginOptions": {
+    "content-type-builder": {
+      "visible": false
+    }
+  },
   "attributes": {
     "handle": {
       "type": "string",
