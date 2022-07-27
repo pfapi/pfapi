@@ -72,7 +72,7 @@ jobs:
         run: pfapi-tester -t 10 -c
 
       - name: run pfapi-tester 1 times, fetch items and concurrent
-        run: pfapi-tester -f -c
+        run: pfapi-tester -t 1 -f -c
 
       - name: run pfapi-tester walk through and fetch items
         run: pfapi-tester -w -f
