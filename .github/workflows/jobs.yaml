@@ -1,0 +1,81 @@
+name: Strapi Plugin Pfapi Test
+on: 
+  pull_request:
+  push:
+    branches:
+      - main
+      - releases/*
+
+jobs:
+
+  runner-job:
+
+    timeout-minutes: 15
+
+    runs-on: ubuntu-latest
+
+    # setup redis
+    #
+    services:
+      redis:
+        image: redis
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379
+
+    steps:
+      
+      - name: Checkout pfapi/pfapi-dev-test
+        uses: actions/checkout@v3
+        with:
+            repository: pfapi/pfapi-dev-test
+            path: main
+
+      - name: Install dependencies for pfapi-dev-test
+        run: cd main; yarn install
+
+      - name: Checkout pfapi/pfapi
+        uses: actions/checkout@v3
+        with:
+            repository: pfapi/pfapi
+            path: main/src/plugins/pfapi
+
+      - name: Install dependencies for pfapi
+        run: cd main/src/plugins/pfapi; yarn install
+
+      - name: Install @pfapi/tester
+        run: npm install @pfapi/tester -g
+
+      - name: run prepare
+        run: cd main; node tools/run-prepare
+
+      - name: run tree
+        run: tree -I 'node_modules|cache|build'
+
+      - name: Build & Run strapi
+        run: cd main; yarn build; yarn develop &
+
+      - name: Wait Util Ready
+        run: cd main; node tools/wait-util-ready.js
+
+      - name: run yarn test
+        run: cd main; yarn test
+
+      - name: run pfapi-tester 1 time with verbose 
+        run: pfapi-tester -t 1 -v
+
+      - name: run pfapi-tester 10 times and concurrent
+        run: pfapi-tester -t 10 -c
+
+      - name: run pfapi-tester 1 times, fetch items and concurrent
+        run: pfapi-tester -f -c
+
+      - name: run pfapi-tester walk through and fetch items
+        run: pfapi-tester -w -f
+
+      - name: Kill Strapi
+        run: kill -9 $(ps aux | grep yarn | awk '{print $2}')
