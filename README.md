@@ -1,3 +1,5 @@
+[![integrated tests](https://github.com/pfapi/pfapi/actions/workflows/integrated-tests.yaml/badge.svg)](https://github.com/pfapi/pfapi/actions/workflows/integrated-tests.yaml)
+
 # Strapi plugin pfapi
 
 Pfapi plugin uses <a href="https://github.com/pfapi/pfapi-core">pfapi-core library</a> to provide fast, secure, configurable, and scalable API services for e-commerce web apps.
