@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@ioredis/commands/-/commands-1.2.0.tgz#6d61b3097470af1fdbbe622795b8921d42018e11"
   integrity sha512-Sx1pU8EM64o2BrqNpEO1CNLtKQwyhuXuqyfH7oGKCk+1a33d2r5saW8zNwm3j6BTExtjrv2BxTgzzkMwts6vGg==
 
-"@pfapi/core@^2.3.8":
-  version "2.3.8"
-  resolved "https://registry.yarnpkg.com/@pfapi/core/-/core-2.3.8.tgz#39c45c07fa42d4b56b893225eb3625c5ce59d7cc"
-  integrity sha512-FVe0Tix0MqoC+3a6rbCcrCqdUy2xSEGzWf1DhyZCK1C3II5VpxABHOI5qibeob4LUGq+kH/nXn0u7B/+eoQGzA==
+"@pfapi/core@^2.3.9":
+  version "2.3.9"
+  resolved "https://registry.yarnpkg.com/@pfapi/core/-/core-2.3.9.tgz#cd34594f1b4cc9625b02e56b7c3fe5b7f476e538"
+  integrity sha512-JBkuVosgDEZ/8bRyZlMN5i2v202ewYzjpv1H9TKnn1jW7WLI85jOASZrqZ1xzP7F6jVPpvtZmBW0Uy4HNPI6wg==
   dependencies:
     base-x "4.0.0"
     debug "^4.3.4"
