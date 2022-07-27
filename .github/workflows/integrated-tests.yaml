@@ -1,4 +1,4 @@
-name: Strapi Plugin Pfapi Test
+name: integrated tests
 on: 
   pull_request:
   push:
@@ -47,9 +47,6 @@ jobs:
       - name: Install dependencies for pfapi
         run: cd main/src/plugins/pfapi; yarn install
 
-      - name: Install @pfapi/tester
-        run: npm install @pfapi/tester -g
-
       - name: run prepare
         run: cd main; node tools/run-prepare
 
@@ -65,6 +62,9 @@ jobs:
       - name: run yarn test
         run: cd main; yarn test
 
+      - name: Install @pfapi/tester
+        run: npm install @pfapi/tester -g
+        
       - name: run pfapi-tester 1 time with verbose 
         run: pfapi-tester -t 1 -v
 
