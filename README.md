@@ -718,6 +718,10 @@ max	2.20	2.95	18.10
 
 With the world cities test data set provided by plugin strapi-plugin-pfapi-data, we can run API calls to demonstrate the idea.
 
+<details>
+
+<summary> Click to see detail steps</summary>
+
 ### step 1 install Redis server
 
 Please refer to <a href="https://redis.io/docs/getting-started/">Redis getting started</a> to install redis server on your local computer.
@@ -753,9 +757,6 @@ OR
 npm install strapi-plugin-pfapi strapi-plugin-pfapi-data
 
 npm run develop
-
-#after finishing installing data, restart the strapi server
-
 ```
 
 ### step 4 setup api_key and permissions
@@ -836,6 +837,8 @@ check APIs:
 http://localhost:1337/pfapi/northern-cities/2148?api_key=Pfapi-Demo
 
 http://localhost:1337/pfapi/northern-cities/2148?api_key=Pfapi-Demo
+
+</details>
 
 ## Pfapi Core Configuration
 
