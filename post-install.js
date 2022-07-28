@@ -3,5 +3,9 @@
 const install_data = require('./data');
 
 (async () => {
-    await install_data();
+    try {
+        await install_data();
+    } catch (err) {
+        console.log(err.message);
+    }
 })();

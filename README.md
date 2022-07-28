@@ -720,7 +720,7 @@ With the world cities test data set provided by plugin strapi-plugin-pfapi-data,
 
 <details>
 
-<summary> Click to see detail steps</summary>
+<summary>Click to see detail steps</summary>
 
 ### step 1 install Redis server
 
