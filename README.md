@@ -1,4 +1,4 @@
-[![integrated tests](https://github.com/pfapi/pfapi/actions/workflows/integrated-tests.yaml/badge.svg)](https://github.com/pfapi/pfapi/actions/workflows/integrated-tests.yaml)
+[![integrated tests](https://github.com/pfapi/pfapi/actions/workflows/integrated-tests.yaml/badge.svg)](https://github.com/pfapi/pfapi/actions/workflows/integrated-tests.yaml) [![distributed tests](https://github.com/pfapi/pfapi/actions/workflows/distributed-tests.yaml/badge.svg)](https://github.com/pfapi/pfapi/actions/workflows/distributed-tests.yaml)
 
 # Strapi plugin pfapi
 

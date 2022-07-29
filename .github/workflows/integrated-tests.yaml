@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  runner-job:
+  integrated-tests:
 
     timeout-minutes: 15
 
@@ -48,7 +48,7 @@ jobs:
         run: cd main/src/plugins/pfapi; yarn install
 
       - name: run prepare
-        run: cd main; node tools/run-prepare
+        run: cd main; node tools/prepare
 
       - name: run tree
         run: tree -I 'node_modules|cache|build'
