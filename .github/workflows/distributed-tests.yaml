@@ -32,12 +32,15 @@ jobs:
       - name: copy redis-env
         run: cd main; cp tools/redis-env .env
 
+      - name: start mysql service
+        run: sudo systemctl restart mysql
+        
       - name: run prepare
         run: cd main; node tools/prepare
 
       - name: Build strapi
         run: cd main; yarn build
-        
+
       - name: Run redis-cluster
         run: cd main; sudo node tools/redis-cluster
 
@@ -64,9 +67,6 @@ jobs:
 
       - name: check cluster
         run: redis-cli --cluster check 127.0.0.1:7000
-        
-      - name: start mysql service
-        run: sudo systemctl restart mysql
 
       - name: set nginx config
         run: cd main; sudo cp tools/nginx.conf /etc/nginx/nginx.conf
