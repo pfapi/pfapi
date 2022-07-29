@@ -14,21 +14,29 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    # setup redis
-    #
-    services:
-      redis:
-        image: redis
-        options: >-
-          --health-cmd "redis-cli ping"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-        ports:
-          - 6379:6379
-
     steps:
-      
+
+      - name: add redis repo
+        run: curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg ; echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
+
+      - name: update
+        run: sudo apt-get update -y
+
+      - name: install redis
+        run: sudo apt-get install redis -y
+
+      - name: bind 0.0.0.0
+        run: sudo sed -i 's/bind 127.0.0.1 -::1/bind 0.0.0.0/' /etc/redis/redis.conf
+        
+      - name: remove protected-mode
+        run: sudo sed -i 's/protected-mode yes/protected-mode no/' /etc/redis/redis.conf
+
+      - name: start redis
+        run: sudo systemctl restart redis-server
+
+      - name: start mysql service
+        run: sudo systemctl restart mysql
+
       - name: Checkout pfapi/pfapi-dev-test
         uses: actions/checkout@v3
         with:
@@ -49,7 +57,7 @@ jobs:
 
       - name: set to sqlite database config
         run: cd main; cp tools/db-sqlite.js config/database.js
-        
+
       - name: run prepare
         run: cd main; node tools/prepare
 
