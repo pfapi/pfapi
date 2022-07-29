@@ -1,5 +1,14 @@
 name: distributed tests
-on: workflow_dispatch
+on: 
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    paths-ignore:
+      - '**.md'
+  workflow_dispatch:
 
 jobs:
 
@@ -43,7 +52,7 @@ jobs:
 
       - name: run sql show databases
         run: mysql --login-path=local -e "show databases"
-        
+
       - name: run prepare
         run: cd main; node tools/prepare
 
@@ -53,23 +62,8 @@ jobs:
       - name: Run redis-cluster
         run: cd main; sudo node tools/redis-cluster
 
-      - name: start redis-7000
-        run: sudo systemctl restart redis-7000
-
-      - name: check redis-7001
-        run: sudo systemctl restart redis-7001
-
-      - name: start redis-7002
-        run: sudo systemctl restart redis-7002
-
-      - name: start redis-7003
-        run: sudo systemctl restart redis-7003
-
-      - name: start redis-7004
-        run: sudo systemctl restart redis-7004
-
-      - name: start redis-7005
-        run: sudo systemctl restart redis-7005
+      - name: start redis-7000 to redis-7005
+        run: sudo systemctl restart redis-7000; sudo systemctl restart redis-7001; sudo systemctl restart redis-7002; sudo systemctl restart redis-7003; sudo systemctl restart redis-7004; sudo systemctl restart redis-7005
 
       - name: set up cluster
         run: redis-cli --cluster create 127.0.0.1:7000 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005 --cluster-replicas 1 --cluster-yes
@@ -110,11 +104,8 @@ jobs:
       - name: run pfapi-tester 10 times and concurrent
         run: pfapi-tester -t 10 -c
 
-      - name: run pfapi-tester 1 times, fetch items and concurrent
+      - name: run pfapi-tester fetch items and concurrent
         run: pfapi-tester -f -c
 
       - name: run pfapi-tester walk through and fetch items
         run: pfapi-tester -w -f
-
-      - name: Kill Strapi
-        run: kill -9 $(ps aux | grep yarn | awk '{print $2}')

@@ -1,10 +1,14 @@
 name: integrated tests
 on: 
-  pull_request:
   push:
     branches:
       - main
-      - releases/*
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    paths-ignore:
+      - '**.md'
+  workflow_dispatch:
 
 jobs:
 
@@ -24,9 +28,6 @@ jobs:
 
       - name: install redis
         run: sudo apt-get install redis -y
-
-      - name: bind 0.0.0.0
-        run: sudo sed -i 's/bind 127.0.0.1 -::1/bind 0.0.0.0/' /etc/redis/redis.conf
         
       - name: remove protected-mode
         run: sudo sed -i 's/protected-mode yes/protected-mode no/' /etc/redis/redis.conf
@@ -82,11 +83,8 @@ jobs:
       - name: run pfapi-tester 10 times and concurrent
         run: pfapi-tester -t 10 -c
 
-      - name: run pfapi-tester 1 times, fetch items and concurrent
+      - name: run pfapi-tester fetch items and concurrent
         run: pfapi-tester -t 1 -f -c
 
       - name: run pfapi-tester walk through and fetch items
         run: pfapi-tester -w -f
-
-      - name: Kill Strapi
-        run: kill -9 $(ps aux | grep yarn | awk '{print $2}')
