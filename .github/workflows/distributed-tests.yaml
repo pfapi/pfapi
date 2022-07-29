@@ -20,15 +20,42 @@ jobs:
       - name: install redis
         run: sudo apt-get install redis -y
 
-      - name: bind 0.0.0.0
-        run: sudo sed -i 's/bind 127.0.0.1 -::1/bind 0.0.0.0/' /etc/redis/redis.conf
+      - name: Checkout pfapi/pfapi-dev-test
+        uses: actions/checkout@v3
+        with:
+            repository: pfapi/pfapi-dev-test
+            path: main
+
+      - name: Install dependencies for pfapi-dev-test
+        run: cd main; yarn install
+
+      - name: Run redis-cluster
+        run: cd main; sudo node tools/redis-cluster
+
+      - name: start redis-7000
+        run: sudo systemctl restart redis-7000
+
+      - name: check redis-7001
+        run: sudo systemctl restart redis-7001
+
+      - name: start redis-7002
+        run: sudo systemctl restart redis-7002
+
+      - name: start redis-7003
+        run: sudo systemctl restart redis-7003
+
+      - name: start redis-7004
+        run: sudo systemctl restart redis-7004
+
+      - name: start redis-7005
+        run: sudo systemctl restart redis-7005
+
+      - name: set up cluster
+        run: redis-cli --cluster create 127.0.0.1:7000 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005 --cluster-replicas 1 --cluster-yes
+
+      - name: check cluster
+        run: redis-cli --cluster check 127.0.0.1:7000
         
-      - name: remove protected-mode
-        run: sudo sed -i 's/protected-mode yes/protected-mode no/' /etc/redis/redis.conf
-
-      - name: start redis
-        run: sudo systemctl restart redis-server
-
       - name: start mysql service
         run: sudo systemctl restart mysql
 
@@ -64,6 +91,9 @@ jobs:
 
       - name: run sql show databases
         run: mysql --login-path=local -e "show databases"
+
+      - name: copy redis-env
+        run: cd main; cp tools/redis-env .env
 
       - name: run prepare
         run: cd main; node tools/prepare
