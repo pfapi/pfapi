@@ -75,7 +75,7 @@ jobs:
         run: cd main; yarn test
 
       - name: Install @pfapi/tester
-        run: npm install @pfapi/tester -g
+        run: npm install @pfapi/tester --location=global
         
       - name: run pfapi-tester 1 time with verbose 
         run: pfapi-tester -t 1 -v
