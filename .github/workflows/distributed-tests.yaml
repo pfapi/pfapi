@@ -1,0 +1,101 @@
+name: distributed tests
+on: workflow_dispatch
+
+jobs:
+
+  distributed-tests:
+
+    timeout-minutes: 15
+
+    runs-on: ubuntu-latest
+
+    services:
+      redis:
+        image: redis
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379
+
+    steps:
+      
+      - name: start mysql service
+        run: sudo systemctl restart mysql
+
+      - name: Checkout pfapi/pfapi-dev-test
+        uses: actions/checkout@v3
+        with:
+            repository: pfapi/pfapi-dev-test
+            path: main
+
+      - name: Checkout pfapi/pfapi
+        uses: actions/checkout@v3
+        with:
+            repository: pfapi/pfapi
+            path: main/src/plugins/pfapi
+
+      - name: Install dependencies for pfapi
+        run: cd main/src/plugins/pfapi; yarn install
+        
+      - name: set nginx config
+        run: cd main; sudo cp tools/nginx.conf /etc/nginx/nginx.conf
+
+      - name: start nginx service
+        run: sudo systemctl restart nginx
+
+      - name: Install dependencies for pfapi-dev-test
+        run: cd main; yarn install
+
+      - name: set to use mysql database config
+        run: cd main; cp tools/db-mysql.js config/database.js
+
+      - name: set mylogin.cnf
+        run: cd main; cp tools/mylogin.cnf ~/.mylogin.cnf ; chmod 600 ~/.mylogin.cnf
+
+      - name: run sql show databases
+        run: mysql --login-path=local -e "show databases"
+
+      - name: run prepare
+        run: cd main; node tools/prepare
+
+      - name: Build strapi
+        run: cd main; yarn build
+
+      - name: Run strapi on port 8181
+        run: cd main; PORT=8181 yarn develop &
+
+      - name: Wait Util Ready on port 8181
+        run: cd main; node tools/wait-util-ready.js 8181
+
+      - name: Run strapi on port 8282
+        run: cd main; PORT=8282 yarn develop &
+
+      - name: Wait Util Ready on port 8282
+        run: cd main; node tools/wait-util-ready.js 8282
+
+      - name: Wait Util Ready nginx
+        run: cd main; node tools/wait-util-ready.js
+
+      - name: run yarn test
+        run: cd main; yarn test
+
+      - name: Install @pfapi/tester
+        run: npm install @pfapi/tester -g
+
+      - name: run pfapi-tester 1 time with verbose 
+        run: pfapi-tester -t 1 -v
+
+      - name: run pfapi-tester 10 times and concurrent
+        run: pfapi-tester -t 10 -c
+
+      - name: run pfapi-tester 1 times, fetch items and concurrent
+        run: pfapi-tester -f -c
+
+      - name: run pfapi-tester walk through and fetch items
+        run: pfapi-tester -w -f
+
+      - name: Kill Strapi
+        run: kill -9 $(ps aux | grep yarn | awk '{print $2}')
