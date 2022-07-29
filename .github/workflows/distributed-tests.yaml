@@ -34,6 +34,15 @@ jobs:
 
       - name: start mysql service
         run: sudo systemctl restart mysql
+
+      - name: set to use mysql database config
+        run: cd main; cp tools/db-mysql.js config/database.js
+
+      - name: set mylogin.cnf
+        run: cd main; cp tools/mylogin.cnf ~/.mylogin.cnf ; chmod 600 ~/.mylogin.cnf
+
+      - name: run sql show databases
+        run: mysql --login-path=local -e "show databases"
         
       - name: run prepare
         run: cd main; node tools/prepare
@@ -73,15 +82,6 @@ jobs:
 
       - name: start nginx service
         run: sudo systemctl restart nginx
-
-      - name: set to use mysql database config
-        run: cd main; cp tools/db-mysql.js config/database.js
-
-      - name: set mylogin.cnf
-        run: cd main; cp tools/mylogin.cnf ~/.mylogin.cnf ; chmod 600 ~/.mylogin.cnf
-
-      - name: run sql show databases
-        run: mysql --login-path=local -e "show databases"
 
       - name: Run strapi on port 8181
         run: cd main; PORT=8181 yarn develop &
