@@ -20,19 +20,12 @@ jobs:
 
     steps:
 
-      - name: add redis repo
-        run: curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg ; echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
+      - name: install redis service
+        uses: pfapi/redis-cluster-service@v1
+        with:
+          cluster: false
 
-      - name: update
-        run: sudo apt-get update -y
-
-      - name: install redis
-        run: sudo apt-get install redis -y
-        
-      - name: remove protected-mode
-        run: sudo sed -i 's/protected-mode yes/protected-mode no/' /etc/redis/redis.conf
-
-      - name: start redis
+      - name: start redis service
         run: sudo systemctl restart redis-server
 
       - name: start mysql service

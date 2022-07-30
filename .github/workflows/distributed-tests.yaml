@@ -20,14 +20,8 @@ jobs:
 
     steps:
 
-      - name: add redis repo
-        run: curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg ; echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
-
-      - name: update
-        run: sudo apt-get update -y
-
-      - name: install redis
-        run: sudo apt-get install redis -y
+      - name: install redis service
+        uses: pfapi/redis-cluster-service@v1
 
       - name: Checkout pfapi/pfapi-dev-test
         uses: actions/checkout@v3
@@ -59,17 +53,8 @@ jobs:
       - name: Build strapi
         run: cd main; yarn build
 
-      - name: Run redis-cluster
-        run: cd main; sudo node tools/redis-cluster
-
-      - name: start redis-7000 to redis-7005
-        run: sudo systemctl restart redis-7000; sudo systemctl restart redis-7001; sudo systemctl restart redis-7002; sudo systemctl restart redis-7003; sudo systemctl restart redis-7004; sudo systemctl restart redis-7005
-
-      - name: set up cluster
-        run: redis-cli --cluster create 127.0.0.1:7000 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005 --cluster-replicas 1 --cluster-yes
-
-      - name: check cluster
-        run: redis-cli --cluster check 127.0.0.1:7000
+      - name: start redis cluster service
+        run: sudo systemctl start redis-cluster
 
       - name: set nginx config
         run: cd main; sudo cp tools/nginx.conf /etc/nginx/nginx.conf
