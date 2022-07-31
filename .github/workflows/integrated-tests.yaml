@@ -22,8 +22,6 @@ jobs:
 
       - name: install redis service
         uses: pfapi/redis-cluster-service@v1
-        with:
-          cluster: false
 
       - name: start redis service
         run: sudo systemctl restart redis-server
