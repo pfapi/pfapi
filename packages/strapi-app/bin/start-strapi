@@ -5,4 +5,6 @@
 const strapi = require('@strapi/strapi');
 const { strapi_app } = require('@pfapi/utils');
 
-strapi_app.start(strapi);
+(async () => {
+    await strapi_app.start(strapi);
+})();

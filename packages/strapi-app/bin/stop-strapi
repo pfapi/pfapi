@@ -4,4 +4,6 @@
 
 const { strapi_app } = require('@pfapi/utils');
 
-strapi_app.stop(true);
+(async() => {
+    await strapi_app.stop(true);
+})();
