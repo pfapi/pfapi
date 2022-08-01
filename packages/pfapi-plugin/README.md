@@ -1,6 +1,6 @@
 # Strapi plugin pfapi
 
-Pfapi plugin uses <a href="https://github.com/pfapi/pfapi-core">pfapi-core library</a> to provide fast, secure, configurable, and scalable API services for e-commerce web apps.
+Pfapi plugin uses <a href="https://github.com/pfapi/pfapi/blob/development/packages/pfapi-core/readme.md">pfapi-core library</a> to provide fast, secure, configurable, and scalable API services for e-commerce web apps.
 
 <a href="https://github.com/pfapi/pfapi/blob/development/README.md">Click to see full documentation</a>
 

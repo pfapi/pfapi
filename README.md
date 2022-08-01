@@ -1,6 +1,6 @@
 # Strapi plugin pfapi
 
-Pfapi plugin uses <a href="https://github.com/pfapi/pfapi-core">pfapi-core library</a> to provide fast, secure, configurable, and scalable API services for e-commerce web apps.
+Pfapi plugin uses <a href="https://github.com/pfapi/pfapi/blob/development/packages/pfapi-core/readme.md">pfapi-core library</a> to provide fast, secure, configurable, and scalable API services for e-commerce web apps.
 
 * Pfapi uses local and Redis caches to achieve single-digit milliseconds on average API response time. 
 * IP unlimited / blocked lists, Rate limits and activities log are accessible through the admin panel. 
@@ -716,7 +716,7 @@ max	2.20	2.95	18.10
 
 With the world cities test data set provided by plugin strapi-plugin-pfapi-data, we can run API calls to demonstrate the idea.
 
-<a href="https://github.com/pfapi/pfapi/blob/developement/packages/pfapi-plugin/README.md">Click to see detail steps</a>
+<a href="https://github.com/pfapi/pfapi/blob/development/packages/pfapi-plugin/README.md">Click to see detail steps</a>
 
 ## Pfapi Core Configuration
 
