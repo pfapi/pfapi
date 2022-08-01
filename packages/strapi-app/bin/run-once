@@ -14,7 +14,7 @@ cd $(dirname $SCRIPT_DIR)
 
 #bin/drop-db $DB
 
-if [ "$DB" == "mysql"]; then
+if [ "$DB" == "mysql" ]; then
     if [ -f /etc/os-release ]; then
         systemctl restart mysql
     else
