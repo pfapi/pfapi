@@ -2339,6 +2339,15 @@
     "@pfapi/utils" "^1.0.2"
     "dotenv" "^16.0.1"
 
+"@pfapi/tester@file:/Users/sam/Downloads/pfapi/packages/tester":
+  "resolved" "file:packages/tester"
+  "version" "1.0.6"
+  dependencies:
+    "axios" "^0.27.2"
+    "commander" "^9.3.0"
+    "dotenv" "^16.0.1"
+    "qs" "^6.11.0"
+
 "@pfapi/utils@^1.0.2", "@pfapi/utils@1.0.2", "@pfapi/utils@file:/Users/sam/Downloads/pfapi/packages/utils":
   "resolved" "file:packages/utils"
   "version" "1.0.2"
@@ -4775,6 +4784,11 @@
   "integrity" "sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww=="
   "resolved" "https://registry.npmjs.org/commander/-/commander-8.3.0.tgz"
   "version" "8.3.0"
+
+"commander@^9.3.0":
+  "integrity" "sha512-sRPT+umqkz90UA8M1yqYfnHlZA7fF6nSphDtxeywPZ49ysjxDQybzk13CL+mXekDRG92skbcqCLVovuCusNmFw=="
+  "resolved" "https://registry.npmjs.org/commander/-/commander-9.4.0.tgz"
+  "version" "9.4.0"
 
 "commander@8.2.0":
   "integrity" "sha512-LLKxDvHeL91/8MIyTAD5BFMNtoIwztGPMiM/7Bl8rIPmHCZXRxmSWr91h57dpOpnQ6jIUqEWdXE/uBYMfiVZDA=="
