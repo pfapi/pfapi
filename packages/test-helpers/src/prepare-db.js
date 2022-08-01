@@ -48,6 +48,7 @@ async function import_pfapi_test() {
     await unzip(path.join(__dirname, '..', 'files/mysql.sql.zip'), require('os').tmpdir());
     const sql_path = path.join(require('os').tmpdir(), 'mysql.sql')
     execSync(`mysql --login-path=local < ${sql_path}`);
+    fs.unlinkSync(sql_path)
 }
 
 async function check_for_pfapi_test() {

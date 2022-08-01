@@ -39,9 +39,9 @@ async function stop(force = false) {
         const ps = await find('port', port);
         if (ps.length > 0) {
           const str = ps.map(x => x.pid).join(' ');
-          execSync(`kill -9 ${str}`);
+          execSync(`sudo kill -9 ${str}`);
         } else {
-          execSync(`kill -9 $(lsof -i :${port} | sed 1d | awk '{print $2}')`);
+          execSync(`sudo kill -9 $(sudo lsof -i :${port} | sed 1d | awk '{print $2}')`);
         }
     }
 }
