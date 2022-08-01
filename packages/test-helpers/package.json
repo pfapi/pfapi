@@ -1,6 +1,6 @@
 {
   "name": "@pfapi/test-helpers",
-  "version": "2.4.8-alpha.3",
+  "version": "2.5.0",
   "description": "test helpers",
   "main": "src/index.js",
   "bugs": {
