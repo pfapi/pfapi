@@ -40,6 +40,8 @@ async function stop(force = false) {
         if (ps.length > 0) {
           const str = ps.map(x => x.pid).join(' ');
           execSync(`kill -9 ${str}`);
+        } else {
+          execSync(`kill -9 $(lsof -i :${port} | awk '{print $2}')`);
         }
     }
 }
