@@ -52,7 +52,7 @@ REDIS_URI=redis://172.31.23.70:6379,172.31.30.210:6379,172.31.22.214:6379/0
 
 ## API Handles and Routes
 
-<img alt="admin panel screenshot" src="https://github.com/pfapi/pfapi/blob/developement/images/screen-shot1.png" />
+<img alt="admin panel screenshot" src="https://github.com/pfapi/pfapi/blob//development//images/screen-shot1.png" />
 
 ### List View: /pfapi/:handle
 
@@ -433,7 +433,7 @@ In the northern-city handle, we can set title field as Northern City - **<%= ite
 
 2) Preview requires permission. **preview=1** enables preview un-published API handle. With **publicationState=preview**, it enables preview un-published collection data. The preview permission is defined in Pfapi Key.
 
-<img alt="preview permission" src="https://github.com/pfapi/pfapi/blob/developement/images/screen-shot3.png" />
+<img alt="preview permission" src="https://github.com/pfapi/pfapi/blob//development//images/screen-shot3.png" />
 
 3) **ss_rand=1** makes pfapi not to use cache for data. It gets data directly from data source and not save the result to cache.
 
@@ -641,7 +641,7 @@ http://localhost:1337/pfapi/northern-cities?filters[iso3]=USA&merge_filters=1&ap
 
 filters provide an overview of the searched data, the filters data is used to build the user-friendly interface. It helps users to refine their searches. In above examples, we have seen filters data in responses.
 
-<img alt="filters config in admin panel" src="https://github.com/pfapi/pfapi/blob/developement/images/screen-shot2.png" />
+<img alt="filters config in admin panel" src="https://github.com/pfapi/pfapi/blob//development//images/screen-shot2.png" />
 
 it is configurable through PfapiHandle with filters_config property under params.
 
@@ -649,19 +649,19 @@ it is configurable through PfapiHandle with filters_config property under params
 
 ### 1) API Keys
 
-<img alt="PfapiKey screen shot" src="https://github.com/pfapi/pfapi/blob/developement/images/screen-shot8.png" />
+<img alt="PfapiKey screen shot" src="https://github.com/pfapi/pfapi/blob//development//images/screen-shot8.png" />
 
 PfapiKey provides supporting for preview permission and avoids preflight request round-trips when we are in CORS situations. PfapiKey has an associated role. The role defines access permissions of the key.
 
 ### 2) IP unlimited list and blocked list
 
-<img alt="PfapiIp screen shot" src="https://github.com/pfapi/pfapi/blob/developement/images/screen-shot4.png" />
+<img alt="PfapiIp screen shot" src="https://github.com/pfapi/pfapi/blob//development//images/screen-shot4.png" />
 
 **PfapiIp** conveniently provides access to IP unlimited list and blocked list mechanism. IPs in unlimited list will not check rate limits. IPs in blocked list will not have access to the prefix.
 
 ### 3) Rate limits for API calls
 
-<img alt="PfapiRateLimit screen shot" src="https://github.com/pfapi/pfapi/blob/developement/images/screen-shot5.png" />
+<img alt="PfapiRateLimit screen shot" src="https://github.com/pfapi/pfapi/blob//development//images/screen-shot5.png" />
 
 **PfapiRateLimit** provides access to the rate limits mechanism. rate limits can set with IP Mask and prefix.
 
@@ -684,7 +684,7 @@ module.exports = [
 
 ### 4) API activities log
 
-<img alt="PfapiActivity screen shot" src="https://github.com/pfapi/pfapi/blob/developement/images/screen-shot6.png" />
+<img alt="PfapiActivity screen shot" src="https://github.com/pfapi/pfapi/blob//development//images/screen-shot6.png" />
 
 API activities are logged with some (default 60 seconds) delay and are kept for few (default 7) days. It makes all API calls observable with detail information. We can use it to make decisions on security, and understand performance related issues.
 
