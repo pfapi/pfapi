@@ -5,4 +5,4 @@
 const path = require('path');
 process.chdir(path.dirname(__dirname));
 const { strapi_app } = require('@pfapi/utils');
-await strapi_app.stop(true);
+strapi_app.stop(true);
