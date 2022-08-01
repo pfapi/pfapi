@@ -2,12 +2,18 @@
   "name": "@pfapi/utils",
   "version": "1.0.2",
   "description": "utils shared by pfapi packages",
-  "main": "src/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "bugs": {
+    "url": "https://github.com/pfapi/pfapi/issues"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:pfapi/pfapi.git"
+  },
+  "author": {
+    "name": "Sam Wen"
+  },
+  "main": "src/index.js",
   "keywords": [],
-  "author": "Sam Wen",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.27.2",

@@ -3,6 +3,13 @@
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
+  "bugs": {
+    "url": "https://github.com/pfapi/pfapi/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:pfapi/pfapi.git"
+  },
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",

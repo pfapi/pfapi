@@ -2,7 +2,8 @@
 
 const chai = require('chai');
 
-const { admin_request, pfapi_request, get_random_ip } = require('@pfapi/utils');
+const strapi = require('@strapi/strapi');
+const { admin_request, pfapi_request, get_random_ip, strapi_app } = require('@pfapi/utils');
 const { config } = require('@pfapi/test-helpers');
 
 const expect = chai.expect;
@@ -10,6 +11,10 @@ const expect = chai.expect;
 // NODE_ENV=test mocha --timeout 3000 --reporter spec tests/test-ip-block
 
 describe('Test ip block', () => {
+    
+    before(async() => {
+        await strapi_app.start(strapi);
+    });
 
     it('ip block', async () => {
 
@@ -100,5 +105,9 @@ describe('Test ip block', () => {
             expect(status).equals(200);
         }
         expect(status).equals(403);
+    });
+
+    after(async() => {
+        await strapi_app.stop();
     });
 });

@@ -3,10 +3,14 @@
   "version": "1.0.1",
   "description": "test helpers",
   "main": "src/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "bugs": {
+    "url": "https://github.com/pfapi/pfapi/issues"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:pfapi/pfapi.git"
+  },
+  "keywords": ["pfapi", "test", "seed data", "helpers"],
   "author": "Sam Wen",
   "license": "MIT",
   "dependencies": {

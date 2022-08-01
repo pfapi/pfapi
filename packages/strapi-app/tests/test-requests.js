@@ -2,7 +2,8 @@
 
 const chai = require('chai');
 
-const { api_request, pfapi_request, admin_request } = require('@pfapi/utils');
+const strapi = require('@strapi/strapi');
+const { api_request, pfapi_request, admin_request, strapi_app } = require('@pfapi/utils');
 const { config } = require('@pfapi/test-helpers');
 
 const expect = chai.expect;
@@ -10,6 +11,10 @@ const expect = chai.expect;
 // NODE_ENV=test mocha --timeout 3000 --reporter spec tests/test-requests
 
 describe('Test requests', () => {
+    
+    before(async() => {
+        await strapi_app.start(strapi);
+    });
 
     it('api_request detail view', async () => {
         const {status, headers, data: { data }} = await api_request({path: '/world-cities/1', ...config});
@@ -73,5 +78,9 @@ describe('Test requests', () => {
             expect(data.id).equals(1);
             expect(data.name).equals(saved_name);
         }
+    });
+
+    after(async() => {
+        await strapi_app.stop();
     });
 });

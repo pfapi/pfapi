@@ -2,7 +2,8 @@
 
 const chai = require('chai');
 
-const { pfapi_request } = require('@pfapi/utils');
+const strapi = require('@strapi/strapi');
+const { pfapi_request, strapi_app } = require('@pfapi/utils');
 const { config } = require('@pfapi/test-helpers');
 
 const expect = chai.expect;
@@ -10,6 +11,10 @@ const expect = chai.expect;
 // NODE_ENV=test mocha --timeout 3000 --reporter spec tests/test-routes-by-name
 
 describe('Test routes by name', () => {
+    
+    before(async() => {
+        await strapi_app.start(strapi);
+    });
 
     it('get-count', async () => {
 
@@ -39,5 +44,9 @@ describe('Test routes by name', () => {
         expect(status).equals(200);
         expect(data).to.be.an('array');
         expect(data.length).greaterThan(0);
+    });
+
+    after(async() => {
+        await strapi_app.stop();
     });
 });

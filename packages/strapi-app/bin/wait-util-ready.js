@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 'use strict';
 
 const { wait_util_ready } = require('@pfapi/utils');

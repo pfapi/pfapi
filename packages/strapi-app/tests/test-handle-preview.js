@@ -2,7 +2,8 @@
 
 const chai = require('chai');
 
-const { admin_request, pfapi_request } = require('@pfapi/utils');
+const strapi = require('@strapi/strapi');
+const { admin_request, pfapi_request, strapi_app } = require('@pfapi/utils');
 const { config } = require('@pfapi/test-helpers');
 
 const expect = chai.expect;
@@ -10,6 +11,10 @@ const expect = chai.expect;
 // NODE_ENV=test mocha --timeout 3000 --reporter spec tests/test-handle-preview
 
 describe('Test handle preview', () => {
+    
+    before(async() => {
+        await strapi_app.start(strapi);
+    });
 
     it('handle preview', async () => {
 
@@ -78,4 +83,7 @@ describe('Test handle preview', () => {
         expect(result.data.allow_preview).is.true;
     });
 
+    after(async() => {
+        await strapi_app.stop();
+    });
 });

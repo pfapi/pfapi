@@ -2,7 +2,8 @@
 
 const chai = require('chai');
 
-const { pfapi_request } = require('@pfapi/utils');
+const strapi = require('@strapi/strapi');
+const { pfapi_request, strapi_app } = require('@pfapi/utils');
 const { config } = require('@pfapi/test-helpers');
 
 const expect = chai.expect;
@@ -10,7 +11,11 @@ const expect = chai.expect;
 // NODE_ENV=test mocha --timeout 3000 --reporter spec tests/test-api-filters
 
 describe('Test api filters', () => {
-   
+    
+    before(async() => {
+        await strapi_app.start(strapi);
+    });
+
     it('api filters - sort and limit', async () => {
 
         const query = {sort: {lat: 'desc', lng: 'asc'}, limit: 1 };
@@ -48,5 +53,9 @@ describe('Test api filters', () => {
         const {status, data: {item}} = await pfapi_request({path: '/world-cities/2148', query, ...config});
         expect(status).equals(200);
         expect(item).to.deep.equal({ id: 2148, name: 'Anchorage' });
+    });
+
+    after(async () => {
+        await strapi_app.stop();
     });
 });

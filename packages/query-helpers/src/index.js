@@ -18,6 +18,8 @@ const selected_types = ['string', 'boolean', 'enumeration', 'integer', 'biginteg
 
 async function run_group_by_count(uid, groupBy, {filters, publicationState}) {
 
+    if (!global.strapi) return;
+
     const meta = strapi.db.metadata.get(uid);
 
     filters = update_filters(meta, filters, publicationState);
@@ -34,6 +36,8 @@ async function run_group_by_count(uid, groupBy, {filters, publicationState}) {
 }
 
 async function run_group_by(uid, groupBy, {filters, fields, populate, publicationState, limit, sort: orderBy, start: offset}) {
+
+    if (!global.strapi) return;
 
     const meta = strapi.db.metadata.get(uid);
 
@@ -67,6 +71,8 @@ async function run_group_by(uid, groupBy, {filters, fields, populate, publicatio
 
 async function run_filters(uid, filters_config, params) {
 
+    if (!global.strapi) return;
+    
     filters_config = get_filters_config(uid, params.fields, filters_config);
 
     if (filters_config.length === 0) {

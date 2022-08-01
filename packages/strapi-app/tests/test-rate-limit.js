@@ -2,7 +2,8 @@
 
 const chai = require('chai');
 
-const { admin_request, pfapi_request, get_random_ip } = require('@pfapi/utils');
+const strapi = require('@strapi/strapi');
+const { admin_request, pfapi_request, get_random_ip, strapi_app } = require('@pfapi/utils');
 const { config } = require('@pfapi/test-helpers');
 
 const expect = chai.expect;
@@ -10,6 +11,10 @@ const expect = chai.expect;
 // NODE_ENV=test mocha --timeout 30000 --reporter spec tests/test-rate-limit
 
 describe('Test rate-limits', () => {
+    
+    before(async() => {
+        await strapi_app.start(strapi);
+    });
 
     it('rate-limits', async () => {
 
@@ -113,5 +118,9 @@ describe('Test rate-limits', () => {
         }
         expect(status1).equals(429);
         expect(status2).equals(200);
+    });
+
+    after(async() => {
+        await strapi_app.stop();
     });
 });

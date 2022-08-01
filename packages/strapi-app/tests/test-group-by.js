@@ -2,7 +2,8 @@
 
 const chai = require('chai');
 
-const { pfapi_request } = require('@pfapi/utils');
+const strapi = require('@strapi/strapi');
+const { pfapi_request, strapi_app } = require('@pfapi/utils');
 const { config } = require('@pfapi/test-helpers');
 
 const expect = chai.expect;
@@ -10,6 +11,10 @@ const expect = chai.expect;
 // NODE_ENV=test mocha --timeout 3000 --reporter spec tests/test-group-by
 
 describe('Test groupBy', () => {
+    
+    before(async() => {
+        await strapi_app.start(strapi);
+    });
    
     it('groupBy=iso3', async () => {
 
@@ -25,4 +30,7 @@ describe('Test groupBy', () => {
         expect(data.pagination).to.deep.equal({ page: 1, pageSize: 20, pageCount: 1, total: 11 });
     });
 
+    after(async() => {
+        await strapi_app.stop();
+    });
 });

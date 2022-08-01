@@ -2,7 +2,8 @@
 
 const chai = require('chai');
 
-const { api_request, pfapi_request } = require('@pfapi/utils');
+const strapi = require('@strapi/strapi');
+const { api_request, pfapi_request, strapi_app } = require('@pfapi/utils');
 const { config } = require('@pfapi/test-helpers');
 
 const expect = chai.expect;
@@ -10,10 +11,14 @@ const expect = chai.expect;
 // NODE_ENV=test mocha --timeout 3000 --reporter spec tests/test-data-change
 
 describe('Test data change', () => {
+    
+    before(async() => {
+        await strapi_app.start(strapi);
+    });
 
     it('data change cache eviction', async () => {
 
-        for (let loop = 0; loop < 2; loop++) {
+        for (let loop = 0; loop < 3; loop++) {
 
             console.log({loop});
 
@@ -54,7 +59,7 @@ describe('Test data change', () => {
             }
             if (ok) break;
             else {
-                if (loop === 0) {
+                if (loop !== 2) {
                     await new Promise(resolve => setTimeout(resolve, 1000));
                     continue;
                 }
@@ -65,7 +70,7 @@ describe('Test data change', () => {
 
     it('data delete cache eviction', async () => {
 
-        for (let loop = 0; loop < 2; loop++) {
+        for (let loop = 0; loop < 3; loop++) {
 
             console.log({loop});
 
@@ -106,7 +111,7 @@ describe('Test data change', () => {
             }
             if (ok) break;
             else {
-                if (loop === 0) {
+                if (loop !== 2) {
                     await new Promise(resolve => setTimeout(resolve, 1000));
                     continue;
                 }
@@ -115,4 +120,7 @@ describe('Test data change', () => {
         }
     });
 
+    after(async() => {
+        await strapi_app.stop();
+    });
 });

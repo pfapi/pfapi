@@ -2,7 +2,8 @@
 
 const chai = require('chai');
 
-const { pfapi_request } = require('@pfapi/utils');
+const strapi = require('@strapi/strapi');
+const { pfapi_request, strapi_app } = require('@pfapi/utils');
 const { config } = require('@pfapi/test-helpers');
 
 const expect = chai.expect;
@@ -10,6 +11,10 @@ const expect = chai.expect;
 // NODE_ENV=test mocha --timeout 3000 --reporter spec tests/test-ss-rand
 
 describe('Test ss_rand=1', () => {
+    
+    before(async() => {
+        await strapi_app.start(strapi);
+    });
 
     it('ss_rand=1', async () => {
 
@@ -27,4 +32,7 @@ describe('Test ss_rand=1', () => {
         expect(data.pagination).to.deep.equal({ page: 1, pageSize: 20, pageCount: 30, total: 595 });
     });
 
+    after(async() => {
+        await strapi_app.stop();
+    });
 });

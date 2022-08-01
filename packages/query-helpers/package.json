@@ -10,9 +10,6 @@
   },
   "description": "add supports for groupBy and filters queries",
   "main": "src/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Sam Wen",
   "license": "MIT",
   "dependencies": {

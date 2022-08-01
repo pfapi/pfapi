@@ -2,7 +2,8 @@
 
 const chai = require('chai');
 
-const { admin_request, pfapi_request } = require('@pfapi/utils');
+const strapi = require('@strapi/strapi');
+const { admin_request, pfapi_request, strapi_app } = require('@pfapi/utils');
 const { config } = require('@pfapi/test-helpers');
 
 const expect = chai.expect;
@@ -10,6 +11,10 @@ const expect = chai.expect;
 // NODE_ENV=test mocha --timeout 3000 --reporter spec tests/test-key-change
 
 describe('Test key change', () => {
+    
+    before(async() => {
+        await strapi_app.start(strapi);
+    });
 
     it('api key change', async () => {
 
@@ -56,4 +61,7 @@ describe('Test key change', () => {
         expect(status).equals(200);
     });
 
+    after(async() => {
+        await strapi_app.stop();
+    });
 });

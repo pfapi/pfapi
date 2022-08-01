@@ -3,7 +3,7 @@
 
 require('dotenv');
 //const strapi = require('@strapi/strapi');
-const { wait_util_ready } = require('./wait-util');
+const { wait_util_ready, check_health } = require('./wait-util');
 
 module.exports = {
   start,
@@ -14,7 +14,10 @@ let app;
 
 async function start(strapi) {
 
-  if (app) return;
+  let port = 1337;
+  if (process.env.PORT) port = Number(process.env.PORT);
+
+  if (app || await check_health(port)) return;
 
   const appContext = await strapi.compile();
   app = await strapi(appContext).load();
@@ -24,16 +27,14 @@ async function start(strapi) {
     process.exit(1);
   });
 
-  let port = 1337;
-  if (process.env.PORT) port = Number(process.env.PORT);
-
   await wait_util_ready(port);
 }
 
-function stop() {
+async function stop() {
     if (app) {
-      app.destroy();
+      await app.destroy();
       app = null;
+      process.exit(0);
     }
 }
 

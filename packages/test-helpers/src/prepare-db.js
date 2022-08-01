@@ -2,13 +2,13 @@
 
 const fs = require('fs-extra');
 const path = require('path');
+const os = require('os')
 const { unzip } = require('@pfapi/utils');
 const { exec, execSync } = require('child_process');
 
 module.exports = async (client) => {
-    console.log({client});
     if (client === 'sqlite') {
-        console.log('setup sqlite db');
+        console.log('create sqlite db');
         await create_sqlite_db();
     }
     if (client === 'mysql') {
@@ -38,7 +38,11 @@ async function create_mysql_db() {
     const mysql_file_path = path.join(__dirname, '..', 'files/db-mysql.js');
     await fs.copy(mysql_file_path, db_config_path);
     const filepath = path.join(__dirname, '..', 'files/mylogin.cnf');
-    execSync(`cp ${filepath} ~/.mylogin.cnf ; chmod 600 ~/.mylogin.cnf`);
+    const homedir = os.homedir();
+    const target_filepath = path.join(homedir, '.mylogin.cnf');
+    if (!fs.existsSync(target_filepath)) {
+        execSync(`cp ${filepath} ${target_filepath} ; chmod 600 ${target_filepath}`);
+    }
     if (await check_for_pfapi_test()) {
         return;
     }

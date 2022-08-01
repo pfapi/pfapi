@@ -4,6 +4,52 @@
   "workspaces": [
     "packages/*"
   ],
+  "bugs": {
+    "url": "https://github.com/pfapi/pfapi/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:pfapi/pfapi.git"
+  },
+  "author": {
+    "name": "Sam Wen"
+  },
+  "keywords": [
+    "strapi",
+    "plugin",
+    "local",
+    "redis",
+    "cache",
+    "fast",
+    "secure",
+    "configurable",
+    "scalable",
+    "single",
+    "digit",
+    "milliseconds",
+    "api",
+    "processing",
+    "time",
+    "ip",
+    "block",
+    "allow",
+    "rate",
+    "limit",
+    "throttle",
+    "activity",
+    "filters",
+    "group",
+    "log",
+    "time",
+    "ejs",
+    "template",
+    "e-commerce"
+  ],
+  "maintainers": [
+    {
+      "name": "Sam Wen"
+    }
+  ],
   "devDependencies": {
     "lerna": "^5.3.0"
   }

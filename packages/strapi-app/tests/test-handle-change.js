@@ -2,7 +2,8 @@
 
 const chai = require('chai');
 
-const { admin_request, pfapi_request } = require('@pfapi/utils');
+const strapi = require('@strapi/strapi');
+const { admin_request, pfapi_request, strapi_app } = require('@pfapi/utils');
 const { config } = require('@pfapi/test-helpers');
 
 const expect = chai.expect;
@@ -10,10 +11,14 @@ const expect = chai.expect;
 // NODE_ENV=test mocha --timeout 3000 --reporter spec tests/test-handle-change
 
 describe('Test handle change', () => {
+    
+    before(async() => {
+        await strapi_app.start(strapi);
+    });
 
     it('handle change cache update', async () => {
 
-        for (let loop = 0; loop < 2; loop ++) {
+        for (let loop = 0; loop < 3; loop ++) {
 
             console.log({loop});
 
@@ -66,7 +71,7 @@ describe('Test handle change', () => {
             }
             if (ok) break;
             else {
-                if (loop === 0) {
+                if (loop !== 2) {
                     await new Promise(resolve => setTimeout(resolve, 1000));
                     continue;
                 }
@@ -75,4 +80,7 @@ describe('Test handle change', () => {
         }
     });
 
+    after(async() => {
+        await strapi_app.stop();
+    });
 });

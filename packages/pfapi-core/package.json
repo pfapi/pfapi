@@ -3,11 +3,11 @@
   "version": "2.4.2",
   "description": "pfapi core is a library that helps write Strapi Plugins to provide fast, secure, configurable and scalable API services.",
   "bugs": {
-    "url": "https://github.com/pfapi/pfapi-core/issues"
+    "url": "https://github.com/pfapi/pfapi/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:pfapi/pfapi-core.git"
+    "url": "git@github.com:pfapi/pfapi.git"
   },
   "main": "src/index.js",
   "scripts": {
