@@ -3,11 +3,13 @@
 'use strict';
 
 const { prepare_db } = require('@pfapi/test-helpers');
+const path = require('path');
 
 (async () => {
     let client = 'sqlite';
     if (process.argv.length === 3) {
         client = process.argv[2];
     }
+    process.chdir(path.dirname(__dirname));
     await prepare_db(client);
 })();

@@ -3,7 +3,9 @@
 'use strict';
 
 const { strapi_app } = require('@pfapi/utils');
+const path = require('path');
 
 (async() => {
+    process.chdir(path.dirname(__dirname));
     await strapi_app.stop(true);
 })();
