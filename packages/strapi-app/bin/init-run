@@ -12,6 +12,18 @@ fi
 
 cd $(dirname $SCRIPT_DIR)
 
+bin/drop-db $1
+
+if [ "$1" == "mysql"]; then
+    if [ -f /etc/os-release ]; then
+        systemctl restart mysql
+    else
+        brew services restart mysql
+    fi
+fi
+
+bin/prepare-db $1
+
 bin/start-strapi & 
 
 bin/wait-ready 

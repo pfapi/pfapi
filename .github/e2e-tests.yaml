@@ -23,20 +23,14 @@ jobs:
       - name: install redis service
         uses: pfapi/redis-cluster-service@v1
 
-      - name: start redis service
-        run: sudo systemctl restart redis-server
-
       - name: Checkout pfapi/pfapi
         uses: actions/checkout@v3
 
-      - name: Install dependencies for pfapi-dev-test
-        run: npx lerna install
+      - name: Install dependencies
+        run: npm install
 
-      - name: Checkout pfapi/pfapi
-        uses: actions/checkout@v3
-        with:
-            repository: pfapi/pfapi
-            path: main/src/plugins/pfapi
+      - name: Build
+        run: npx lerna run build
 
       - name: Install dependencies for pfapi
         run: cd main/src/plugins/pfapi; yarn install
