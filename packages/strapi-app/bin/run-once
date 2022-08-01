@@ -14,9 +14,9 @@ bin/drop-db $DB
 
 if [ -f /etc/os-release ]; then
     if [ -z "$REDIS_URI" ]; then 
-        systemctl restart redis-server
+        sudo systemctl restart redis-server
     else
-        systemctl restart redis-cluster
+        sudo systemctl restart redis-cluster
     fi
 else
     brew services restart redis
@@ -24,7 +24,7 @@ fi
 
 if [ "$DB" == "mysql" ]; then
     if [ -f /etc/os-release ]; then
-        systemctl restart mysql
+        sudo systemctl restart mysql
     else
         brew services restart mysql
     fi
