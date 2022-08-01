@@ -1,6 +1,6 @@
 {
   "name": "@pfapi/utils",
-  "version": "2.4.8-alpha.3",
+  "version": "2.5.6",
   "description": "utils shared by pfapi packages",
   "bugs": {
     "url": "https://github.com/pfapi/pfapi/issues"
