@@ -4,6 +4,7 @@
 
 const path = require('path');
 process.chdir(path.dirname(__dirname));
+
 const strapi = require('@strapi/strapi');
 const { strapi_app } = require('@pfapi/utils');
 strapi_app.start(strapi);

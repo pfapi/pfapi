@@ -2,12 +2,12 @@
 
 'use strict';
 
-const { drop_db } = require('@pfapi/test-helpers');
+const path = require('path');
+process.chdir(path.dirname(__dirname));
 
-(async () => {
-    let client = 'sqlite';
-    if (process.argv.length === 3) {
-        client = process.argv[2];
-    }
-    await drop_db(client);
-})();
+const { drop_db } = require('@pfapi/test-helpers');
+let client = 'sqlite';
+if (process.argv.length === 3) {
+    client = process.argv[2];
+}
+drop_db(client);

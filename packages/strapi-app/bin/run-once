@@ -10,8 +10,6 @@ else
     brew services restart redis
 fi
 
-cd $(dirname $SCRIPT_DIR)
-
 #bin/drop-db $DB
 
 if [ "$DB" == "mysql" ]; then
