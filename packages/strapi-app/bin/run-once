@@ -29,3 +29,5 @@ bin/start-strapi &
 bin/wait-ready 
 
 bin/stop-strapi
+
+exit 0
