@@ -5,9 +5,13 @@
 const path = require('path');
 process.chdir(path.dirname(__dirname));
 
+require('dotenv');
+
 const { drop_db } = require('@pfapi/test-helpers');
 let client = 'sqlite';
 if (process.argv.length === 3) {
     client = process.argv[2];
+} else if (process.env.DB) {
+    client = process.env.DB;
 }
 drop_db(client);

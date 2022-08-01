@@ -24,6 +24,7 @@
     "@strapi/plugin-users-permissions": "^4.3.2",
     "@strapi/strapi": "^4.3.2",
     "better-sqlite3": "7.4.6",
+    "dotenv": "^16.0.1",
     "koa-response-time": "^2.1.0",
     "mysql": "^2.18.1",
     "strapi-plugin-pfapi": "^2.4.8-alpha.2",
