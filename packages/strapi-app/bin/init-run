@@ -12,9 +12,9 @@ fi
 
 cd $(dirname $SCRIPT_DIR)
 
-bin/drop-db $1
+bin/drop-db $DB
 
-if [ "$1" == "mysql"]; then
+if [ "$DB" == "mysql"]; then
     if [ -f /etc/os-release ]; then
         systemctl restart mysql
     else
@@ -22,7 +22,7 @@ if [ "$1" == "mysql"]; then
     fi
 fi
 
-bin/prepare-db $1
+bin/prepare-db $DB
 
 bin/start-strapi & 
 
