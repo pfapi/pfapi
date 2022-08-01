@@ -25,10 +25,7 @@ jobs:
 
       - name: Checkout pfapi/pfapi
         uses: actions/checkout@v3
-
-      - name: set non-interactive mode
-        run: export npm_config_yes=true
-        
+ 
       - name: Install dependencies
         run: npm install
 
