@@ -30,4 +30,6 @@ bin/wait-ready
 
 bin/stop-strapi
 
+sleep 1
+
 exit 0
