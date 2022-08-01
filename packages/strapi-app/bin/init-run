@@ -10,10 +10,10 @@ else
     brew services restart redis
 fi
 
-cd $SCRIPT_DIR
+cd $(dirname $SCRIPT_DIR)
 
-./start-strapi & 
+bin/start-strapi & 
 
-./wait-ready 
+bin/wait-ready 
 
-./stop-strapi
+bin/stop-strapi
