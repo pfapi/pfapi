@@ -1,0 +1,20 @@
+{
+  "version": "1.1.1",
+  "name": "@pfapi/query-helpers",
+  "bugs": {
+    "url": "https://github.com/pfapi/query-helpers/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:pfapi/query-helpers.git"
+  },
+  "description": "add supports for groupBy and filters queries",
+  "main": "src/index.js",
+  "author": "Sam Wen",
+  "license": "MIT",
+  "dependencies": {
+    "change-case": "^4.1.2",
+    "debug": "^4.3.4",
+    "lodash": "^4.17.21"
+  }
+}

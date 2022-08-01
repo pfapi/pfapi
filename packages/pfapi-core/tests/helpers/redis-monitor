@@ -1,0 +1,3 @@
+#!/bin/bash
+
+for i in {0..99}; do sleep 1; redis-cli monitor; done

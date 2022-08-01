@@ -1,0 +1,73 @@
+{
+  "name": "strapi-plugin-pfapi",
+  "version": "2.4.6",
+  "description": "Pfapi plugin provides fast, secure, configurable, and scalable API services for e-commerce web apps.",
+  "bugs": {
+    "url": "https://github.com/pfapi/pfapi/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:pfapi/pfapi.git"
+  },
+  "strapi": {
+    "name": "pfapi",
+    "description": "Pfapi plugin provides fast, secure, configurable, and scalable API services for e-commerce web apps.",
+    "kind": "plugin",
+    "displayName": "Pfapi"
+  },
+  "scripts": {
+    "postinstall": "node ./post-install.js"
+  },
+  "author": {
+    "name": "Sam Wen"
+  },
+  "keywords": [
+    "strapi",
+    "plugin",
+    "local",
+    "redis",
+    "cache",
+    "fast",
+    "secure",
+    "configurable",
+    "scalable",
+    "single",
+    "digit",
+    "milliseconds",
+    "api",
+    "processing",
+    "time",
+    "ip",
+    "block",
+    "allow",
+    "rate",
+    "limit",
+    "throttle",
+    "activity",
+    "filters",
+    "group",
+    "log",
+    "time",
+    "ejs",
+    "template",
+    "e-commerce"
+  ],
+  "maintainers": [
+    {
+      "name": "Sam Wen"
+    }
+  ],
+  "dependencies": {
+    "@pfapi/core": "^2.4.2",
+    "@pfapi/query-helpers": "^1.1.1",
+    "@pfapi/utils": "^1.0.2",
+    "ejs": "^3.1.8",
+    "fs-extra": "^10.1.0",
+    "lru-cache": "^7.12.0"
+  },
+  "engines": {
+    "node": ">=14.19.1 <=16.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}

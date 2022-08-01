@@ -1,0 +1,43 @@
+{
+  "name": "strapi-app",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "bugs": {
+    "url": "https://github.com/pfapi/pfapi/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:pfapi/pfapi.git"
+  },
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi",
+    "test": "NODE_ENV=test mocha --timeout 10000 --exit --reporter spec tests/test-*"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "@pfapi/test-helpers": "^1.0.1",
+    "@pfapi/utils": "^1.0.2",
+    "@strapi/plugin-i18n": "4.3.0",
+    "@strapi/plugin-users-permissions": "4.3.0",
+    "@strapi/strapi": "4.3.0",
+    "better-sqlite3": "7.4.6",
+    "koa-response-time": "^2.1.0",
+    "strapi-plugin-pfapi": "^2.4.7",
+    "strapi-plugin-pfapi-data": "^1.2.5"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "42518586-2481-42c0-ba03-e1c81f0bc379"
+  },
+  "engines": {
+    "node": ">=12.x.x <=16.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}

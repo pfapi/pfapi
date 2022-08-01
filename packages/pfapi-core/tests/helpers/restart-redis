@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ -z "$GITHUB_WORKSPACE" ]; then
+
+    brew services restart redis
+
+else
+
+    sudo systemctl restart redis-server
+
+fi
