@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -f /etc/os-release ] then
+if [ -f /etc/os-release ]; then
     if sudo systemctl status redis-server; then 
         sudo systemctl restart redis-server
     else
