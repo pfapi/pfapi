@@ -1,6 +1,6 @@
 {
   "name": "strapi-plugin-pfapi-data",
-  "version": "1.2.3",
+  "version": "2.4.8-alpha.1",
   "description": "World Cities Data Set for Pfapi Demo.",
   "bugs": {
     "url": "https://github.com/pfapi/pfapi/issues"
@@ -19,7 +19,7 @@
     "postinstall": "node ./data/post-install.js"
   },
   "dependencies": {
-    "@pfapi/utils": "1.0.2",
+    "@pfapi/utils": "^2.4.8-alpha.1",
     "fs-extra": "^10.1.0"
   },
   "author": {
@@ -34,5 +34,6 @@
     "node": ">=14.19.1 <=16.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "gitHead": "8dac7b1107caf1c03d7881f5c37922f64052f185"
 }
