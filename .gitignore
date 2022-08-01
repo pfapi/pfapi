@@ -9,7 +9,6 @@ Icon
 .Spotlight-V100
 .Trashes
 ._*
-.npmrc
 
 ############################
 # Linux
@@ -45,7 +44,7 @@ $RECYCLE.BIN/
 *.jar
 *.rar
 *.tar
-*.zip
+#*.zip
 *.com
 *.class
 *.dll
@@ -67,8 +66,9 @@ $RECYCLE.BIN/
 
 .tmp
 *.log
-*.sql
+#.sql
 *.sqlite
+*.sqlite3
 
 
 ############################
@@ -76,10 +76,11 @@ $RECYCLE.BIN/
 ############################
 
 *#
+ssl
 .idea
 nbproject
-.vscode/
-
+public/uploads/*
+!public/uploads/.gitkeep
 
 ############################
 # Node.js
@@ -90,14 +91,8 @@ lcov.info
 pids
 logs
 results
-build
 node_modules
 .node_history
-package-lock.json
-**/package-lock.json
-!docs/package-lock.json
-*.heapsnapshot
-
 
 ############################
 # Tests
@@ -105,34 +100,17 @@ package-lock.json
 
 testApp
 coverage
-cypress/screenshots
-cypress/videos
-
 
 ############################
-# Documentation
+# Strapi
 ############################
 
-dist
+#.env
+license.txt
+exports
+*.cache
+build
+.strapi-updater.json
 
-############################
-# Builds
-############################
-
-packages/generators/app/files/public/
-schema.graphql
-
-############################
-# Example app
-############################
-
-.dev
-# *.cache
-
-############################
-# Visual Studio Code
-############################
-
-front-workspace.code-workspace
-.yarn
-.yarnrc
+config/plugins.js
+src/plugins/pfapi

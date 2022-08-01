@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_pfapi_types_texts",
+  "info": {
+    "displayName": "text",
+    "icon": "angle-right",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "text"
+    }
+  }
+}

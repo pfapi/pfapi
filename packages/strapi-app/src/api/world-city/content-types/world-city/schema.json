@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "world_cities",
+  "info": {
+    "singularName": "world-city",
+    "pluralName": "world-cities",
+    "displayName": "WorldCities",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "lat": {
+      "type": "decimal"
+    },
+    "lng": {
+      "type": "decimal"
+    },
+    "admin": {
+      "type": "string"
+    },
+    "capital": {
+      "type": "string"
+    },
+    "population": {
+      "type": "integer"
+    },
+    "iso3": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    }
+  }
+}

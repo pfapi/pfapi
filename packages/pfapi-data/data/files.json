@@ -1,0 +1,335 @@
+[
+    {
+      "id": 1,
+      "name": "usa-map",
+      "alternativeText": "USA Map",
+      "caption": "USA Map",
+      "width": 1944,
+      "height": 1172,
+      "formats": {
+        "large": {
+          "ext": ".jpeg",
+          "url": "/uploads/pfapi/large_USA_map_302ebb2dbe.jpeg",
+          "hash": "large_USA_map_302ebb2dbe",
+          "mime": "image/jpeg",
+          "name": "large_USA-map.jpeg",
+          "size": 145.86,
+          "width": 1000,
+          "height": 603
+        },
+        "small": {
+          "ext": ".jpeg",
+          "url": "/uploads/pfapi/small_USA_map_302ebb2dbe.jpeg",
+          "hash": "small_USA_map_302ebb2dbe",
+          "mime": "image/jpeg",
+          "name": "small_USA-map.jpeg",
+          "size": 41.12,
+          "width": 500,
+          "height": 301
+        },
+        "medium": {
+          "ext": ".jpeg",
+          "url": "/uploads/pfapi/medium_USA_map_302ebb2dbe.jpeg",
+          "hash": "medium_USA_map_302ebb2dbe",
+          "mime": "image/jpeg",
+          "name": "medium_USA-map.jpeg",
+          "size": 87.87,
+          "width": 750,
+          "height": 452
+        },
+        "thumbnail": {
+          "ext": ".jpeg",
+          "url": "/uploads/pfapi/thumbnail_USA_map_302ebb2dbe.jpeg",
+          "hash": "thumbnail_USA_map_302ebb2dbe",
+          "mime": "image/jpeg",
+          "name": "thumbnail_USA-map.jpeg",
+          "size": 10.99,
+          "width": 245,
+          "height": 148
+        }
+      },
+      "folderPath": "/",
+      "hash": "USA_map_302ebb2dbe",
+      "ext": ".jpeg",
+      "mime": "image/jpeg",
+      "size": 425.97,
+      "url": "/uploads/pfapi/USA_map_302ebb2dbe.jpeg",
+      "provider": "local"
+    },
+    {
+      "id": 2,
+      "name": "france-map",
+      "alternativeText": "France Map",
+      "caption": "France Map",
+      "width": 1287,
+      "height": 1259,
+      "formats": {
+        "large": {
+          "ext": ".png",
+          "url": "/uploads/pfapi/large_Screen_Shot_2022_07_05_at_3_51_26_PM_8b48530877.png",
+          "hash": "large_Screen_Shot_2022_07_05_at_3_51_26_PM_8b48530877",
+          "mime": "image/png",
+          "name": "large_Screen Shot 2022-07-05 at 3.51.26 PM.png",
+          "size": 1529.2,
+          "width": 1000,
+          "height": 978
+        },
+        "small": {
+          "ext": ".png",
+          "url": "/uploads/pfapi/small_Screen_Shot_2022_07_05_at_3_51_26_PM_8b48530877.png",
+          "hash": "small_Screen_Shot_2022_07_05_at_3_51_26_PM_8b48530877",
+          "mime": "image/png",
+          "name": "small_Screen Shot 2022-07-05 at 3.51.26 PM.png",
+          "size": 445.25,
+          "width": 500,
+          "height": 489
+        },
+        "medium": {
+          "ext": ".png",
+          "url": "/uploads/pfapi/medium_Screen_Shot_2022_07_05_at_3_51_26_PM_8b48530877.png",
+          "hash": "medium_Screen_Shot_2022_07_05_at_3_51_26_PM_8b48530877",
+          "mime": "image/png",
+          "name": "medium_Screen Shot 2022-07-05 at 3.51.26 PM.png",
+          "size": 926.37,
+          "width": 750,
+          "height": 734
+        },
+        "thumbnail": {
+          "ext": ".png",
+          "url": "/uploads/pfapi/thumbnail_Screen_Shot_2022_07_05_at_3_51_26_PM_8b48530877.png",
+          "hash": "thumbnail_Screen_Shot_2022_07_05_at_3_51_26_PM_8b48530877",
+          "mime": "image/png",
+          "name": "thumbnail_Screen Shot 2022-07-05 at 3.51.26 PM.png",
+          "size": 50.37,
+          "width": 160,
+          "height": 156
+        }
+      },
+      "folderPath": "/",
+      "hash": "Screen_Shot_2022_07_05_at_3_51_26_PM_8b48530877",
+      "ext": ".png",
+      "mime": "image/png",
+      "size": 547.8,
+      "url": "/uploads/pfapi/Screen_Shot_2022_07_05_at_3_51_26_PM_8b48530877.png",
+      "provider": "local"
+    },
+    {
+      "id": 3,
+      "name": "northern-map",
+      "alternativeText": "Northern Map",
+      "caption": "Northern Map",
+      "width": 820,
+      "height": 820,
+      "formats": {
+        "small": {
+          "ext": ".jpeg",
+          "url": "/uploads/pfapi/small_northern_8e902a468b.jpeg",
+          "hash": "small_northern_8e902a468b",
+          "mime": "image/jpeg",
+          "name": "small_northern.jpeg",
+          "size": 52.02,
+          "width": 500,
+          "height": 500
+        },
+        "medium": {
+          "ext": ".jpeg",
+          "url": "/uploads/pfapi/medium_northern_8e902a468b.jpeg",
+          "hash": "medium_northern_8e902a468b",
+          "mime": "image/jpeg",
+          "name": "medium_northern.jpeg",
+          "size": 98.1,
+          "width": 750,
+          "height": 750
+        },
+        "thumbnail": {
+          "ext": ".jpeg",
+          "url": "/uploads/pfapi/thumbnail_northern_8e902a468b.jpeg",
+          "hash": "thumbnail_northern_8e902a468b",
+          "mime": "image/jpeg",
+          "name": "thumbnail_northern.jpeg",
+          "size": 6.61,
+          "width": 156,
+          "height": 156
+        }
+      },
+      "folderPath": "/",
+      "hash": "northern_8e902a468b",
+      "ext": ".jpeg",
+      "mime": "image/jpeg",
+      "size": 110.88,
+      "url": "/uploads/pfapi/northern_8e902a468b.jpeg",
+      "provider": "local"
+    },
+    {
+      "id": 4,
+      "name": "snow-town",
+      "alternativeText": "Snow Town",
+      "caption": "Snow Town",
+      "width": 1100,
+      "height": 695,
+      "formats": {
+        "large": {
+          "ext": ".webp",
+          "url": "/uploads/pfapi/large_shutterstock_416265475_9c7b4a1b9f.webp",
+          "hash": "large_shutterstock_416265475_9c7b4a1b9f",
+          "mime": "image/webp",
+          "name": "large_shutterstock-416265475.webp",
+          "path": null,
+          "size": 49.94,
+          "width": 1000,
+          "height": 632
+        },
+        "small": {
+          "ext": ".webp",
+          "url": "/uploads/pfapi/small_shutterstock_416265475_9c7b4a1b9f.webp",
+          "hash": "small_shutterstock_416265475_9c7b4a1b9f",
+          "mime": "image/webp",
+          "name": "small_shutterstock-416265475.webp",
+          "size": 19.35,
+          "width": 500,
+          "height": 316
+        },
+        "medium": {
+          "ext": ".webp",
+          "url": "/uploads/pfapi/medium_shutterstock_416265475_9c7b4a1b9f.webp",
+          "hash": "medium_shutterstock_416265475_9c7b4a1b9f",
+          "mime": "image/webp",
+          "name": "medium_shutterstock-416265475.webp",
+          "size": 34.59,
+          "width": 750,
+          "height": 474
+        },
+        "thumbnail": {
+          "ext": ".webp",
+          "url": "/uploads/pfapi/thumbnail_shutterstock_416265475_9c7b4a1b9f.webp",
+          "hash": "thumbnail_shutterstock_416265475_9c7b4a1b9f",
+          "mime": "image/webp",
+          "name": "thumbnail_shutterstock-416265475.webp",
+          "size": 6.36,
+          "width": 245,
+          "height": 155
+        }
+      },
+      "folderPath": "/",
+      "hash": "shutterstock_416265475_9c7b4a1b9f",
+      "ext": ".webp",
+      "mime": "image/webp",
+      "size": 68.54,
+      "url": "/uploads/pfapi/shutterstock_416265475_9c7b4a1b9f.webp",
+      "provider": "local"
+    },
+    {
+      "id": 5,
+      "name": "new-york",
+      "alternativeText": "New York",
+      "caption": "New York",
+      "width": 3000,
+      "height": 1999,
+      "formats": {
+        "large": {
+          "ext": ".jpeg",
+          "url": "/uploads/pfapi/large_ny_d9a10de52d.jpeg",
+          "hash": "large_ny_d9a10de52d",
+          "mime": "image/jpeg",
+          "name": "large_ny.jpeg",
+          "size": 157.65,
+          "width": 1000,
+          "height": 666
+        },
+        "small": {
+          "ext": ".jpeg",
+          "url": "/uploads/pfapi/small_ny_d9a10de52d.jpeg",
+          "hash": "small_ny_d9a10de52d",
+          "mime": "image/jpeg",
+          "name": "small_ny.jpeg",
+          "size": 42.83,
+          "width": 500,
+          "height": 333
+        },
+        "medium": {
+          "ext": ".jpeg",
+          "url": "/uploads/pfapi/medium_ny_d9a10de52d.jpeg",
+          "hash": "medium_ny_d9a10de52d",
+          "mime": "image/jpeg",
+          "name": "medium_ny.jpeg",
+          "size": 92.28,
+          "width": 750,
+          "height": 500
+        },
+        "thumbnail": {
+          "ext": ".jpeg",
+          "url": "/uploads/pfapi/thumbnail_ny_d9a10de52d.jpeg",
+          "hash": "thumbnail_ny_d9a10de52d",
+          "mime": "image/jpeg",
+          "name": "thumbnail_ny.jpeg",
+          "size": 9.92,
+          "width": 235,
+          "height": 156
+        }
+      },
+      "folderPath": "/",
+      "hash": "ny_d9a10de52d",
+      "ext": ".jpeg",
+      "mime": "image/jpeg",
+      "size": 873.79,
+      "url": "/uploads/pfapi/ny_d9a10de52d.jpeg",
+      "provider": "local"
+    },
+    {
+      "id": 6,
+      "name": "los-angeles",
+      "alternativeText": "Los Angeles",
+      "caption": "Los Angeles",
+      "width": 1600,
+      "height": 1066,
+      "formats": {
+        "large": {
+          "ext": ".webp",
+          "url": "/uploads/pfapi/large_607b5514_cc8b_4db2_a40b_8087b6dd9135_af7c689ba8.webp",
+          "hash": "large_607b5514_cc8b_4db2_a40b_8087b6dd9135_af7c689ba8",
+          "mime": "image/webp",
+          "name": "large_607b5514-cc8b-4db2-a40b-8087b6dd9135.webp",
+          "size": 91.92,
+          "width": 1000,
+          "height": 666
+        },
+        "small": {
+          "ext": ".webp",
+          "url": "/uploads/pfapi/small_607b5514_cc8b_4db2_a40b_8087b6dd9135_af7c689ba8.webp",
+          "hash": "small_607b5514_cc8b_4db2_a40b_8087b6dd9135_af7c689ba8",
+          "mime": "image/webp",
+          "name": "small_607b5514-cc8b-4db2-a40b-8087b6dd9135.webp",
+          "size": 31.31,
+          "width": 500,
+          "height": 333
+        },
+        "medium": {
+          "ext": ".webp",
+          "url": "/uploads/pfapi/medium_607b5514_cc8b_4db2_a40b_8087b6dd9135_af7c689ba8.webp",
+          "hash": "medium_607b5514_cc8b_4db2_a40b_8087b6dd9135_af7c689ba8",
+          "mime": "image/webp",
+          "name": "medium_607b5514-cc8b-4db2-a40b-8087b6dd9135.webp",
+          "size": 59.52,
+          "width": 750,
+          "height": 500
+        },
+        "thumbnail": {
+          "ext": ".webp",
+          "url": "/uploads/pfapi/thumbnail_607b5514_cc8b_4db2_a40b_8087b6dd9135_af7c689ba8.webp",
+          "hash": "thumbnail_607b5514_cc8b_4db2_a40b_8087b6dd9135_af7c689ba8",
+          "mime": "image/webp",
+          "name": "thumbnail_607b5514-cc8b-4db2-a40b-8087b6dd9135.webp",
+          "size": 9.05,
+          "width": 234,
+          "height": 156
+        }
+      },
+      "folderPath": "/",
+      "hash": "607b5514_cc8b_4db2_a40b_8087b6dd9135_af7c689ba8",
+      "ext": ".webp",
+      "mime": "image/webp",
+      "size": 209.83,
+      "url": "/uploads/pfapi/607b5514_cc8b_4db2_a40b_8087b6dd9135_af7c689ba8.webp",
+      "provider": "local"
+    }
+  ]
