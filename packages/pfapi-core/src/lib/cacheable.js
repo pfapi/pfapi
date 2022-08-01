@@ -234,7 +234,7 @@ class Cacheable {
     scheduled_fetch(redis_cache, after_ms = 100) {
         if (!redis_cache) return;
         const handle = setTimeout(async () => {
-            if (global.strapi && await this.fetch_data(redis_cache)) {
+            if (await this.fetch_data(redis_cache)) {
                 if (process.env.NODE_ENV === 'test') this.from = 'scheduled_fetch';
             }
             clearTimeout(handle);
