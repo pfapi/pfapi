@@ -58,7 +58,7 @@ $RECYCLE.BIN/
 *.swm
 *.out
 *.pid
-
+.npmrc
 
 ############################
 # Logs and databases
