@@ -2,11 +2,15 @@
 
 set -e
 
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
 if [ -f /etc/os-release ]; then
     systemctl restart redis-server
 else
     brew services restart redis
 fi
+
+cd $SCRIPT_DIR
 
 ./start-strapi & 
 
