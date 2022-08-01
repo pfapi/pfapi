@@ -13,7 +13,7 @@
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
-    "build": "strapi build",
+    "build": "strapi build ; bin/prepare-db",
     "strapi": "strapi",
     "test": "bin/start-strapi & bin/wait-ready ; NODE_ENV=test mocha --timeout 10000 --exit --reporter spec tests/test-* ; bin/stop-strapi"
   },
