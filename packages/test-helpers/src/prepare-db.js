@@ -18,9 +18,6 @@ module.exports = async (client) => {
 }
 
 async function create_sqlite_db() {
-    const db_config_path = path.join(process.cwd(), 'config/database.js');
-    const sqlite_file_path = path.join(__dirname, '..', 'files/db-sqlite.js');
-    await fs.copy(sqlite_file_path, db_config_path);
     const data_db_path = path.join(process.cwd(), '.tmp/data.db');
     if (fs.existsSync(data_db_path)) {
         return;
@@ -34,9 +31,6 @@ async function create_sqlite_db() {
 }
 
 async function create_mysql_db() {
-    const db_config_path = path.join(process.cwd(), 'config/database.js');
-    const mysql_file_path = path.join(__dirname, '..', 'files/db-mysql.js');
-    await fs.copy(mysql_file_path, db_config_path);
     const filepath = path.join(__dirname, '..', 'files/mylogin.cnf');
     const homedir = os.homedir();
     const target_filepath = path.join(homedir, '.mylogin.cnf');

@@ -2,14 +2,6 @@
 
 'use strict';
 
-const path = require('path');
-process.chdir(path.dirname(__dirname));
-
 const { wait_util_ready } = require('@pfapi/utils');
-let port = 1337
-if (process.argv.length === 3) {
-    port = Number(process.argv[2]);
-}
+const port = process.env.PORT ? Number(process.env.PORT) : 1337
 wait_util_ready(port);
-
-

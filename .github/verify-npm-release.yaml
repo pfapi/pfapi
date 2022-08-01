@@ -15,16 +15,10 @@ jobs:
       - name: install redis service
         uses: pfapi/redis-cluster-service@v1
 
-      - name: start redis
-        run: sudo systemctl restart redis-server
-
       - name: Checkout pfapi/pfapi
         uses: actions/checkout@v3
-        with:
-            repository: pfapi/pfapi-dev-test
-            path: main
 
-      - name: replace package.json
+      - name: install packages/
         run: cd main; cp tools/package.json package.json
 
       - name: Install latest dependencies

@@ -30,40 +30,25 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npx lerna run build
+        run: npx lerna run build --stream
 
-      - name: Install dependencies for pfapi
-        run: cd main/src/plugins/pfapi; yarn install
+      - name: Run test
+        run: npx lerna run test --stream
 
-      - name: set to sqlite database config
-        run: cd main; cp tools/db-sqlite.js config/database.js
-
-      - name: run prepare
-        run: cd main; node tools/prepare
-
-      - name: run tree
-        run: tree -I 'node_modules|cache|build'
-
-      - name: Build & Run strapi
-        run: cd main; yarn build; yarn develop &
+      - name: Start strapi develop
+        run: npx lerna run develop --stream &
 
       - name: Wait Util Ready
-        run: cd main; node tools/wait-util-ready.js
+        run: npx lerna run wait-ready --stream
 
-      - name: run yarn test
-        run: cd main; yarn test
-
-      - name: Install @pfapi/tester
-        run: npm install @pfapi/tester --location=global
-        
       - name: run pfapi-tester 1 time with verbose 
-        run: pfapi-tester -t 1 -v
+        run: npx pfapi-tester -t 1 -v
 
       - name: run pfapi-tester 10 times and concurrent
-        run: pfapi-tester -t 10 -c
+        run: npx pfapi-tester -t 10 -c
 
-      - name: run pfapi-tester fetch items and concurrent
-        run: pfapi-tester -t 1 -f -c
+      - name: run pfapi-tester i time, fetch items and concurrent
+        run: npx pfapi-tester -t 1 -f -c
 
       - name: run pfapi-tester walk through and fetch items
-        run: pfapi-tester -w -f
+        run: npx pfapi-tester -w -f

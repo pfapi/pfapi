@@ -15,7 +15,9 @@
     "build": "strapi build && bin/run-once",
     "run-once": "bin/run-once",
     "strapi": "strapi",
-    "test": "bin/start-strapi & bin/wait-ready ; NODE_ENV=test mocha --timeout 10000 --exit --reporter spec tests/test-* ; bin/stop-strapi"
+    "test": "bin/start-strapi & bin/wait-ready ; NODE_ENV=test mocha --timeout 10000 --exit --reporter spec tests/test-* ; bin/stop-strapi",
+    "wait-ready": "bin/wait-ready",
+    "use-my-plus": "bin/use-my-plus"
   },
   "dependencies": {
     "@pfapi/test-helpers": "^2.4.8-alpha.2",

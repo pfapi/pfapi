@@ -4,15 +4,23 @@ set -e
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
+cd $(dirname $SCRIPT_DIR)
+
+if [ -f .env ]; then
+    . .env
+fi
+
+bin/drop-db $DB
+
 if [ -f /etc/os-release ]; then
-    systemctl restart redis-server
+    if [ -z "$REDIS_URI" ]; then 
+        systemctl restart redis-server
+    else
+        systemctl restart redis-cluster
+    fi
 else
     brew services restart redis
 fi
-
-cd $(dirname $SCRIPT_DIR)
-
-bin/drop-db $DB
 
 if [ "$DB" == "mysql" ]; then
     if [ -f /etc/os-release ]; then
