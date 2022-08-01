@@ -18,7 +18,7 @@ module.exports = async (client) => {
 
 async function drop_sqlite_db() {
     const filepath = path.join(process.cwd(), '.tmp', 'data.db');
-    if (!fs.existsSync(filepath)) {
+    if (fs.existsSync(filepath)) {
         fs.unlinkSync(filepath);
     }
 }
