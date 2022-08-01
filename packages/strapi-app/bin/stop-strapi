@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const { strapi_app } = require('@pfapi/utils');
+
+strapi_app.stop(true);

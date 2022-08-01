@@ -1,4 +1,4 @@
-name: integrated tests
+name: e2e tests
 on: 
 #  push:
 #    branches:
@@ -12,7 +12,7 @@ on:
 
 jobs:
 
-  integrated-tests:
+  e2e-tests:
 
     timeout-minutes: 15
 
@@ -26,17 +26,11 @@ jobs:
       - name: start redis service
         run: sudo systemctl restart redis-server
 
-      - name: start mysql service
-        run: sudo systemctl restart mysql
-
-      - name: Checkout pfapi/pfapi-dev-test
+      - name: Checkout pfapi/pfapi
         uses: actions/checkout@v3
-        with:
-            repository: pfapi/pfapi-dev-test
-            path: main
 
       - name: Install dependencies for pfapi-dev-test
-        run: cd main; yarn install
+        run: npx lerna install
 
       - name: Checkout pfapi/pfapi
         uses: actions/checkout@v3

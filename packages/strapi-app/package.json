@@ -15,7 +15,7 @@
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
-    "test": "NODE_ENV=test mocha --timeout 10000 --exit --reporter spec tests/test-*"
+    "test": "bin/start-strapi & bin/wait-ready ; NODE_ENV=test mocha --timeout 10000 --exit --reporter spec tests/test-* ; bin/stop-strapi"
   },
   "devDependencies": {},
   "dependencies": {
