@@ -4,6 +4,9 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "postinstall": "lerna run --parallel genPackagelock"
+  },
   "bugs": {
     "url": "https://github.com/pfapi/pfapi/issues"
   },

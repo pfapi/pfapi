@@ -82,9 +82,9 @@ ssl
 nbproject
 public/uploads/*
 !public/uploads/.gitkeep
-package-lock.json
-**/package-lock.json
-!docs/package-lock.json
+# package-lock.json
+# **/package-lock.json
+# !docs/package-lock.json
 
 ############################
 # Node.js

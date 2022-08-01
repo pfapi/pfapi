@@ -1,5 +1,5 @@
 {
-  "version": "2.4.8-alpha.3",
+  "version": "2.4.8-alpha.2",
   "name": "@pfapi/query-helpers",
   "bugs": {
     "url": "https://github.com/pfapi/query-helpers/issues"
@@ -7,6 +7,9 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:pfapi/query-helpers.git"
+  },
+  "scripts": {
+    "genPackagelock": "npm i --package-lock-only"
   },
   "description": "add supports for groupBy and filters queries",
   "main": "src/index.js",

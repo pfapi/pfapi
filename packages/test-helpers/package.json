@@ -1,6 +1,6 @@
 {
   "name": "@pfapi/test-helpers",
-  "version": "2.4.8-alpha.3",
+  "version": "2.4.8-alpha.2",
   "description": "test helpers",
   "main": "src/index.js",
   "bugs": {
@@ -9,6 +9,9 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:pfapi/pfapi.git"
+  },
+  "scripts": {
+    "genPackagelock": "npm i --package-lock-only"
   },
   "keywords": [
     "pfapi",
@@ -19,7 +22,7 @@
   "author": "Sam Wen",
   "license": "MIT",
   "dependencies": {
-    "@pfapi/utils": "^2.4.8-alpha.3",
+    "@pfapi/utils": "^2.4.8-alpha.2",
     "dotenv": "^16.0.1"
   },
   "gitHead": "8dac7b1107caf1c03d7881f5c37922f64052f185"

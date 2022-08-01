@@ -1,6 +1,6 @@
 {
   "name": "strapi-plugin-pfapi",
-  "version": "2.4.8-alpha.3",
+  "version": "2.4.8-alpha.2",
   "description": "Pfapi plugin provides fast, secure, configurable, and scalable API services for e-commerce web apps.",
   "bugs": {
     "url": "https://github.com/pfapi/pfapi/issues"
@@ -16,7 +16,8 @@
     "displayName": "Pfapi"
   },
   "scripts": {
-    "postinstall": "node ./post-install.js"
+    "postinstall": "node ./post-install.js",
+    "genPackagelock": "npm i --package-lock-only"
   },
   "author": {
     "name": "Sam Wen"
@@ -58,9 +59,9 @@
     }
   ],
   "dependencies": {
-    "@pfapi/core": "^2.4.8-alpha.3",
-    "@pfapi/query-helpers": "^2.4.8-alpha.3",
-    "@pfapi/utils": "^2.4.8-alpha.3",
+    "@pfapi/core": "^2.4.8-alpha.2",
+    "@pfapi/query-helpers": "^2.4.8-alpha.2",
+    "@pfapi/utils": "^2.4.8-alpha.2",
     "ejs": "^3.1.8",
     "fs-extra": "^10.1.0",
     "lru-cache": "^7.12.0"

@@ -1,9 +1,12 @@
 {
   "name": "@pfapi/utils",
-  "version": "2.4.8-alpha.3",
+  "version": "2.4.8-alpha.2",
   "description": "utils shared by pfapi packages",
   "bugs": {
     "url": "https://github.com/pfapi/pfapi/issues"
+  },
+  "scripts": {
+    "genPackagelock": "npm i --package-lock-only"
   },
   "repository": {
     "type": "git",

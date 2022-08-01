@@ -5,6 +5,9 @@
   "bugs": {
     "url": "https://github.com/pfapi/pfapi/issues"
   },
+  "scripts": {
+    "genPackagelock": "npm i --package-lock-only"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:pfapi/pfapi.git"
