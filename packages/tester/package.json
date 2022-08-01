@@ -1,13 +1,13 @@
 {
   "name": "@pfapi/tester",
-  "version": "1.0.6",
+  "version": "2.4.8-alpha.1",
   "description": "a command line tester for strapi-plugin pfapi",
   "bugs": {
-    "url": "https://github.com/pfapi/tester/issues"
+    "url": "https://github.com/pfapi/pfapi/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:pfapi/tester.git"
+    "url": "git@github.com:pfapi/pfapi.git"
   },
   "bin": {
     "pfapi-tester": "./bin/pfapi-tester.js"
@@ -17,9 +17,6 @@
     "lib": "./lib"
   },
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -28,5 +25,6 @@
     "commander": "^9.3.0",
     "dotenv": "^16.0.1",
     "qs": "^6.11.0"
-  }
+  },
+  "gitHead": "8dac7b1107caf1c03d7881f5c37922f64052f185"
 }
