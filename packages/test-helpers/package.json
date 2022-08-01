@@ -1,6 +1,6 @@
 {
   "name": "@pfapi/test-helpers",
-  "version": "1.0.1",
+  "version": "2.4.8-alpha.0",
   "description": "test helpers",
   "main": "src/index.js",
   "bugs": {
@@ -10,11 +10,16 @@
     "type": "git",
     "url": "git@github.com:pfapi/pfapi.git"
   },
-  "keywords": ["pfapi", "test", "seed data", "helpers"],
+  "keywords": [
+    "pfapi",
+    "test",
+    "seed data",
+    "helpers"
+  ],
   "author": "Sam Wen",
   "license": "MIT",
   "dependencies": {
-    "@pfapi/utils": "^1.0.2",
+    "@pfapi/utils": "^2.4.8-alpha.0",
     "dotenv": "^16.0.1"
   }
 }
