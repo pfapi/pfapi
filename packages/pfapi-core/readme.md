@@ -14,7 +14,7 @@ pfapi-core uses HTTP headers: etag, cache-control, expires, if-modified-since an
 
 The Refreshable class makes it possible to get data from Strapi Entity Service API, Query Engine API, other API services and databases. The Composite class aggregates multiple Refreshable results and name value components of dynamic zone into one response. Query params, such as fields, filters, populate, etc., are defined in the config and accessible without delay through the local cache.
 
-<img alt="pfapi test setup in AWS" src="https://github.com/pfapi/pfapi-core/blob/main/images/aws-test.png" />
+<img alt="pfapi test setup in AWS" src="https://github.com/pfapi/pfapi-core/developement/images/aws-test.png" />
 
 It supports production environment that runs multiple Strapi servers and Redis cluster to avoid single-point failure. It auto-reconnects to the Redis server if it restarted.
 
@@ -40,4 +40,4 @@ In a real production environment, it is often two or more Strapi servers run beh
 
 To solve this problem, Pfapi uses the Redis Pub/Sub service. Once the lifecycle event is triggered on a server, it publishes the event to a Pub/Sub channel that all servers subscribe to. The cache eviction or updating process is triggered by the Pub/Sub event.
 
-Please refer to <a href="https://github.com/pfapi/pfapi">strapi-plugin-pfapi</a> to see how to use the library and how it works.
+Please refer to <a href="https://github.com/pfapi/pfapi/blob/development/packages/pfapi-plugin">strapi-plugin-pfapi</a> to see how to use the library and how it works.
