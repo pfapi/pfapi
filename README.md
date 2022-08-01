@@ -690,7 +690,7 @@ API activities are logged with some (default 60 seconds) delay and are kept for 
 
 ## pfapi-tester
 
-pfapi-tester is the stress tester for pfapi plugin. please refer to <a href="https://github.com/pfapi/tester">pfapi-tester readme</a> to install and setup koa-response-time for x-response-time.
+pfapi-tester is the stress tester for pfapi plugin. please refer to <a href="https://github.com/pfapi/pfapi/blob/development/packages/tester/readme.md">pfapi-tester readme</a> to install and setup koa-response-time for x-response-time.
 
 We can use it to get api capacity metrics of APIs that use pfapi plugin.
 
