@@ -1,6 +1,7 @@
 'use strict';
 
 const fs = require('fs-extra');
+const path = require('path');
 const config_nginx = require('./config-nginx');
 
 // use nginx, mysql and redis cluster
