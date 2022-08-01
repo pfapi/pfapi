@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const path = require('path');
+process.chdir(path.dirname(__dirname));
+
+const { strapi_app } = require('@pfapi/utils');
+strapi_app.stop(true);

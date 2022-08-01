@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const { wait_util_ready } = require('@pfapi/utils');
+const port = process.env.PORT ? Number(process.env.PORT) : 1337
+wait_util_ready(port);

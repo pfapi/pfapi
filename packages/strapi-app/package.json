@@ -1,7 +1,6 @@
 {
   "name": "strapi-app",
-  "private": true,
-  "version": "0.1.0",
+  "version": "2.5.7",
   "description": "A Strapi application",
   "bugs": {
     "url": "https://github.com/pfapi/pfapi/issues"
@@ -13,21 +12,26 @@
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
-    "build": "strapi build",
+    "build": "strapi build && bin/run-once",
+    "run-once": "bin/run-once",
     "strapi": "strapi",
-    "test": "NODE_ENV=test mocha --timeout 10000 --exit --reporter spec tests/test-*"
+    "test": "bin/start-strapi & bin/wait-ready ; NODE_ENV=test mocha --timeout 10000 --exit --reporter spec tests/test-* ; bin/stop-strapi",
+    "wait-ready": "bin/wait-ready",
+    "use-my-plus": "bin/use-my-plus",
+    "genPackagelock": "npm i --package-lock-only"
   },
-  "devDependencies": {},
   "dependencies": {
-    "@pfapi/test-helpers": "^1.0.1",
-    "@pfapi/utils": "^1.0.2",
-    "@strapi/plugin-i18n": "4.3.0",
-    "@strapi/plugin-users-permissions": "4.3.0",
-    "@strapi/strapi": "4.3.0",
+    "@pfapi/test-helpers": "^2.4.8-alpha.3",
+    "@pfapi/utils": "^2.4.8-alpha.3",
+    "@strapi/plugin-i18n": "^4.3.2",
+    "@strapi/plugin-users-permissions": "^4.3.2",
+    "@strapi/strapi": "^4.3.2",
     "better-sqlite3": "7.4.6",
+    "dotenv": "^16.0.1",
     "koa-response-time": "^2.1.0",
-    "strapi-plugin-pfapi": "^2.4.7",
-    "strapi-plugin-pfapi-data": "^1.2.5"
+    "mysql": "^2.18.1",
+    "strapi-plugin-pfapi": "^2.4.8-alpha.3",
+    "strapi-plugin-pfapi-data": "^2.4.8-alpha.3"
   },
   "author": {
     "name": "A Strapi developer"

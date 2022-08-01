@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+set -e
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+cd $(dirname $SCRIPT_DIR)
+
+if [ -f .env ]; then
+    . .env
+fi
+
+bin/drop-db $DB
+
+if [ -f /etc/os-release ]; then
+    if [ -z "$REDIS_URI" ]; then 
+        sudo systemctl restart redis-server
+    else
+        sudo systemctl restart redis-cluster
+    fi
+else
+    brew services restart redis
+fi
+
+if [ "$DB" == "mysql" ]; then
+    if [ -f /etc/os-release ]; then
+        sudo systemctl restart mysql
+    else
+        brew services restart mysql
+    fi
+fi
+
+bin/prepare-db $DB
+
+bin/start-strapi & 
+
+bin/wait-ready 
+
+bin/stop-strapi
+
+exit 0

@@ -1,9 +1,12 @@
 {
   "name": "@pfapi/utils",
-  "version": "2.4.8-alpha.1",
+  "version": "2.5.6",
   "description": "utils shared by pfapi packages",
   "bugs": {
     "url": "https://github.com/pfapi/pfapi/issues"
+  },
+  "scripts": {
+    "genPackagelock": "npm i --package-lock-only"
   },
   "repository": {
     "type": "git",
@@ -18,6 +21,7 @@
   "dependencies": {
     "axios": "^0.27.2",
     "dotenv": "^16.0.1",
+    "find-process": "^1.4.7",
     "fs-extra": "^10.1.0",
     "qs": "^6.11.0",
     "unzipper": "^0.10.11"

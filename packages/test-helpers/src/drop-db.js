@@ -18,7 +18,7 @@ module.exports = async (client) => {
 
 async function drop_sqlite_db() {
     const filepath = path.join(process.cwd(), '.tmp', 'data.db');
-    if (!fs.existsSync(filepath)) {
+    if (fs.existsSync(filepath)) {
         fs.unlinkSync(filepath);
     }
 }
@@ -30,5 +30,6 @@ async function drop_mysql_db() {
     if (!fs.existsSync(target_filepath)) {
         execSync(`cp ${filepath} ${target_filepath} ; chmod 600 ${target_filepath}`);
     }
+    execSync('sudo systemctl status mysql || sudo systemctl restart mysql');
     execSync('mysql --login-path=local -e "drop database if exists pfapi_test"');
 }

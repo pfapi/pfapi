@@ -1,0 +1,75 @@
+name: e2e plus tests
+on: 
+#  push:
+#    branches:
+#      - main
+#    paths-ignore:
+#      - '**.md'
+#  pull_request:
+#    paths-ignore:
+#      - '**.md'
+  workflow_dispatch:
+
+jobs:
+
+  e2e-plus-tests:
+
+    timeout-minutes: 15
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: install redis service
+        uses: pfapi/redis-cluster-service@v1
+
+      - name: Checkout pfapi/pfapi
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: use mysql and redis cluster
+        run: npx lerna run use-my-plus --stream
+
+      - name: Build
+        run: npx lerna run build --stream
+
+      - name: Run strapi on port 8181
+        run: PORT=8181 npx lerna run develop --stream &
+
+      - name: Wait Util Ready on port 8181
+        run: PORT=8181 npx lerna run wait-ready --stream 
+
+      - name: Run strapi on port 8282
+        run: PORT=8282 npx lerna run develop --stream &
+
+      - name: Wait Util Ready on port 8282
+        run: PORT=8282 npx lerna run wait-ready --stream 
+
+      - name: start nginx
+        run: sudo systemctl restart nginx
+
+      - name: Wait Util Ready nginx
+        run: npx lerna run wait-ready --stream 
+
+      - name: Run test
+        run: npx lerna run test --stream
+
+      - name: restart nginx
+        run: sudo systemctl restart nginx
+
+      - name: Wait Util Ready
+        run: npx lerna run wait-ready --stream
+
+      - name: run pfapi-tester 1 time with verbose 
+        run: npx pfapi-tester -t 1 -v
+
+      - name: run pfapi-tester 10 times and concurrent
+        run: npx pfapi-tester -t 10 -c
+
+      - name: run pfapi-tester i time, fetch items and concurrent
+        run: npx pfapi-tester -t 1 -f -c
+
+      - name: run pfapi-tester walk through and fetch items
+        run: npx pfapi-tester -w -f

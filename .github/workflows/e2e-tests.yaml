@@ -1,0 +1,54 @@
+name: e2e tests
+on: 
+#  push:
+#    branches:
+#      - main
+#    paths-ignore:
+#      - '**.md'
+#  pull_request:
+#    paths-ignore:
+#      - '**.md'
+  workflow_dispatch:
+
+jobs:
+
+  e2e-tests:
+
+    timeout-minutes: 15
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: install redis service
+        uses: pfapi/redis-cluster-service@v1
+
+      - name: Checkout pfapi/pfapi
+        uses: actions/checkout@v3
+ 
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npx lerna run build --stream
+
+      - name: Run test
+        run: npx lerna run test --stream
+
+      - name: Start strapi develop
+        run: npx lerna run develop --stream &
+
+      - name: Wait Util Ready
+        run: npx lerna run wait-ready --stream
+
+      - name: run pfapi-tester 1 time with verbose 
+        run: npx pfapi-tester -t 1 -v
+
+      - name: run pfapi-tester 10 times and concurrent
+        run: npx pfapi-tester -t 10 -c
+
+      - name: run pfapi-tester i time, fetch items and concurrent
+        run: npx pfapi-tester -t 1 -f -c
+
+      - name: run pfapi-tester walk through and fetch items
+        run: npx pfapi-tester -w -f

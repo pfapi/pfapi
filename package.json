@@ -4,6 +4,9 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "gen-package-locks": "lerna run --parallel genPackagelock"
+  },
   "bugs": {
     "url": "https://github.com/pfapi/pfapi/issues"
   },
@@ -51,6 +54,7 @@
     }
   ],
   "devDependencies": {
-    "lerna": "^5.3.0"
+    "lerna": "^5.3.0",
+    "nx": "^14.5.1"
   }
 }

@@ -18,9 +18,6 @@ module.exports = async (client) => {
 }
 
 async function create_sqlite_db() {
-    const db_config_path = path.join(process.cwd(), 'config/database.js');
-    const sqlite_file_path = path.join(__dirname, '..', 'files/db-sqlite.js');
-    await fs.copy(sqlite_file_path, db_config_path);
     const data_db_path = path.join(process.cwd(), '.tmp/data.db');
     if (fs.existsSync(data_db_path)) {
         return;
@@ -34,15 +31,13 @@ async function create_sqlite_db() {
 }
 
 async function create_mysql_db() {
-    const db_config_path = path.join(process.cwd(), 'config/database.js');
-    const mysql_file_path = path.join(__dirname, '..', 'files/db-mysql.js');
-    await fs.copy(mysql_file_path, db_config_path);
     const filepath = path.join(__dirname, '..', 'files/mylogin.cnf');
     const homedir = os.homedir();
     const target_filepath = path.join(homedir, '.mylogin.cnf');
     if (!fs.existsSync(target_filepath)) {
         execSync(`cp ${filepath} ${target_filepath} ; chmod 600 ${target_filepath}`);
     }
+    execSync('sudo systemctl status mysql || sudo systemctl restart mysql');
     if (await check_for_pfapi_test()) {
         return;
     }
@@ -53,6 +48,7 @@ async function import_pfapi_test() {
     await unzip(path.join(__dirname, '..', 'files/mysql.sql.zip'), require('os').tmpdir());
     const sql_path = path.join(require('os').tmpdir(), 'mysql.sql')
     execSync(`mysql --login-path=local < ${sql_path}`);
+    fs.unlinkSync(sql_path)
 }
 
 async function check_for_pfapi_test() {

@@ -1,11 +1,11 @@
 #!/bin/bash
 
-if [ -z "$GITHUB_WORKSPACE" ]; then
-
-    brew services restart redis
-
+if [ -f /etc/os-release ]; then
+    if sudo systemctl status redis-server; then 
+        sudo systemctl restart redis-server
+    else
+        sudo systemctl restart redis-cluster
+    fi
 else
-
-    sudo systemctl restart redis-server
-
+    brew services restart redis
 fi

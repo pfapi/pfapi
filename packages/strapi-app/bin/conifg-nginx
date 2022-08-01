@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const path = require('path');
+process.chdir(path.dirname(__dirname));
+
+// use mysql and redis cluster
+//
+require('dotenv');
+const { config_nginx } = require('@pfapi/test-helpers');
+config_nginx();

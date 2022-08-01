@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const path = require('path');
+process.chdir(path.dirname(__dirname));
+
+require('dotenv');
+
+const { drop_db } = require('@pfapi/test-helpers');
+const client = process.env.DB ? process.env.DB : 'sqlite';
+drop_db(client);

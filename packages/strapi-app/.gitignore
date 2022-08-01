@@ -45,7 +45,7 @@ $RECYCLE.BIN/
 *.jar
 *.rar
 *.tar
-*.zip
+#*.zip
 *.com
 *.class
 *.dll
@@ -82,6 +82,9 @@ ssl
 nbproject
 public/uploads/*
 !public/uploads/.gitkeep
+# package-lock.json
+# **/package-lock.json
+# !docs/package-lock.json
 
 ############################
 # Node.js

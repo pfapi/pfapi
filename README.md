@@ -1,3 +1,5 @@
+[![e2e tests](https://github.com/pfapi/pfapi/actions/workflows/e2e-tests.yaml/badge.svg)](https://github.com/pfapi/pfapi/actions/workflows/e2e-tests.yaml) [![e2e plus tests](https://github.com/pfapi/pfapi/actions/workflows/e2e-plus-tests.yaml/badge.svg)](https://github.com/pfapi/pfapi/actions/workflows/e2e-plus-tests.yaml)
+
 # Strapi plugin pfapi
 
 Pfapi plugin uses <a href="https://github.com/pfapi/pfapi/blob/development/packages/pfapi-core/readme.md">pfapi-core library</a> to provide fast, secure, configurable, and scalable API services for e-commerce web apps.

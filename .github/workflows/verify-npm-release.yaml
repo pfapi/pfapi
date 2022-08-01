@@ -1,0 +1,58 @@
+name: verify npm release
+
+on: workflow_dispatch
+
+jobs:
+
+  verify-npm-release:
+
+    timeout-minutes: 15
+
+    runs-on: ubuntu-latest
+
+    steps:
+      
+      - name: install redis service
+        uses: pfapi/redis-cluster-service@v1
+
+      - name: Checkout pfapi/pfapi
+        uses: actions/checkout@v3
+
+      - name: install packages/
+        run: cd main; cp tools/package.json package.json
+
+      - name: Install latest dependencies
+        run: cd main; npm install axios chai mocha qs unzipper dotenv better-sqlite3 mysql fs-extra ejs @strapi/plugin-i18n @strapi/plugin-users-permissions @strapi/strapi koa-response-time strapi-plugin-pfapi strapi-plugin-pfapi-data
+
+      - name: set to use sqlite database config
+        run: cd main; cp tools/db-sqlite.js config/database.js
+
+      - name: run prepare
+        run: cd main; node tools/prepare
+
+      - name: run tree
+        run: tree -I 'node_modules|cache|build'
+
+      - name: Build & Run strapi
+        run: cd main; yarn build; yarn develop &
+
+      - name: Wait Util Ready
+        run: cd main; node tools/wait-util-ready.js
+
+      - name: run yarn test
+        run: cd main; yarn test
+
+      - name: Install @pfapi/tester
+        run: npm install @pfapi/tester -g
+        
+      - name: run pfapi-tester 1 time with verbose 
+        run: pfapi-tester -t 1 -v
+
+      - name: run pfapi-tester 10 times and concurrent
+        run: pfapi-tester -t 10 -c
+
+      - name: run pfapi-tester fetch items and concurrent
+        run: pfapi-tester -f -c
+
+      - name: run pfapi-tester walk through and fetch items
+        run: pfapi-tester -w -f
