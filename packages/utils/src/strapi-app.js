@@ -38,9 +38,11 @@ async function stop(force = false) {
     } else if (force && await check_health(port)) {
         const ps = await find('port', port);
         if (ps.length > 0) {
+          console.log(ps)
           const str = ps.map(x => x.pid).join(' ');
           execSync(`kill -9 ${str}`);
         } else {
+          console.log(`kill -9 $(lsof -i :${port} | awk '{print $2}')`)
           execSync(`kill -9 $(lsof -i :${port} | awk '{print $2}')`);
         }
     }
