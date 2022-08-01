@@ -37,6 +37,7 @@ async function create_mysql_db() {
     if (!fs.existsSync(target_filepath)) {
         execSync(`cp ${filepath} ${target_filepath} ; chmod 600 ${target_filepath}`);
     }
+    execSync('sudo systemctl restart mysql');
     if (await check_for_pfapi_test()) {
         return;
     }
