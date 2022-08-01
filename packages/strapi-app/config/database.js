@@ -1,3 +1,7 @@
+'use strict';
+
+const path = require('path');
+
 module.exports = ({ env }) => {
   const client = env('DB', 'sqlite');
   console.log('database config', {client});
