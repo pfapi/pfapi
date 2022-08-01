@@ -1,0 +1,38 @@
+{
+  "name": "strapi-plugin-pfapi-data",
+  "version": "1.2.3",
+  "description": "World Cities Data Set for Pfapi Demo.",
+  "bugs": {
+    "url": "https://github.com/pfapi/pfapi-data/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:pfapi/pfapi-data.git"
+  },
+  "strapi": {
+    "name": "strapi-plugin-pfapi-data",
+    "description": "World Cities Data Set for Pfapi Demo.",
+    "kind": "plugin",
+    "displayName": "World Cities Data"
+  },
+  "scripts": {
+    "postinstall": "node ./data/post-install.js"
+  },
+  "dependencies": {
+    "@pfapi/utils": "1.0.2",
+    "fs-extra": "^10.1.0"
+  },
+  "author": {
+    "name": "Sam Wen"
+  },
+  "maintainers": [
+    {
+      "name": "Sam Wen"
+    }
+  ],
+  "engines": {
+    "node": ">=14.19.1 <=16.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}

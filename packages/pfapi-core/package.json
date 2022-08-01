@@ -1,0 +1,61 @@
+{
+  "name": "@pfapi/core",
+  "version": "2.4.2",
+  "description": "pfapi core is a library that helps write Strapi Plugins to provide fast, secure, configurable and scalable API services.",
+  "bugs": {
+    "url": "https://github.com/pfapi/pfapi-core/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:pfapi/pfapi-core.git"
+  },
+  "main": "src/index.js",
+  "scripts": {
+    "test": "NODE_ENV=test mocha --timeout 10000 --exit --reporter spec tests/*/test-*"
+  },
+  "keywords": [
+    "strapi",
+    "plugin",
+    "library",
+    "local",
+    "redis",
+    "cache",
+    "fast",
+    "single",
+    "digit",
+    "milliseconds",
+    "api",
+    "processing",
+    "time",
+    "ip",
+    "block",
+    "allow",
+    "rate",
+    "limit",
+    "throttle",
+    "activity",
+    "log"
+  ],
+  "author": "Sam Wen",
+  "license": "MIT",
+  "dependencies": {
+    "base-x": "4.0.0",
+    "debug": "^4.3.4",
+    "fs-extra": "^10.1.0",
+    "ioredis": "5.0.6",
+    "ip-matching": "2.1.2",
+    "lodash": "4.17.21",
+    "netmask": "^2.0.2",
+    "parse-redis-url-simple": "^1.0.2",
+    "request-ip": "^3.3.0",
+    "uuid": "8.3.2"
+  },
+  "devDependencies": {
+    "axios": "0.27.2",
+    "chai": "4.3.6",
+    "eslint": "8.18.0",
+    "eslint-config-google": "0.14.0",
+    "koa": "2.13.4",
+    "mocha": "10.0.0"
+  }
+}

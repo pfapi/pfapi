@@ -1,0 +1,174 @@
+[
+    {
+      "id": 1,
+      "handle": "northern-cities",
+      "uid": "api::world-city.world-city",
+      "id_field": null,
+      "params": {
+        "fields": [
+          "name",
+          "lat",
+          "lng",
+          "population",
+          "country",
+          "iso3"
+        ],
+        "filters": {
+          "lat": {
+            "$gt": 60
+          }
+        },
+        "filters_config": [
+          {
+            "key": "lat",
+            "type": "range",
+            "title": "Latitude"
+          },
+          {
+            "key": "lng",
+            "type": "range",
+            "title": "Longitude"
+          },
+          {
+            "key": "population"
+          },
+          {
+            "key": "country"
+          }
+        ]
+      },
+      "attributes": [
+        {
+          "__component": "pfapi-types.text",
+          "id": 1,
+          "name": "title",
+          "value": "Northern Cities<%= typeof pagination !== 'undefined' && pagination.total ? ` - Total ${pagination.total}` : '' %>"
+        },
+        {
+          "__component": "pfapi-types.media",
+          "id": 3,
+          "name": "map",
+          "media": 3
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "handle": "northern-city",
+      "uid": "api::world-city.world-city",
+      "id_field": "name",
+      "params": {
+        "fields": [
+          "name",
+          "lat",
+          "lng",
+          "population"
+        ],
+        "filters": {
+          "lat": {
+            "$gt": 50
+          }
+        }
+      },
+      "comment": "assuming content type city existed",
+      "createdAt": "2022-07-05T19:05:29.681Z",
+      "updatedAt": "2022-07-05T20:17:57.874Z",
+      "publishedAt": "2022-07-05T19:05:29.560Z",
+      "attributes": [
+        {
+          "__component": "pfapi-types.text",
+          "id": 2,
+          "name": "title",
+          "value": "Northern City<%= typeof item !== 'undefined' && item.name ? ` - ${item.name}` : '' %>"
+        },
+        {
+          "__component": "pfapi-types.media",
+          "id": 4,
+          "name": "snow",
+          "media": 4
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "handle": "us-cities",
+      "uid": "api::world-city.world-city",
+      "id_field": "name",
+      "params": {
+        "fields": [
+          "name",
+          "lat",
+          "lng",
+          "population"
+        ],
+        "filters": {
+          "iso3": "USA"
+        }
+      },
+      "attributes": [
+        {
+          "__component": "pfapi-types.text",
+          "id": 3,
+          "name": "title",
+          "value": "Cities in United States"
+        },
+        {
+          "__component": "pfapi-types.media",
+          "id": 1,
+          "name": "map",
+          "media": {
+            "id": 1
+          }
+        },
+        {
+          "__component": "pfapi-types.text",
+          "id": 6,
+          "name": "Quick facts",
+          "value": "The U.S. is a country of 50 states covering a vast swath of North America, with Alaska in the northwest and Hawaii extending the nation’s presence into the Pacific Ocean. Major Atlantic Coast cities are New York, a global finance and culture center, and capital Washington, DC. Midwestern metropolis Chicago is known for influential architecture and on the west coast, Los Angeles' Hollywood is famed for filmmaking."
+        },
+        {
+          "__component": "pfapi-types.multimedia",
+          "id": 1,
+          "name": "NY_and_LA",
+          "media": [ 5, 6 ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "handle": "french-cities",
+      "uid": "api::world-city.world-city",
+      "id_field": "name",
+      "params": {
+        "fields": [
+          "name",
+          "lat",
+          "lng",
+          "population"
+        ],
+        "filters": {
+          "iso3": "FRA"
+        }
+      },
+      "attributes": [
+        {
+          "__component": "pfapi-types.text",
+          "id": 4,
+          "name": "Quick facts",
+          "value": "France, in Western Europe, encompasses medieval cities, alpine villages and Mediterranean beaches. Paris, its capital, is famed for its fashion houses, classical art museums including the Louvre and monuments like the Eiffel Tower. The country is also renowned for its wines and sophisticated cuisine. Lascaux’s ancient cave drawings, Lyon’s Roman theater and the vast Palace of Versailles attest to its rich history."
+        },
+        {
+          "__component": "pfapi-types.media",
+          "id": 2,
+          "name": "map",
+          "media": 2
+        },
+        {
+          "__component": "pfapi-types.text",
+          "id": 5,
+          "name": "title",
+          "value": "Cities in France"
+        }
+      ]
+    }
+  ]

@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_pfapi_types_media",
+  "info": {
+    "displayName": "media",
+    "icon": "angle-right",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

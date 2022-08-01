@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_pfapi_types_jsons",
+  "info": {
+    "displayName": "json",
+    "icon": "angle-right",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "json"
+    }
+  }
+}
