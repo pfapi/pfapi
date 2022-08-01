@@ -1,6 +1,6 @@
 {
   "name": "strapi-app",
-  "version": "2.4.8-alpha.2",
+  "version": "2.4.8-alpha.3",
   "description": "A Strapi application",
   "bugs": {
     "url": "https://github.com/pfapi/pfapi/issues"
@@ -21,8 +21,8 @@
     "genPackagelock": "npm i --package-lock-only"
   },
   "dependencies": {
-    "@pfapi/test-helpers": "^2.4.8-alpha.2",
-    "@pfapi/utils": "^2.4.8-alpha.2",
+    "@pfapi/test-helpers": "^2.4.8-alpha.3",
+    "@pfapi/utils": "^2.4.8-alpha.3",
     "@strapi/plugin-i18n": "^4.3.2",
     "@strapi/plugin-users-permissions": "^4.3.2",
     "@strapi/strapi": "^4.3.2",
@@ -30,8 +30,8 @@
     "dotenv": "^16.0.1",
     "koa-response-time": "^2.1.0",
     "mysql": "^2.18.1",
-    "strapi-plugin-pfapi": "^2.4.8-alpha.2",
-    "strapi-plugin-pfapi-data": "^2.4.8-alpha.2"
+    "strapi-plugin-pfapi": "^2.4.8-alpha.3",
+    "strapi-plugin-pfapi-data": "^2.4.8-alpha.3"
   },
   "author": {
     "name": "A Strapi developer"
