@@ -1,7 +1,7 @@
 {
   "name": "strapi-app",
   "private": true,
-  "version": "0.1.0",
+  "version": "2.4.8-alpha.2",
   "description": "A Strapi application",
   "bugs": {
     "url": "https://github.com/pfapi/pfapi/issues"
@@ -18,7 +18,6 @@
     "strapi": "strapi",
     "test": "bin/start-strapi & bin/wait-ready ; NODE_ENV=test mocha --timeout 10000 --exit --reporter spec tests/test-* ; bin/stop-strapi"
   },
-  "devDependencies": {},
   "dependencies": {
     "@pfapi/test-helpers": "^1.0.1",
     "@pfapi/utils": "^1.0.2",
