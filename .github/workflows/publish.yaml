@@ -38,5 +38,3 @@ jobs:
         npx lerna publish from-git --yes
       env:
         GH_TOKEN: ${{ secrets.ACCESS_PASS }}
-        GITHUB_TOKEN: ${{ secrets.ACCESS_PASS }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
