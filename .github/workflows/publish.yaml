@@ -10,6 +10,7 @@ on:
 jobs:
   publish:
     if: github.event.pull_request.merged == true
+    timeout-minutes: 15
     runs-on: ubuntu-latest
 
     steps:
@@ -38,3 +39,6 @@ jobs:
         npx lerna publish from-git --yes
       env:
         GH_TOKEN: ${{ secrets.ACCESS_PASS }}
+
+    - name: release 
+      uses: ./.github/workflows/release

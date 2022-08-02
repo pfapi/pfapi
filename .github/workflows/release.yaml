@@ -1,20 +1,13 @@
-name: verify npm release
+name: verify and release
 
 on:
-  workflow_dispatch:
-  push:
-    branches:
-    - development
-    - main
-    tags:
-      - "v*"
+  workflow_dispatch
+  workflow_call
 
 jobs:
 
-  verify-npm-release:
-
+  verify-and-release:
     timeout-minutes: 15
-
     runs-on: ubuntu-latest
 
     steps:
@@ -28,7 +21,7 @@ jobs:
             path: main
         
       - name: isolate out strapi-app
-        run: mv main/packages/strapi-app ./
+        run: cp -pr main/packages/strapi-app ./
 
       - name: remove config/plugins.js
         run: cd strapi-app; rm config/plugins.js
