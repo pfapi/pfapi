@@ -1,6 +1,6 @@
 {
   "name": "strapi-plugin-pfapi-data",
-  "version": "2.5.9-alpha.1",
+  "version": "2.5.9",
   "description": "World Cities Data Set for Pfapi Demo.",
   "bugs": {
     "url": "https://github.com/pfapi/pfapi/issues"
@@ -20,7 +20,7 @@
     "genPackagelock": "npm i --package-lock-only"
   },
   "dependencies": {
-    "@pfapi/utils": "^2.5.9-alpha.0",
+    "@pfapi/utils": "^2.5.9",
     "fs-extra": "^10.1.0"
   },
   "author": {
