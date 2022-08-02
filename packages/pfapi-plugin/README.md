@@ -1,6 +1,28 @@
+[![e2e tests](https://github.com/pfapi/pfapi/actions/workflows/e2e-tests.yaml/badge.svg)](https://github.com/pfapi/pfapi/actions/workflows/e2e-tests.yaml) [![e2e plus tests](https://github.com/pfapi/pfapi/actions/workflows/e2e-plus-tests.yaml/badge.svg)](https://github.com/pfapi/pfapi/actions/workflows/e2e-plus-tests.yaml) [![verify npm release](https://github.com/pfapi/pfapi/actions/workflows/verify-npm-release.yaml/badge.svg)](https://github.com/pfapi/pfapi/actions/workflows/verify-npm-release.yaml)
+
 # Strapi plugin pfapi
 
 Pfapi plugin uses <a href="https://github.com/pfapi/pfapi/blob/development/packages/pfapi-core/readme.md">pfapi-core library</a> to provide fast, secure, configurable, and scalable API services for e-commerce web apps.
+
+* Pfapi uses local and Redis caches to achieve single-digit milliseconds on average API response time. 
+* IP unlimited / blocked lists, Rate limits and activities log are accessible through the admin panel. 
+* API handles for detail and list views are powered by highly configurable components dynamic zone.
+* Configurable filters enable user-friendly UX for users to find what they are looking for.
+* Production environment that runs multiple Strapi servers and Redis cluster is supported and tested.
+
+## Requirements
+
+Pfapi plugin is a Strapi version 4 plugin. It requires the in-memory data store Redis. Please refer to <a href="https://redis.io/docs/getting-started/">Redis getting started</a> to install redis server for your environment.
+
+## How to install
+
+```bash
+yarn add strapi-plugin-pfapi
+
+OR
+
+npm install strapi-plugin-pfapi
+```
 
 <a href="https://github.com/pfapi/pfapi/blob/development/README.md">Click to see full documentation</a>
 

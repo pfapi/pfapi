@@ -3,8 +3,11 @@
 const path = require('path');
 
 module.exports = ({ env }) => {
+
   const client = env('DB', 'sqlite');
+
   console.log('database config', {client});
+
   if (client === 'mysql') {
     return {
       connection: {
@@ -19,7 +22,8 @@ module.exports = ({ env }) => {
         },
       },
     };
-  } else if (client === 'sqlite') {
+  }
+  if (client === 'sqlite') {
     return {
       connection: {
         client,
@@ -29,7 +33,7 @@ module.exports = ({ env }) => {
         useNullAsDefault: true,
       },
     };
-  } else {
-    throw new Error(`database ${client} not supported`)
   }
+
+  throw new Error(`database ${client} not supported`)
 }
