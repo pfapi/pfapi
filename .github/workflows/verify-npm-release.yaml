@@ -36,18 +36,18 @@ jobs:
       - name: build strapi-app
         run: cd strapi-app; npm run build
 
+      - name: run test
+        run: cd strapi-app; npm run test
+
+      - name: Install @pfapi/tester
+        run: npm install @pfapi/tester --location=global
+
       - name: run develop
         run: cd strapi-app; npm run develop &
 
       - name: Wait Util Ready
         run: cd strapi-app; npm run wait-ready
 
-      - name: run test
-        run: cd strapi-app; npm run test
-
-      - name: Install @pfapi/tester
-        run: npm install @pfapi/tester -g
-        
       - name: run pfapi-tester 1 time with verbose 
         run: pfapi-tester -t 1 -v
 
