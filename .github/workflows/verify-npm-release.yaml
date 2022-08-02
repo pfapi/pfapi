@@ -21,21 +21,26 @@ jobs:
 
       - name: Checkout pfapi/pfapi
         uses: actions/checkout@v3
+        with:
+            path: main
+
+      - name: isolate out strapi-app
+        run: mv main/packages/strapi-app; ./
 
       - name: install strapi-app dependencies
-        run: cd packages/strapi-app; npm install
+        run: cd strapi-app; npm install
 
       - name: build strapi-app
-        run: cd packages/strapi-app; npm run build
+        run: cd strapi-app; npm run build
 
       - name: run develop
-        run: cd packages/strapi-app; npm run develop &
+        run: cd strapi-app; npm run develop &
 
       - name: Wait Util Ready
-        run: cd packages/strapi-app; npm run wait-ready
+        run: cd strapi-app; npm run wait-ready
 
       - name: run test
-        run: cd packages/strapi-app; npm run test
+        run: cd strapi-app; npm run test
 
       - name: Install @pfapi/tester
         run: npm install @pfapi/tester -g
