@@ -20,13 +20,15 @@ jobs:
 
     - name: setup npm credential
       run: |
-        npm set @pfapi:registry=https://npm.pkg.github.com/pfapi
-        npm set "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}"
+        npm set @pfapi:registry=registry.npmjs.org
+        npm set "//registry.npmjs.org/:_authToken=$NPM_TOKEN"
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     - name: setup git config and credentials
       run: |
         git config user.name "${{ github.actor }}"
-        git config user.email "${{ github.actor}}@users.noreply.github.com"
+        git config user.email "${{ github.actor }}@users.noreply.github.com"
         echo "https://${{ secrets.ACCESS_TOKEN }}@github.com" > ~/.git-credentials
         chmod 600 ~/.git-credentials
 
@@ -38,8 +40,7 @@ jobs:
           npx lerna version --conventional-commits --conventional-prerelease --preid beta --yes
         fi
         npx lerna publish from-git --yes
-
-    - name: cleanup credential files
-      run: |
-        [ -f ~/.npmrc ] && rm -rf ~/.npmrc
-        [ -f ~/.git-credentials ] && rm -rf ~/.git-credentials
+      env:
+        GH_TOKEN: ${{ secrets.ACCESS_PASS }}
+        GITHUB_TOKEN: ${{ secrets.ACCESS_PASS }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
