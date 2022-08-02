@@ -40,5 +40,48 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.ACCESS_PASS }}
 
-    - name: release 
-      uses: pfapi/pfapi/.github/workflows/release.yaml
+      # verify npm packages
+      #
+      - name: install redis service
+        uses: pfapi/redis-cluster-service@v1
+
+      - name: Checkout pfapi/pfapi
+        uses: actions/checkout@v3
+        with:
+            path: main
+        
+      - name: isolate out strapi-app
+        run: cp -pr main/packages/strapi-app ./
+
+      - name: remove config/plugins.js
+        run: cd strapi-app; rm config/plugins.js
+
+      - name: install strapi-app dependencies
+        run: cd strapi-app; npm install
+
+      - name: build strapi-app
+        run: cd strapi-app; npm run build
+
+      - name: run test
+        run: cd strapi-app; npm run test
+
+      - name: Install @pfapi/tester
+        run: npm install @pfapi/tester --location=global
+
+      - name: run develop
+        run: cd strapi-app; npm run develop &
+
+      - name: Wait Util Ready
+        run: cd strapi-app; npm run wait-ready
+
+      - name: run pfapi-tester 1 time with verbose 
+        run: pfapi-tester -t 1 -v
+
+      - name: run pfapi-tester 10 times and concurrent
+        run: pfapi-tester -t 10 -c
+
+      - name: run pfapi-tester 1 time, fetch items and concurrent
+        run: npx pfapi-tester -t 1 -f -c
+
+      - name: run pfapi-tester walk through and fetch items
+        run: pfapi-tester -w -f
