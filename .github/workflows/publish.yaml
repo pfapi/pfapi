@@ -40,8 +40,6 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.ACCESS_PASS }}
 
-      # verify npm packages
-      #
       - name: install redis service
         uses: pfapi/redis-cluster-service@v1
 
@@ -51,7 +49,7 @@ jobs:
             path: main
         
       - name: isolate out strapi-app
-        run: cp -pr main/packages/strapi-app ./
+        run: mv main/packages/strapi-app ./
 
       - name: remove config/plugins.js
         run: cd strapi-app; rm config/plugins.js
