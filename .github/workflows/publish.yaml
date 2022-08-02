@@ -22,6 +22,7 @@ jobs:
 
     - name: setup git config
       run: |
+        cd main
         git config user.name "${{ github.actor }}"
         git config user.email "${{ github.actor }}@users.noreply.github.com"
 
