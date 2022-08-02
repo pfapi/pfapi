@@ -1,13 +1,13 @@
 name: e2e plus tests
 on: 
-#  push:
-#    branches:
-#      - main
-#    paths-ignore:
-#      - '**.md'
-#  pull_request:
-#    paths-ignore:
-#      - '**.md'
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    paths-ignore:
+      - '**.md'
   workflow_dispatch:
 
 jobs:
@@ -68,7 +68,7 @@ jobs:
       - name: run pfapi-tester 10 times and concurrent
         run: npx pfapi-tester -t 10 -c
 
-      - name: run pfapi-tester i time, fetch items and concurrent
+      - name: run pfapi-tester 1 time, fetch items and concurrent
         run: npx pfapi-tester -t 1 -f -c
 
       - name: run pfapi-tester walk through and fetch items
