@@ -47,10 +47,12 @@ jobs:
       uses: pfapi/redis-cluster-service@v1
       
     - name: isolate out strapi-app
-      run: mv main/packages/strapi-app ./
-
-    - name: remove config/plugins.js
-      run: cd strapi-app; rm config/plugins.js
+      run: |
+        cp -pr main/packages/strapi-app ./
+        cd strapi-app
+        rm config/plugins.js
+        rm -rf node_module
+        rm package-lock.json
 
     - name: install strapi-app dependencies
       run: cd strapi-app; npm install
