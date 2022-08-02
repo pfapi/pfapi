@@ -1,12 +1,5 @@
 name: e2e plus tests
 on: 
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - '.github/**'
-      - '**.md'
-      - 'images/**'
   pull_request:
     branches:
       - main

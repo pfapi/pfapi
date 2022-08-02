@@ -10,6 +10,7 @@ on:
 jobs:
   publish:
     if: github.event.pull_request.merged == true
+    timeout-minutes: 15
     runs-on: ubuntu-latest
 
     steps:
@@ -38,3 +39,61 @@ jobs:
         npx lerna publish from-git --yes
       env:
         GH_TOKEN: ${{ secrets.ACCESS_PASS }}
+
+    - name: get current version
+      run: |
+        CURRENT_VERSION=$(node -p 'require("./lerna.json").version')
+        echo "CURRENT_VERSION=${CURRENT_VERSION}" >> $GITHUB_ENV
+  
+    - name: install redis service
+      uses: pfapi/redis-cluster-service@v1
+      
+    - name: isolate out strapi-app
+      run: |
+        cp -pr packages/strapi-app /tmp
+        cd /tmp/strapi-app
+        rm config/plugins.js
+        rm -rf node_module
+        rm package-lock.json
+
+    - name: install strapi-app dependencies
+      run: cd /tmp/strapi-app; npm install
+
+    - name: build strapi-app
+      run: cd /tmp/strapi-app; npm run build
+
+    - name: run test
+      run: cd /tmp/strapi-app; npm run test
+
+    - name: Install @pfapi/tester
+      run: npm install @pfapi/tester --location=global
+
+    - name: run develop
+      run: cd /tmp/strapi-app; npm run develop &
+
+    - name: Wait Util Ready
+      run: cd /tmp/strapi-app; npm run wait-ready
+
+    - name: run pfapi-tester 1 time with verbose 
+      run: pfapi-tester -t 1 -v
+
+    - name: run pfapi-tester 10 times and concurrent
+      run: pfapi-tester -t 10 -c
+
+    - name: run pfapi-tester 1 time, fetch items and concurrent
+      run: npx pfapi-tester -t 1 -f -c
+
+    - name: run pfapi-tester walk through and fetch items
+      run: pfapi-tester -w -f
+
+    - name: create release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_PASS }}
+      with:
+        tag_name: v${{ env.CURRENT_VERSION }}
+        release_name: pfapi-v${{ env.CURRENT_VERSION }}
+        body: |
+          ${{ github.event.pull_request.body }}
+        draft: false
+        prerelease: false
