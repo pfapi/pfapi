@@ -17,6 +17,7 @@ jobs:
     - name: "Checkout"
       uses: actions/checkout@v3
       with:
+        path: main
         fetch-depth: 0
 
     - name: setup git config
@@ -31,6 +32,7 @@ jobs:
 
     - name: version and publish
       run: |
+        cd main
         if [ "${GITHUB_REF##*/}" = main ]; then
           npx lerna version --conventional-commits --conventional-graduate --yes
         else
@@ -42,11 +44,6 @@ jobs:
 
       - name: install redis service
         uses: pfapi/redis-cluster-service@v1
-
-      - name: Checkout pfapi/pfapi
-        uses: actions/checkout@v3
-        with:
-            path: main
         
       - name: isolate out strapi-app
         run: mv main/packages/strapi-app ./
