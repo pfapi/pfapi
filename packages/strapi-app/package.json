@@ -1,6 +1,6 @@
 {
   "name": "strapi-app",
-  "version": "2.5.14-beta.1",
+  "version": "2.5.14-beta.2",
   "description": "A Strapi application",
   "bugs": {
     "url": "https://github.com/pfapi/pfapi/issues"
