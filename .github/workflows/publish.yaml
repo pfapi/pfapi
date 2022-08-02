@@ -19,7 +19,7 @@ jobs:
         fetch-depth: 0
 
     - name: git branch
-      run: git branch ; echo "GITHUB_REF=$GITHUB_REF" ; echo "branch=${GITHUB_REF##*/}"
+      run: git branch ; echo "branch=${GITHUB_REF##*/}"
 
     - name: setup npm credential
       run: |
@@ -33,8 +33,17 @@ jobs:
         echo "https://${{ secrets.ACCESS_TOKEN }}@github.com" > ~/.git-credentials
         chmod 600 ~/.git-credentials
 
+    - name: version and publish
+      run: |
+        if [ "${GITHUB_REF##*/}" = main ]; then
+          npx lerna version --conventional-commits --conventional-graduate --yes
+        else
+          npx lerna version --conventional-commits --conventional-prerelease --preid beta --yes
+        fi
+        npx lerna publish from-git --yes
+
     - name: cleanup credential files
       run: |
-        [ -f ~/.npmrc ] && rm ~/.npmrc
-        [ -f ~/.git-credentials ] && rm ~/.git-credentials
-        [ -f ~/.gitconfig ] && rm ~/.gitconfig
+        [ -f ~/.npmrc ] && rm -rf ~/.npmrc
+        [ -f ~/.git-credentials ] && rm -rf ~/.git-credentials
+        [ -f ~/.gitconfig ] && rm -rf ~/.gitconfig
