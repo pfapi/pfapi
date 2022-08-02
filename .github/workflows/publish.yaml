@@ -1,10 +1,10 @@
 name: publish
 on:
-  pull_request:
-    types: [closed]
-    branches:
-      - development
-      - main
+  # pull_request:
+  #   types: [closed]
+  #   branches:
+  #     - development
+  #     - main
   workflow_dispatch:
 
 jobs:
@@ -19,25 +19,23 @@ jobs:
         fetch-depth: 0
 
     - name: git branch
-      run: git branch
+      run: git branch ; echo "github.base_ref=${{ github.base_ref }}"
 
     - name: setup npm credential
       run: |
         npm set @pfapi:registry=https://npm.pkg.github.com/pfapi
         npm set "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}"
+        cat ~/.npmrc
 
-    - name: setup git config
+    - name: setup git config and credentials
       run: |
         git config user.name "${{ github.actor }}"
         git config user.email "${{ github.actor}}@users.noreply.github.com"
+        echo "https://${{ secrets.ACCESS_TOKEN }}@github.com" > ~/.git-credentials
+        chmod 600 ~/.git-credentials
+        cat  ~/.git-credentials
 
-    - name: version and publish
-      env:
-        GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+    - name: cleanup credential files
       run: |
-        if [ ${{ github.base_ref }} = development ]; then
-          npx lerna version --conventional-commits --conventional-prerelease --preid beta --yes
-        else
-          npx lerna version --conventional-commits --conventional-graduate --yes
-        fi
-        npx lerna publish from-git --yes
+        [ -f ~/.npmrc ] && rm ~/.npmrc
+        [ -f ~/.git-credentials ] && rm ~/.git-credentials
