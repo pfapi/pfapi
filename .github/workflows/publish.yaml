@@ -10,7 +10,6 @@ on:
 jobs:
   publish:
     if: github.event.pull_request.merged == true
-    timeout-minutes: 15
     runs-on: ubuntu-latest
 
     steps:
