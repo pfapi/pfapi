@@ -1,6 +1,6 @@
 {
   "name": "@pfapi/tester",
-  "version": "2.5.10",
+  "version": "2.5.14",
   "description": "a command line tester for strapi-plugin pfapi",
   "bugs": {
     "url": "https://github.com/pfapi/pfapi/issues"
