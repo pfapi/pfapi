@@ -1,6 +1,6 @@
 {
   "name": "strapi-plugin-pfapi-data",
-  "version": "2.5.14-beta.0",
+  "version": "2.5.9",
   "description": "World Cities Data Set for Pfapi Demo.",
   "bugs": {
     "url": "https://github.com/pfapi/pfapi/issues"
