@@ -19,13 +19,12 @@ jobs:
         fetch-depth: 0
 
     - name: git branch
-      run: git branch ; echo "github.base_ref=${{ github.base_ref }}"
+      run: git branch ; echo "GITHUB_REF=$GITHUB_REF" ; echo "branch=${GITHUB_REF##*/}"
 
     - name: setup npm credential
       run: |
         npm set @pfapi:registry=https://npm.pkg.github.com/pfapi
         npm set "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}"
-        cat ~/.npmrc
 
     - name: setup git config and credentials
       run: |
@@ -33,9 +32,9 @@ jobs:
         git config user.email "${{ github.actor}}@users.noreply.github.com"
         echo "https://${{ secrets.ACCESS_TOKEN }}@github.com" > ~/.git-credentials
         chmod 600 ~/.git-credentials
-        cat  ~/.git-credentials
 
     - name: cleanup credential files
       run: |
         [ -f ~/.npmrc ] && rm ~/.npmrc
         [ -f ~/.git-credentials ] && rm ~/.git-credentials
+        [ -f ~/.gitconfig ] && rm ~/.gitconfig
