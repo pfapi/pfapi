@@ -8,6 +8,8 @@ on:
       - '**.md'
       - 'images/**'
   pull_request:
+    branches:
+      - development
     paths-ignore:
       - '.github/**'
       - '**.md'
