@@ -18,9 +18,6 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: git branch
-      run: git branch ; echo "branch=${GITHUB_REF##*/}"
-
     - name: setup npm credential
       run: |
         npm set @pfapi:registry=https://npm.pkg.github.com/pfapi
@@ -46,4 +43,3 @@ jobs:
       run: |
         [ -f ~/.npmrc ] && rm -rf ~/.npmrc
         [ -f ~/.git-credentials ] && rm -rf ~/.git-credentials
-        [ -f ~/.gitconfig ] && rm -rf ~/.gitconfig
