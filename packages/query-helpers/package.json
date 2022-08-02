@@ -1,5 +1,5 @@
 {
-  "version": "2.5.8",
+  "version": "2.5.9-alpha.0",
   "name": "@pfapi/query-helpers",
   "bugs": {
     "url": "https://github.com/pfapi/query-helpers/issues"
