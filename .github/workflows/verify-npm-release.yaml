@@ -24,6 +24,9 @@ jobs:
         with:
             path: main
 
+      - name: git branch
+        run: git branch
+        
       - name: isolate out strapi-app
         run: mv main/packages/strapi-app ./
 

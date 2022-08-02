@@ -1,0 +1,40 @@
+name: Publish
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - development
+      - main
+  workflow_dispatch:
+
+jobs:
+  publish:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: "Checkout"
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: setup npm credential
+      run: |
+        npm set @pfapi:registry=https://npm.pkg.github.com/pfapi
+        npm set "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}"
+
+    - name: setup git config
+      run: |
+        git config user.name "${{ github.actor }}"
+        git config user.email "${{ github.actor}}@users.noreply.github.com"
+
+    - name: version and publish
+      env:
+        GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      run: |
+        if [ ${{ github.base_ref }} = development ]; then
+          npx lerna version --conventional-commits --conventional-prerelease --preid beta --yes
+        else
+          npx lerna version --conventional-commits --conventional-graduate --yes
+        fi
+        npx lerna publish from-git --yes
