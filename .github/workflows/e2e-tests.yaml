@@ -4,10 +4,14 @@ on:
     branches:
       - development
     paths-ignore:
+      - '.github/**'
       - '**.md'
+      - 'images/**'
   pull_request:
     paths-ignore:
+      - '.github/**'
       - '**.md'
+      - 'images/**'
   workflow_dispatch:
 
 jobs:
