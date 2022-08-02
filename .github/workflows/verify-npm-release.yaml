@@ -27,6 +27,9 @@ jobs:
       - name: isolate out strapi-app
         run: mv main/packages/strapi-app ./
 
+      - name: remove config/plugins.js
+        run: cd strapi-app; rm config/plugins.js
+
       - name: install strapi-app dependencies
         run: cd strapi-app; npm install
 
