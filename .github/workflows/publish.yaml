@@ -38,7 +38,7 @@ jobs:
         fi
         npx lerna publish from-git --yes
       env:
-        GH_TOKEN: ${{ secrets.ACCESS_PASS }}
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
     - name: get current version
       run: |
@@ -89,7 +89,7 @@ jobs:
     - name: create release
       uses: actions/create-release@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.ACCESS_PASS }}
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       with:
         tag_name: v${{ env.CURRENT_VERSION }}
         release_name: pfapi-v${{ env.CURRENT_VERSION }}
