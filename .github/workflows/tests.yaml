@@ -29,6 +29,7 @@ jobs:
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           git config advice.detached head false
           npm set "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}"
+          echo "GH_TOKEN=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV
 
       - name: Install dependencies
         run: npm install && npx lerna bootstrap
@@ -69,8 +70,6 @@ jobs:
         run: |
           npx lerna version --exact --no-private --conventional-commits --conventional-prerelease --preid beta --yes
           npx lerna publish from-git --yes --dist-tag beta
-        env:
-            GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: finish the commit
         run: |
