@@ -7,6 +7,6 @@ process.chdir(path.dirname(__dirname));
 
 // use nginx, mysql and redis cluster
 //
-require('dotenv');
+require('dotenv').config();
 const { use_plus_env } = require('@pfapi/test-helpers');
 use_plus_env();

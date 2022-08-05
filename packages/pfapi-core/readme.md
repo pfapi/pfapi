@@ -1,4 +1,4 @@
-[![tests](https://github.com/pfapi/pfapi/actions/workflows/e2e-tests.yaml/badge.svg)](https://github.com/pfapi/pfapi/actions/workflows/e2e-tests.yaml)
+[![tests](https://github.com/pfapi/pfapi/actions/workflows/tests.yaml/badge.svg)](https://github.com/pfapi/pfapi/actions/workflows/tests.yaml)
 
 # pfapi-core
 

@@ -45,9 +45,11 @@ jobs:
         if: env.OK == 'true' 
         run: |
           git checkout development
+          git pull
           bin/save-files
           cp bin/apply-files /tmp
           git checkout main
+          git pull
           /tmp/apply-files
           git add .
           git commit -m "sync changed files by $GITHUB_JOB" || true

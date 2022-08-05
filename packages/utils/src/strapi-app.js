@@ -1,7 +1,7 @@
 
 'use strict';
 
-require('dotenv');
+require('dotenv').config();
 const { execSync } = require('child_process');
 //const strapi = require('@strapi/strapi');
 const { wait_util_ready, check_health } = require('./wait-util');
