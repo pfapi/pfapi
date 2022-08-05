@@ -1,6 +1,6 @@
 {
   "name": "@pfapi/utils",
-  "version": "2.5.16",
+  "version": "2.5.16-beta.0",
   "description": "utils shared by pfapi packages",
   "bugs": {
     "url": "https://github.com/pfapi/pfapi/issues"
