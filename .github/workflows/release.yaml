@@ -1,4 +1,4 @@
-name: production release
+name: release
 on: 
   pull_request:
     branches:
@@ -12,7 +12,7 @@ on:
 
 jobs:
 
-  production-release:
+  release:
 
     if: github.head_ref == 'development'
      
