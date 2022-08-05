@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+rm -rf /tmp/development
+mkdir /tmp/development
+
+[ -f lerna.json ] && cp lerna.json /tmp/development
+[ -f CHANGELOG.md ] && cp CHANGELOG.md /tmp/development
+[ -f package.json ] && cp package.json /tmp/development
+[ -f package-lock.json ] && cp package-lock.json /tmp/development
+
+for d in packages/* ; do 
+    mkdir -p /tmp/development/$d
+    [ -f $d/package.json ] && cp $d/package.json /tmp/development/$d
+    [ -f $d/package-lock.json ] && cp $d/package-lock.json /tmp/development/$d
+    [ -f $d/CHANGELOG.md ] && cp $d/CHANGELOG.md /tmp/development/$d
+done

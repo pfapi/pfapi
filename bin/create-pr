@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+# - name: setup
+#   run: |
+#     echo "API_URL=${{ github.api_url }}/repos/${{ github.repository }}" >> $GITHUB_ENV
+#     echo "GITHUB_TOKEN=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV
+
+# - name: create pull request
+#   run: |
+#     git checkout development
+#     bin/create-pr
+
+[ -z "$GITHUB_ENV" ] || . $GITHUB_ENV
+
+if [ -z "$GITHUB_TOKEN" ]; then
+  echo "GITHUB_TOKEN is not setup"
+  exit 1
+fi
+
+[ -z "$TITLE" ] && TITLE="merge into main to release"
+
+[ -z "$API_URL" ] && API_URL="https://api.github.com/repos/pfapi/cicd-test"
+
+owner=$(basename $(dirname $API_URL))
+repo=$(basename $API_URL)
+
+curl -s -X POST $API_URL/pulls \
+  -H "Accept: application/vnd.github+json" \
+  -H "Authorization: token $GITHUB_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data-binary @- <<DATA
+{
+"owner": "$owner",
+"repo": "$repo",
+"title": "$TITLE",
+"body": "released by $GITHUB_JOB @ $(date)",
+"head": "development",
+"base": "main"
+}
+DATA
+

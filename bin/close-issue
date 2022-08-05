@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# - name: setup
+#   run: |
+#     echo "GITHUB_TOKEN=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV
+
+# - name: close the issue
+#   run: |
+#     echo "ISSUE_URL=${{ github.event.issue.url }}" >> $GITHUB_ENV
+#     bin/close-issue
+
+[ -z "$GITHUB_ENV" ] || . $GITHUB_ENV
+
+if [ -z "$GITHUB_TOKEN" ]; then
+  echo "GITHUB_TOKEN is not setup"
+  exit 1
+fi
+
+if [ -z "$ISSUE_URL" ]; then
+  echo "ISSUE_URL is not setup"
+  exit 1
+fi
+
+curl -s -X PATCH $ISSUE_URL \
+  -H "Accept: application/vnd.github+json" \
+  -H "Authorization: token $GITHUB_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data-binary @- <<DATA
+{
+"state": "closed"
+}
+DATA
