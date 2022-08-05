@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+# - name: setup
+#   run: |
+#     echo "API_URL=${{ github.api_url }}/repos/${{ github.repository }}" >> $GITHUB_ENV
+#     echo "GITHUB_TOKEN=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV
+
+# - name: create an issue
+#   run: |
+#     echo "TITLE='my title'" >> $GITHUB_ENV
+#     bin/create-issue
+
+[ -z "$GITHUB_ENV" ] || . $GITHUB_ENV
+
+if [ -z "$GITHUB_TOKEN" ]; then
+  echo "GITHUB_TOKEN is not setup"
+  exit 1
+fi
+
+if [ -z "$TITLE" ]; then
+  echo "TITLE is not setup"
+  exit 1
+fi
+
+[ -z "$BODY" ] && BODY="TBD";
+
+[ -z "$API_URL" ] && API_URL="https://api.github.com/repos/pfapi/cicd-test"
+
+curl -s -X POST $API_URL/issues \
+  -H "Accept: application/vnd.github+json" \
+  -H "Authorization: token $GITHUB_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data-binary @- <<DATA
+{
+"title": "$TITLE",
+"body": "$BODY"
+}
+DATA

@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+# - name: setup
+#   run: |
+#     echo "GITHUB_TOKEN=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV
+
+# - name: get pr bump
+#   run: |
+#     for pull request
+#     echo "ISSUE_URL=${{ github.api_url }}/repos/${{ github.repository }}/issues/${{ github.event.number }}" >> $GITHUB_ENV
+#     bin/get-pr-bump
+
+[ -z "$GITHUB_ENV" ] || . $GITHUB_ENV
+
+if [ -z "$GITHUB_TOKEN" ]; then
+  echo "GITHUB_TOKEN is not setup"
+  exit 1
+fi
+
+if [ -z "$ISSUE_URL" ]; then
+  echo "ISSUE_URL is not setup"
+  exit 1
+fi
+
+TITLE=$(curl -s -X GET $ISSUE_URL \
+  -H "Accept: application/vnd.github+json" \
+  -H "Authorization: token $GITHUB_TOKEN" \
+  | grep "title" | awk 'BEGIN { FS = "\"" } ; {print $4}')
+
+BUMP=patch
+if [[ "$TITLE" == to-release-* ]]; then
+  last=$(echo $TITLE | cut -d'-' -f 3)
+  if [ "$last" == minor ]; then
+    BUMP=minor
+  elif [ "$last" == major ]; then
+    BUMP=major
+  elif [[ "$last" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+    BUMP=$last
+  fi
+fi
+
+echo "BUMP=$BUMP" >> $GITHUB_ENV

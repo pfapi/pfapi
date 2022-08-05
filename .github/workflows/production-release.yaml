@@ -1,13 +1,21 @@
-name: e2e tests
-on:
+name: production release
+on: 
   pull_request:
     branches:
-      - development
+      - main
+    types: 
+      - opened
+      - reopened
+      - synchronize
+      - edited
+  workflow_dispatch:
 
 jobs:
 
-  e2e-tests:
+  production-release:
 
+    if: github.head_ref == 'development'
+     
     timeout-minutes: 15
 
     runs-on: ubuntu-latest
@@ -16,7 +24,7 @@ jobs:
 
       - name: install redis service
         uses: pfapi/redis-cluster-service@v1
-
+  
       - name: Checkout
         uses: actions/checkout@v3
         with:
@@ -28,18 +36,41 @@ jobs:
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           git config advice.detached head false
           npm set "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}"
+          echo "GITHUB_TOKEN=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV
+          echo "ISSUE_URL=${{ github.api_url }}/repos/${{ github.repository }}/issues/${{ github.event.number }}" >> $GITHUB_ENV
 
       - name: Install dependencies
         run: npm install && npx lerna bootstrap
 
+      - name: use mysql and redis cluster
+        run: npx lerna run use-my-plus --stream
+
       - name: Build
         run: npx lerna run build --stream
+
+      - name: Run strapi on port 8181
+        run: PORT=8181 npx lerna run develop --stream &
+
+      - name: Wait Util Ready on port 8181
+        run: PORT=8181 npx lerna run wait-ready --stream 
+
+      - name: Run strapi on port 8282
+        run: PORT=8282 npx lerna run develop --stream &
+
+      - name: Wait Util Ready on port 8282
+        run: PORT=8282 npx lerna run wait-ready --stream 
+
+      - name: start nginx
+        run: sudo systemctl restart nginx
+
+      - name: Wait Util Ready nginx
+        run: npx lerna run wait-ready --stream 
 
       - name: Run test
         run: npx lerna run test --stream
 
-      - name: Start strapi develop
-        run: npx lerna run develop --stream &
+      - name: restart nginx
+        run: sudo systemctl restart nginx
 
       - name: Wait Util Ready
         run: npx lerna run wait-ready --stream
@@ -61,18 +92,25 @@ jobs:
           git add .
           git commit -am "commit $GITHUB_REF_NAME by $GITHUB_JOB" || true
           git branch temporary-work
-          git checkout $GITHUB_BASE_REF
+          git checkout $GITHUB_BASE_REF 
           git merge temporary-work -m "merge $GITHUB_REF_NAME by $GITHUB_JOB" || true
+
+      - name: get BUMP from pull request title
+        run: bin/get-pr-bump
 
       - name: version & publish
         run: |
-          npx lerna version --exact --conventional-commits --conventional-prerelease --preid beta --yes
-          npx lerna publish from-git --yes --dist-tag beta
+          npx lerna version $BUMP --exact --conventional-commits --conventional-graduate --create-release=github --yes
+          npx lerna publish from-git --yes --dist-tag latest
         env:
             GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
-      - name: finish the commit
+      - name: update lerna.json version to development
         run: |
+          cp lerna.json /tmp
+          git checkout development
+          git pull
+          cp /tmp/lerna.json .
           git add .
-          git commit -am "final commit $GITHUB_REF_NAME by $GITHUB_JOB" || true
+          git commit -am "update lerna.json version by $GITHUB_JOB" || true
           git push || true

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+[ -f /tmp/development/lerna.json ] && cp  /tmp/development/lerna.json .
+[ -f /tmp/development/CHANGELOG.md ] && cp /tmp/development/CHANGELOG.md .
+[ -f /tmp/development/package.json ] && cp /tmp/development/package.json .
+[ -f /tmp/development/package-lock.json ] && cp /tmp/development/package-lock.json .
+
+for d in packages/* ; do 
+    [ -f /tmp/development/$d/package.json ] && cp /tmp/development/$d/package.json $d
+    [ -f /tmp/development/$d/package-lock.json ] && cp /tmp/development/$d/package-lock.json $d
+    [ -f /tmp/development/$d/CHANGELOG.md ] && cp /tmp/development/$d/CHANGELOG.md $d
+done
+
+[ -d /tmp/development ] && rm -rf /tmp/development
