@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.17-beta.0](https://github.com/pfapi/pfapi/compare/v2.5.16-beta.0...v2.5.17-beta.0) (2022-08-05)
+
+
+### Bug Fixes
+
+* **readme:** update bages ([6fbb7bd](https://github.com/pfapi/pfapi/commit/6fbb7bd9781c974c71556352e1ad1c2949b173ba))
+
+
+
+
+
 ## [2.5.16-beta.0](https://github.com/pfapi/pfapi/compare/v2.5.15...v2.5.16-beta.0) (2022-08-02)
 
 **Note:** Version bump only for package root
