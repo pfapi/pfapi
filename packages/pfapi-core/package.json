@@ -1,6 +1,6 @@
 {
   "name": "@pfapi/core",
-  "version": "2.5.18",
+  "version": "2.5.19-beta.0",
   "description": "pfapi core is a library that helps write Strapi Plugins to provide fast, secure, configurable and scalable API services.",
   "bugs": {
     "url": "https://github.com/pfapi/pfapi/issues"
@@ -12,7 +12,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "NODE_ENV=test mocha --timeout 10000 --exit --reporter spec tests/*/test-*",
-    "genPackagelock": "npm i --package-lock-only"
+    "gen-package-lock": "npm i --package-lock-only"
   },
   "keywords": [
     "strapi",

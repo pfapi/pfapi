@@ -19,7 +19,7 @@
     "test": "bin/start-strapi & bin/wait-ready ; NODE_ENV=test mocha --timeout 10000 --exit --reporter spec tests/test-* ; bin/stop-strapi",
     "wait-ready": "bin/wait-ready",
     "use-my-plus": "bin/use-my-plus",
-    "genPackagelock": "npm i --package-lock-only"
+    "gen-package-lock": "npm i --package-lock-only"
   },
   "dependencies": {
     "@pfapi/test-helpers": "^2.5.16-beta.0",
