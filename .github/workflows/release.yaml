@@ -14,14 +14,18 @@ on:
 jobs:
 
   release:
-
-    if: github.head_ref == 'development'
      
     timeout-minutes: 15
 
     runs-on: ubuntu-latest
 
     steps:
+
+      - name: only allow pull request from development
+        if: github.head_ref != 'development'
+        run: |
+          echo "pull request from ${{ github.head_ref }} is not allowed"
+          exit 1
 
       - name: install redis service
         uses: pfapi/redis-cluster-service@v1
