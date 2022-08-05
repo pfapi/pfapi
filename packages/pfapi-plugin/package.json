@@ -17,7 +17,7 @@
   },
   "scripts": {
     "postinstall": "node ./post-install.js",
-    "genPackagelock": "npm i --package-lock-only"
+    "gen-package-lock": "npm i --package-lock-only"
   },
   "author": {
     "name": "Sam Wen"

@@ -9,7 +9,7 @@
     "url": "git@github.com:pfapi/query-helpers.git"
   },
   "scripts": {
-    "genPackagelock": "npm i --package-lock-only"
+    "gen-package-lock": "npm i --package-lock-only"
   },
   "description": "add supports for groupBy and filters queries",
   "main": "src/index.js",

@@ -12,7 +12,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "NODE_ENV=test mocha --timeout 10000 --exit --reporter spec tests/*/test-*",
-    "genPackagelock": "npm i --package-lock-only"
+    "gen-package-lock": "npm i --package-lock-only"
   },
   "keywords": [
     "strapi",
