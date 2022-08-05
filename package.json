@@ -1,9 +1,10 @@
 {
-  "name": "root",
+  "name": "pfapi-root",
   "private": true,
   "workspaces": [
     "packages/*"
   ],
+  "description": "Pfapi plugin provides fast, secure, configurable, and scalable API services for e-commerce web apps.",
   "scripts": {
     "gen-package-locks": "lerna run --parallel gen-package-lock"
   },
