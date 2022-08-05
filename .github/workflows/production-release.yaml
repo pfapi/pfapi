@@ -100,7 +100,7 @@ jobs:
 
       - name: version & publish
         run: |
-          npx lerna version $BUMP --exact --conventional-commits --conventional-graduate --create-release=github --yes
+          npx lerna version $BUMP --exact --no-private --conventional-commits --conventional-graduate --create-release=github --yes
           npx lerna publish from-git --yes --dist-tag latest
         env:
             GH_TOKEN: ${{ secrets.GH_TOKEN }}
