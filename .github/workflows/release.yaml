@@ -41,7 +41,7 @@ jobs:
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           git config advice.detached head false
           npm set "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}"
-          echo "GITHUB_TOKEN=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV
+          echo "GH_TOKEN=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV
           echo "ISSUE_URL=${{ github.api_url }}/repos/${{ github.repository }}/issues/${{ github.event.number }}" >> $GITHUB_ENV
 
       - name: Install dependencies
@@ -107,8 +107,6 @@ jobs:
         run: |
           npx lerna version $BUMP --exact --no-private --conventional-commits --conventional-graduate --create-release=github --yes
           npx lerna publish from-git --yes --dist-tag latest
-        env:
-            GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: update lerna.json version to development
         run: |

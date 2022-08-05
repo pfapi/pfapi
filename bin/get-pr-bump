@@ -2,7 +2,7 @@
 
 # - name: setup
 #   run: |
-#     echo "GITHUB_TOKEN=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV
+#     echo "GH_TOKEN=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV
 
 # - name: get pr bump
 #   run: |
@@ -12,8 +12,8 @@
 
 [ -z "$GITHUB_ENV" ] || . $GITHUB_ENV
 
-if [ -z "$GITHUB_TOKEN" ]; then
-  echo "GITHUB_TOKEN is not setup"
+if [ -z "$GH_TOKEN" ]; then
+  echo "GH_TOKEN is not setup"
   exit 1
 fi
 
@@ -24,7 +24,7 @@ fi
 
 TITLE=$(curl -s -X GET $ISSUE_URL \
   -H "Accept: application/vnd.github+json" \
-  -H "Authorization: token $GITHUB_TOKEN" \
+  -H "Authorization: token $GH_TOKEN" \
   | grep "title" | awk 'BEGIN { FS = "\"" } ; {print $4}')
 
 BUMP=patch

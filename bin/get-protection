@@ -2,8 +2,8 @@
 
 [ -z "$GITHUB_ENV" ] || . $GITHUB_ENV
 
-if [ -z "$GITHUB_TOKEN" ]; then
-  echo "GITHUB_TOKEN is not setup"
+if [ -z "$GH_TOKEN" ]; then
+  echo "GH_TOKEN is not setup"
   exit 1
 fi
 
@@ -13,5 +13,5 @@ fi
 
 curl -s -X GET $API_URL/branches/main/protection \
   -H "Accept: application/vnd.github+json" \
-  -H "Authorization: token $GITHUB_TOKEN" \
+  -H "Authorization: token $GH_TOKEN" \
   -H "Content-Type: application/json"
