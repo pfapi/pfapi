@@ -17,7 +17,7 @@
   },
   "scripts": {
     "postinstall": "node ./data/post-install.js",
-    "genPackagelock": "npm i --package-lock-only"
+    "gen-package-lock": "npm i --package-lock-only"
   },
   "dependencies": {
     "@pfapi/utils": "2.5.17-beta.0",
