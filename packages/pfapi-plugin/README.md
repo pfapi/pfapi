@@ -1,4 +1,4 @@
-[![tests](https://github.com/pfapi/pfapi/actions/workflows/tests.yaml/badge.svg)](https://github.com/pfapi/pfapi/actions/workflows/e2e-tests.yaml) [![release](https://github.com/pfapi/pfapi/actions/workflows/release.yaml/badge.svg)](https://github.com/pfapi/pfapi/actions/workflows/production-release.yaml)
+[![tests](https://github.com/pfapi/pfapi/actions/workflows/tests.yaml/badge.svg)](https://github.com/pfapi/pfapi/actions/workflows/tests.yaml) [![release](https://github.com/pfapi/pfapi/actions/workflows/release.yaml/badge.svg)](https://github.com/pfapi/pfapi/actions/workflows/release.yaml)
 
 # Strapi plugin pfapi
 

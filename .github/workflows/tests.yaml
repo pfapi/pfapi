@@ -1,4 +1,4 @@
-name: e2e tests
+name: tests
 
 on:
   pull_request:
@@ -7,7 +7,7 @@ on:
 
 jobs:
 
-  e2e-tests:
+  tests:
 
     timeout-minutes: 15
 
