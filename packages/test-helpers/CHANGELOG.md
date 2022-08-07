@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/pfapi/pfapi/compare/v2.5.23...v2.6.0) (2022-08-07)
+
+**Note:** Version bump only for package @pfapi/test-helpers
+
+
+
+
+
 ## [2.5.22-beta.0](https://github.com/pfapi/pfapi/compare/v2.5.21...v2.5.22-beta.0) (2022-08-07)
 
 **Note:** Version bump only for package @pfapi/test-helpers
