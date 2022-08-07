@@ -95,6 +95,7 @@ jobs:
       - name: commit and merge into GITHUB_BASE_REF
         run: |
           git add .
+          git reset -- packages/strapi-app/.env
           git commit -m "commit $GITHUB_REF_NAME by $GITHUB_JOB" || true
           git branch temporary-work
           git checkout $GITHUB_BASE_REF 
@@ -114,6 +115,6 @@ jobs:
           git checkout development
           git pull
           cp /tmp/lerna.json .
-          git add .
+          git add lerna.json
           git commit -m "update lerna.json version by $GITHUB_JOB" || true
           git push || true
