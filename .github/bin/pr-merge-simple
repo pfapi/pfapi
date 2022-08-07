@@ -18,6 +18,11 @@ if [ -z "$branch" ]; then
     git checkout $GITHUB_BASE_REF
     git merge temporary-work -m "merge $GITHUB_REF_NAME by $GITHUB_JOB" || true
 
+else 
+
+    git add .
+    git commit -m "commit $GITHUB_REF_NAME by $GITHUB_JOB" || true
+
 fi
 
 git push
