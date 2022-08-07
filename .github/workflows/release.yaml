@@ -94,8 +94,8 @@ jobs:
 
       - name: commit and merge into GITHUB_BASE_REF
         run: |
+          git restore packages/strapi-app/.env
           git add .
-          git reset -- packages/strapi-app/.env
           git commit -m "commit $GITHUB_REF_NAME by $GITHUB_JOB" || true
           git branch temporary-work
           git checkout $GITHUB_BASE_REF 
