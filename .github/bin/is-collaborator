@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+# - name: setup
+#   run: |
+#     echo "API_URL=${{ github.api_url }}/repos/${{ github.repository }}" >> $GITHUB_ENV
+#     echo "GH_TOKEN=${{ github.token }}" >> $GITHUB_ENV
+
+# - name: is collaborator
+#   run: .github/bin/is-collaborator
+
+[ -z "$GITHUB_ENV" ] || . $GITHUB_ENV
+
+if [ -z "$GH_TOKEN" ]; then
+  echo "GH_TOKEN is not setup"
+  exit 1
+fi
+
+if [ -z "$API_URL" ]; then
+  echo "API_URL is not setup"
+  exit 1
+fi
+
+[ -z "$USERNAME" ] && USERNAME=$GITHUB_TRIGGERING_ACTOR
+
+result=$(curl -s -i -X GET $API_URL/collaborators/$USERNAME \
+  -H "Accept: application/vnd.github+json" \
+  -H "Authorization: token $GH_TOKEN" | grep '^HTTP' | grep ' 204')
+
+[ -z "$result" ] && result=false || result=true
+
+if [ -z "$GITHUB_ENV" ]; then
+  echo $result
+else
+  echo "IS_COLLABORATOR=$result" >> $GITHUB_ENV
+fi

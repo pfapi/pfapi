@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -e
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+git checkout development
+git pull
+
+$SCRIPT_DIR/save-files
+cp $SCRIPT_DIR/apply-files /tmp
+
+git checkout main
+git pull
+
+/tmp/apply-files
+
+git add .
+git commit -m "sync changed files by $GITHUB_JOB" || true
+git push || true

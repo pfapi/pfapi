@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# used by test
+
+set -e
+
+git add .
+git commit -m "final commit $GITHUB_REF_NAME by $GITHUB_JOB" || true
+git push || true
