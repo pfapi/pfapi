@@ -2,12 +2,11 @@
 
 # - name: setup
 #   run: |
-#     echo "GH_TOKEN=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV
+#     echo "GH_TOKEN=${{ github.token }}" >> $GITHUB_ENV
+#     echo "ISSUE_URL=${{ github.event.issue.url }}" >> $GITHUB_ENV
 
 # - name: close the issue
-#   run: |
-#     echo "ISSUE_URL=${{ github.event.issue.url }}" >> $GITHUB_ENV
-#     bin/close-issue
+#   run: .github/bin/close-issue
 
 [ -z "$GITHUB_ENV" ] || . $GITHUB_ENV
 

@@ -3,7 +3,7 @@
 # - name: setup
 #   run: |
 #     echo "API_URL=${{ github.api_url }}/repos/${{ github.repository }}" >> $GITHUB_ENV
-#     echo "GH_TOKEN=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV
+#     echo "GH_TOKEN=${{ github.token }}" >> $GITHUB_ENV
 
 # - name: create pull request
 #   run: |
@@ -17,9 +17,12 @@ if [ -z "$GH_TOKEN" ]; then
   exit 1
 fi
 
-[ -z "$TITLE" ] && TITLE="merge into main to release"
+if [ -z "$API_URL" ]; then
+  echo "API_URL is not setup"
+  exit 1
+fi
 
-[ -z "$API_URL" ] && API_URL="https://api.github.com/repos/pfapi/cicd-test"
+[ -z "$TITLE" ] && TITLE="merge into main to release"
 
 owner=$(basename $(dirname $API_URL))
 repo=$(basename $API_URL)

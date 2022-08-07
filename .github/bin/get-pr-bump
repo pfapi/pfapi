@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 
+# get BUMP from pull request title
+
 # - name: setup
 #   run: |
-#     echo "GH_TOKEN=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV
-
-# - name: get pr bump
-#   run: |
+#     echo "GH_TOKEN=${{ github.token }}" >> $GITHUB_ENV
 #     for pull request
 #     echo "ISSUE_URL=${{ github.api_url }}/repos/${{ github.repository }}/issues/${{ github.event.number }}" >> $GITHUB_ENV
-#     bin/get-pr-bump
+
+# - name: get pr bump
+#   run: .github/bin/get-pr-bump
 
 [ -z "$GITHUB_ENV" ] || . $GITHUB_ENV
 
@@ -39,4 +40,8 @@ if [[ "$TITLE" == to-release-* ]]; then
   fi
 fi
 
-echo "BUMP=$BUMP" >> $GITHUB_ENV
+if [ -z "$GITHUB_ENV" ]; then
+  echo $BUMP
+else
+  echo "BUMP=$BUMP" >> $GITHUB_ENV
+fi

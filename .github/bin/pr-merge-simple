@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# not forked pull request merge
+# used by test
+
+set -e
+
+branch=$(git branch | grep "^*" | grep "$GITHUB_BASE_REF") || true
+
+if [ -z "$branch" ]; then
+
+    git branch temporary-work
+    git switch temporary-work
+
+    git add .
+    git commit -m "commit $GITHUB_REF_NAME by $GITHUB_JOB" || true
+
+    git checkout $GITHUB_BASE_REF
+    git merge temporary-work -m "merge $GITHUB_REF_NAME by $GITHUB_JOB" || true
+
+fi
+
+git push
