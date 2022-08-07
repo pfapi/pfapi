@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# update lerna.json version to development
+# used by release
+
+cp lerna.json /tmp
+git checkout development
+git pull
+cp /tmp/lerna.json .
+git add lerna.json
+git commit -m "update lerna.json version by $GITHUB_JOB" || true
+git push || true

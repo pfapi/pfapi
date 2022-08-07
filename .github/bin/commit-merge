@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# commit and merge into GITHUB_BASE_REF
+# used by release
+
+set -e
+
+git restore packages/strapi-app/.env
+git add .
+git commit -m "commit $GITHUB_REF_NAME by $GITHUB_JOB" || true
+git branch temporary-work
+git checkout $GITHUB_BASE_REF 
+git merge temporary-work -m "merge $GITHUB_REF_NAME by $GITHUB_JOB" || true

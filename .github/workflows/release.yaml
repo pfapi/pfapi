@@ -22,99 +22,107 @@ jobs:
     steps:
 
       - name: only allow pull request from development
-        if: github.head_ref != 'development'
-        run: |
-          echo "pull request from ${{ github.head_ref }} is not allowed"
-          exit 1
+        if: github.head_ref != '' && github.head_ref != 'development'
+        run: echo "OK=false" >> $GITHUB_ENV
 
       - name: install redis service
+        if: env.OK != 'false'
         uses: pfapi/redis-cluster-service@v1
   
       - name: Checkout
+        if: env.OK != 'false'
         uses: actions/checkout@v3
         with:
           fetch-depth: 0 # Checkout all branches and tags
 
       - name: setup
+        if: env.OK != 'false'
         run: |
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor }}@users.noreply.github.com"
-          git config advice.detached head false
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --global advice.detachedHead false
           npm set "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}"
           echo "GH_TOKEN=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV
           echo "ISSUE_URL=${{ github.api_url }}/repos/${{ github.repository }}/issues/${{ github.event.number }}" >> $GITHUB_ENV
 
       - name: Install dependencies
+        if: env.OK != 'false'
         run: npm install && npx lerna bootstrap
 
       - name: use mysql and redis cluster
+        if: env.OK != 'false'
         run: npx lerna run use-my-plus --stream
 
       - name: Build
+        if: env.OK != 'false'
         run: npx lerna run build --stream
 
       - name: Run strapi on port 8181
+        if: env.OK != 'false'
         run: PORT=8181 npx lerna run develop --stream &
 
       - name: Wait Util Ready on port 8181
+        if: env.OK != 'false'
         run: PORT=8181 npx lerna run wait-ready --stream 
 
       - name: Run strapi on port 8282
+        if: env.OK != 'false'
         run: PORT=8282 npx lerna run develop --stream &
 
       - name: Wait Util Ready on port 8282
+        if: env.OK != 'false'
         run: PORT=8282 npx lerna run wait-ready --stream 
 
       - name: start nginx
+        if: env.OK != 'false'
         run: sudo systemctl restart nginx
 
       - name: Wait Util Ready nginx
+        if: env.OK != 'false'
         run: npx lerna run wait-ready --stream 
 
       - name: Run test
+        if: env.OK != 'false'
         run: npx lerna run test --stream
 
       - name: restart nginx
+        if: env.OK != 'false'
         run: sudo systemctl restart nginx
 
       - name: Wait Util Ready
+        if: env.OK != 'false'
         run: npx lerna run wait-ready --stream
 
       - name: run pfapi-tester 1 time with verbose 
+        if: env.OK != 'false'
         run: npx pfapi-tester -t 1 -v
 
       - name: run pfapi-tester 10 times and concurrent
+        if: env.OK != 'false'
         run: npx pfapi-tester -t 10 -c
 
       - name: run pfapi-tester 1 time, fetch items and concurrent
+        if: env.OK != 'false'
         run: npx pfapi-tester -t 1 -f -c
 
       - name: run pfapi-tester walk through and fetch items
+        if: env.OK != 'false'
         run: npx pfapi-tester -w -f
 
-      - name: commit and merge into GITHUB_BASE_REF
-        run: |
-          git restore packages/strapi-app/.env
-          git add .
-          git commit -m "commit $GITHUB_REF_NAME by $GITHUB_JOB" || true
-          git branch temporary-work
-          git checkout $GITHUB_BASE_REF 
-          git merge temporary-work -m "merge $GITHUB_REF_NAME by $GITHUB_JOB" || true
+      - name: commit and merge
+        if: env.OK != 'false'
+        run: .github/bin/commit-merge
 
       - name: get BUMP from pull request title
-        run: bin/get-pr-bump
+        if: env.OK != 'false'
+        run: .github/bin/get-pr-bump
 
       - name: version & publish
+        if: env.OK != 'false'
         run: |
-          npx lerna version $BUMP --exact --no-private --conventional-commits --conventional-graduate --create-release=github --yes
+          npx lerna version $BUMP --exact --conventional-commits --conventional-graduate --create-release=github --yes
           npx lerna publish from-git --yes --dist-tag latest
 
       - name: update lerna.json version to development
-        run: |
-          cp lerna.json /tmp
-          git checkout development
-          git pull
-          cp /tmp/lerna.json .
-          git add lerna.json
-          git commit -m "update lerna.json version by $GITHUB_JOB" || true
-          git push || true
+        if: env.OK != 'false'
+        run: .github/bin/update-dev

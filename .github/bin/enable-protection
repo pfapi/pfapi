@@ -3,13 +3,12 @@
 # - name: setup
 #   run: |
 #     echo "API_URL=${{ github.api_url }}/repos/${{ github.repository }}" >> $GITHUB_ENV
-#     echo "GH_TOKEN=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV
-#
-# - name: turn off protection
-#   if: ${{ github.ref_protected == 'true' }}
-#   run: |
+#     echo "GH_TOKEN=${{ github.token }}" >> $GITHUB_ENV
 #     echo "BRANCH=development" >> $GITHUB_ENV
-#     bin/disable-protection
+#
+# - name: turn on protection
+#   if: always()
+#   run: [ "${{ github.ref_protected }}" == "true" ] && .github/bin/enable-protection
 
 [ -z "$GITHUB_ENV" ] || . $GITHUB_ENV
 
@@ -22,15 +21,19 @@ fi
 
 [ -z "$API_URL" ] && API_URL="https://api.github.com/repos/pfapi/cicd-test"
 
-curl -s -X DELETE $API_URL/branches/main/protection \
+curl -s -X PUT $API_URL/branches/main/protection \
   -H "Accept: application/vnd.github+json" \
   -H "Authorization: token $GH_TOKEN" \
   -H "Content-Type: application/json" \
   --data-binary @- <<DATA
 {
   "required_status_checks": null,
-  "enforce_admins": false,
-  "required_pull_request_reviews": null,
+  "enforce_admins": true,
+  "required_pull_request_reviews": {
+    "dismiss_stale_reviews": false,
+    "require_code_owner_reviews": false,
+    "required_approving_review_count": 0
+  },
   "required_linear_history": true,
   "allow_force_pushes": false,
   "allow_deletions": false,

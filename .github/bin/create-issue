@@ -3,12 +3,11 @@
 # - name: setup
 #   run: |
 #     echo "API_URL=${{ github.api_url }}/repos/${{ github.repository }}" >> $GITHUB_ENV
-#     echo "GH_TOKEN=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV
+#     echo "GH_TOKEN=${{ github.token }}" >> $GITHUB_ENV
+#     echo "TITLE='my title'" >> $GITHUB_ENV
 
 # - name: create an issue
-#   run: |
-#     echo "TITLE='my title'" >> $GITHUB_ENV
-#     bin/create-issue
+#   run: .github/bin/create-issue
 
 [ -z "$GITHUB_ENV" ] || . $GITHUB_ENV
 

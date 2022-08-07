@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+# forked pull request merge
+# used by test
+
+set -e
+
+if [ -z "$BASE_URL" ]; then
+  echo "BASE_URL is not setup"
+  exit 1
+fi
+
+git branch temporary-work
+git switch temporary-work
+
+git add .
+git commit -m "commit $GITHUB_REF_NAME by $GITHUB_JOB" || true
+
+git remote remove origin
+git remote add origin $BASE_URL
+
+git pull origin development
+
+git checkout development
+
+git merge temporary-work -m "merge $GITHUB_REF_NAME by $GITHUB_JOB" || true
+
+git branch --set-upstream-to=origin/development development
+
+git push -ff
+

@@ -1,9 +1,10 @@
 name: to release
+
 on:
   workflow_dispatch:
   issues:
     types: [ opened ]
-
+  
 jobs:
 
   to-release:
@@ -19,7 +20,6 @@ jobs:
         run: |
           echo "TITLE=${{ github.event.issue.title }}" >> $GITHUB_ENV
           echo "ISSUE_URL=${{ github.event.issue.url }}" >> $GITHUB_ENV
-          echo $TITLE $ISSUE_URL
 
       - name: get OK
         run: |
@@ -38,29 +38,20 @@ jobs:
         run: |
           echo "API_URL=${{ github.api_url }}/repos/${{ github.repository }}" >> $GITHUB_ENV
           echo "GH_TOKEN=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
 
       - name: sync changed files
         if: env.OK == 'true' 
-        run: |
-          git checkout development
-          git pull
-          bin/save-files
-          cp bin/apply-files /tmp
-          git checkout main
-          git pull
-          /tmp/apply-files
-          git add .
-          git commit -m "sync changed files by $GITHUB_JOB" || true
-          git push || true
+        run: .github/bin/sync-files
+
 
       - name: create pull request
         if: env.OK == 'true' 
         run: |
           git checkout development
-          bin/create-pr
+          .github/bin/create-pr
 
       - name: close issue
         if: env.OK == 'true' && github.event_name == 'issues'
-        run: bin/close-issue
+        run: .github/bin/close-issue
