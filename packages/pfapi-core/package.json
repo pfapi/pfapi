@@ -1,6 +1,6 @@
 {
   "name": "@pfapi/core",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "description": "pfapi core is a library that helps write Strapi Plugins to provide fast, secure, configurable and scalable API services.",
   "bugs": {
     "url": "https://github.com/pfapi/pfapi/issues"
