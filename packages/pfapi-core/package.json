@@ -43,7 +43,7 @@
     "base-x": "4.0.0",
     "debug": "^4.3.4",
     "fs-extra": "^10.1.0",
-    "ioredis": "5.0.6",
+    "ioredis": "5.2.3",
     "ip-matching": "2.1.2",
     "lodash": "4.17.21",
     "netmask": "^2.0.2",
