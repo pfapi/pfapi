@@ -1,6 +1,6 @@
 {
   "name": "@pfapi/tester",
-  "version": "2.6.4",
+  "version": "2.5.22-beta.0",
   "description": "a command line tester for strapi-plugin pfapi",
   "bugs": {
     "url": "https://github.com/pfapi/pfapi/issues"
@@ -24,7 +24,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.27.2",
+    "axios": "^1.1.2",
     "commander": "^9.3.0",
     "dotenv": "^16.0.1",
     "qs": "^6.11.0"
