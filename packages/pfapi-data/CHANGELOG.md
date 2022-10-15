@@ -3,14 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [2.6.5](https://github.com/pfapi/pfapi/compare/v2.6.4...v2.6.5) (2022-10-15)
-
-**Note:** Version bump only for package strapi-plugin-pfapi-data
-
-
-
-
-
 ## [2.5.22-beta.0](https://github.com/pfapi/pfapi/compare/v2.5.21...v2.5.22-beta.0) (2022-08-07)
 
 **Note:** Version bump only for package strapi-plugin-pfapi-data
