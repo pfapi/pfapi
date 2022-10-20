@@ -1,6 +1,6 @@
 {
   "name": "strapi-app",
-  "version": "2.6.6",
+  "version": "2.5.16",
   "description": "A Strapi application",
   "private": true,
   "bugs": {
@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "chai": "4.3.6",
-    "mocha": "10.0.0"
+    "mocha": "10.1.0"
   },
   "author": {
     "name": "A Strapi developer"

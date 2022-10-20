@@ -1,6 +1,6 @@
 {
   "name": "@pfapi/core",
-  "version": "2.6.6",
+  "version": "2.6.3-beta.0",
   "description": "pfapi core is a library that helps write Strapi Plugins to provide fast, secure, configurable and scalable API services.",
   "bugs": {
     "url": "https://github.com/pfapi/pfapi/issues"
@@ -57,7 +57,7 @@
     "eslint": "8.25.0",
     "eslint-config-google": "0.14.0",
     "koa": "2.13.4",
-    "mocha": "10.0.0"
+    "mocha": "10.1.0"
   },
   "gitHead": "8dac7b1107caf1c03d7881f5c37922f64052f185"
 }
