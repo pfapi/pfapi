@@ -1,6 +1,6 @@
 {
   "name": "strapi-app",
-  "version": "2.5.16",
+  "version": "2.6.8",
   "description": "A Strapi application",
   "private": true,
   "bugs": {
