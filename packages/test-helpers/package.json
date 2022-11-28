@@ -1,6 +1,6 @@
 {
   "name": "@pfapi/test-helpers",
-  "version": "2.6.8",
+  "version": "2.6.9",
   "description": "test helpers",
   "main": "src/index.js",
   "bugs": {
@@ -22,7 +22,7 @@
   "author": "Sam Wen",
   "license": "MIT",
   "dependencies": {
-    "@pfapi/utils": "2.6.8",
+    "@pfapi/utils": "2.6.9",
     "dotenv": "^16.0.1",
     "fs-extra": "^10.1.0"
   },

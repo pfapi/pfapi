@@ -1,6 +1,6 @@
 {
   "name": "strapi-app",
-  "version": "2.6.8",
+  "version": "2.6.9",
   "description": "A Strapi application",
   "private": true,
   "bugs": {
@@ -22,8 +22,8 @@
     "gen-package-lock": "npm i --package-lock-only"
   },
   "dependencies": {
-    "@pfapi/test-helpers": "^2.5.16-beta.0",
-    "@pfapi/utils": "^2.5.16-beta.0",
+    "@pfapi/test-helpers": "2.6.9",
+    "@pfapi/utils": "2.6.9",
     "@strapi/plugin-i18n": "^4.3.2",
     "@strapi/plugin-users-permissions": "^4.3.2",
     "@strapi/strapi": "^4.3.2",
@@ -31,8 +31,8 @@
     "dotenv": "^16.0.1",
     "koa-response-time": "^2.1.0",
     "mysql": "^2.18.1",
-    "strapi-plugin-pfapi": "^2.5.16-beta.0",
-    "strapi-plugin-pfapi-data": "^2.5.16-beta.0"
+    "strapi-plugin-pfapi": "2.6.9",
+    "strapi-plugin-pfapi-data": "2.6.9"
   },
   "devDependencies": {
     "chai": "4.3.7",
