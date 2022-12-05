@@ -24,7 +24,7 @@
   "dependencies": {
     "@pfapi/utils": "2.6.8",
     "dotenv": "^16.0.1",
-    "fs-extra": "^10.1.0"
+    "fs-extra": "^11.1.0"
   },
   "gitHead": "8dac7b1107caf1c03d7881f5c37922f64052f185"
 }
